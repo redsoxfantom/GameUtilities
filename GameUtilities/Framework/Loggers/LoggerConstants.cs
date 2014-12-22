@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameUtilities.Loggers
+namespace GameUtilities.Framework.Loggers
 {
     /// <summary>
     /// Labels what level the logger logs at. A logger at a certain level (i.e, ERROR)

@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System;
 
-namespace GameUtilities.Loggers
+namespace GameUtilities.Framework.Loggers
 {
     /// <summary>
     /// A generic Logger class. Prints to the console

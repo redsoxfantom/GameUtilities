@@ -1,4 +1,5 @@
 ﻿using GameUtilities.Entities;
+using GameUtilities.Framework.Loggers;
 
 namespace GameUtilities.Framework
 {
@@ -10,7 +11,9 @@ namespace GameUtilities.Framework
         /// <summary>
         /// The Entity the context is associated with
         /// </summary>
-        public IEntity Entity { private set; public get; }
+        public IEntity Entity { set; get; }
+
+        public ILogger Logger { get; set; }
 
         /// <summary>
         /// The constructor

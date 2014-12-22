@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameUtilities.Loggers
+namespace GameUtilities.Framework.Loggers
 {
     /// <summary>
     /// A logger implementing the Null pattern

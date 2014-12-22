@@ -47,11 +47,12 @@
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Framework\ExecutableContext.cs" />
-    <Compile Include="Loggers\BaseLogger.cs" />
-    <Compile Include="Loggers\ConsoleLogger.cs" />
-    <Compile Include="Loggers\ILogger.cs" />
-    <Compile Include="Loggers\LoggerConstants.cs" />
-    <Compile Include="Loggers\NullLogger.cs" />
+    <Compile Include="Framework\Loggers\BaseLogger.cs" />
+    <Compile Include="Framework\Loggers\ConsoleLogger.cs" />
+    <Compile Include="Framework\Loggers\ILogger.cs" />
+    <Compile Include="Framework\Loggers\LoggerConstants.cs" />
+    <Compile Include="Framework\Loggers\LoggerFactory.cs" />
+    <Compile Include="Framework\Loggers\NullLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
