@@ -1,4 +1,5 @@
 ﻿using GameUtilities.Entities;
+using GameUtilities.Framework;
 
 namespace GameUtilities.Components
 {
@@ -8,9 +9,21 @@ namespace GameUtilities.Components
     interface IComponent
     {
         /// <summary>
-        /// Called once a frame
+        /// Called once a frame, draws the component
+        /// </summary>
+        /// <param name="timeSinceLastFrame">How long its been since the last frame</param>
+        public void Draw(double timeSinceLastFrame);
+
+        /// <summary>
+        /// Called once a frame, updates the component's internal state
         /// </summary>
         /// <param name="timeSinceLastFrame">How long its been since the last frame</param>
         public void Update(double timeSinceLastFrame);
+
+        /// <summary>
+        /// Initialize the Component
+        /// </summary>
+        /// <param name="Context">The component's executable context</param>
+        public void Init(ExecutableContext Context);
     }
 }
