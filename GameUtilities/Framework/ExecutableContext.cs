@@ -15,10 +15,7 @@ namespace GameUtilities.Framework
         /// <summary>
         /// The constructor
         /// </summary>
-        /// <param name="entity">The entity the context is associated with</param>
-        public ExecutableContext(IEntity entity)
-        {
-            Entity = entity;
-        }
+        public ExecutableContext()
+        {}
     }
 }

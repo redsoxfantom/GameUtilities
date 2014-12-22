@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Components\BaseComponent.cs" />
     <Compile Include="Components\IComponent.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Framework\ExecutableContext.cs" />
     <Compile Include="Loggers\BaseLogger.cs" />

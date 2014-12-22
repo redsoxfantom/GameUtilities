@@ -24,11 +24,5 @@ namespace GameUtilities.Entities
         /// </summary>
         /// <param name="timeSinceLastFrame">How long its been since the last time Draw was called</param>
         public void Draw(double timeSinceLastFrame);
-
-        /// <summary>
-        /// Adds a component to the game entity
-        /// </summary>
-        /// <param name="component">the component to add</param>
-        public void AddComponent(IComponent component);
     }
 }
