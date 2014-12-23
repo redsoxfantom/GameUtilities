@@ -53,6 +53,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Entities\BaseEntityTest.cs" />
     <Compile Include="Framework\Loggers\BaseLoggerTest.cs" />
     <Compile Include="Framework\Loggers\LoggerFactoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,6 +66,9 @@
       <Project>{d80ab4af-439b-4e70-bffe-52c30cc72e63}</Project>
       <Name>GameUtilities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Components\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

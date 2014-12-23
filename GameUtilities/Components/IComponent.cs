@@ -6,7 +6,7 @@ namespace GameUtilities.Components
     /// <summary>
     /// Represents a "Component" attached to an entity. Entitys are defined by what Components they use.
     /// </summary>
-    interface IComponent
+    public interface IComponent
     {
         /// <summary>
         /// Called once a frame, draws the component

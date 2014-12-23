@@ -7,7 +7,7 @@ namespace GameUtilities.Entities
     /// <summary>
     /// Represents an object in the game world
     /// </summary>
-    interface IEntity
+    public interface IEntity
     {
         /// <summary>
         /// The Entities' logger

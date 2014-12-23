@@ -8,7 +8,7 @@ namespace GameUtilities.Components
     /// <summary>
     /// A base class all Components inherit from
     /// </summary>
-    class BaseComponent:IComponent
+    public class BaseComponent:IComponent
     {
         #region Fields
         /// <summary>

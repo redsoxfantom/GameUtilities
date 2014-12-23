@@ -9,7 +9,7 @@ namespace GameUtilities.Entities
     /// <summary>
     /// Base class for all game Entities
     /// </summary>
-    class BaseEntity : IEntity
+    public class BaseEntity : IEntity
     {
         #region Fields
         /// <summary>
@@ -54,7 +54,7 @@ namespace GameUtilities.Entities
             mContext = Context;
             Logger = LoggerFactory.CreateLogger(mName);
             mContext.Logger.AddChildLogger(Logger);
-            //Read in the entites components here
+            //Read in the entities components here
         }
 
         /// <summary>
