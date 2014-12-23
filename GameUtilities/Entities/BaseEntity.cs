@@ -1,6 +1,8 @@
 ﻿using GameUtilities.Components;
 using GameUtilities.Framework;
 using System.Collections.Generic;
+using GameUtilities.Framework.Loggers;
+using System;
 
 namespace GameUtilities.Entities
 {
@@ -13,20 +15,31 @@ namespace GameUtilities.Entities
         /// <summary>
         /// The entities' executable context
         /// </summary>
-        private ExecutableContext mContext;
+        protected ExecutableContext mContext;
 
         /// <summary>
         /// Stores the entites Components, in no particular order
         /// </summary>
-        private List<IComponent> mComponents;
+        protected List<IComponent> mComponents;
+
+        /// <summary>
+        /// The "Name" of the entity (used for logging)
+        /// </summary>
+        protected string mName;
+
+        /// <summary>
+        /// The Entities' logger
+        /// </summary>
+        public ILogger mLogger;
         #endregion Fields
 
         #region Constructors
         /// <summary>
         /// The Constructor
         /// </summary>
-        public BaseEntity()
+        public BaseEntity(string Name)
         {
+            mName = string.Format("{0}.{1}",Name,Guid.NewGuid());
             mComponents = new List<IComponent>();
         }
         #endregion Contructors
@@ -39,6 +52,8 @@ namespace GameUtilities.Entities
         public void Init(Framework.ExecutableContext Context)
         {
             mContext = Context;
+            mLogger = LoggerFactory.CreateLogger(mName);
+            mContext.Logger.AddChildLogger(mLogger);
             //Read in the entites components here
         }
 
