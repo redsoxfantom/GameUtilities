@@ -54,6 +54,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Framework\Loggers\BaseLoggerTest.cs" />
+    <Compile Include="Framework\Loggers\LoggerFactoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

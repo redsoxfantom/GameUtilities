@@ -9,7 +9,7 @@ namespace GameUtilities.Framework.Loggers
     /// <summary>
     /// A logger implementing the Null pattern
     /// </summary>
-    class NullLogger : BaseLogger
+    public class NullLogger : BaseLogger
     {
         #region Constructors
 
