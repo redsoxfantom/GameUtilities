@@ -30,7 +30,7 @@ namespace GameUtilities.Entities
         /// <summary>
         /// The Entities' logger
         /// </summary>
-        public ILogger mLogger;
+        public ILogger Logger {get; private set;}
         #endregion Fields
 
         #region Constructors
@@ -52,8 +52,8 @@ namespace GameUtilities.Entities
         public void Init(Framework.ExecutableContext Context)
         {
             mContext = Context;
-            mLogger = LoggerFactory.CreateLogger(mName);
-            mContext.Logger.AddChildLogger(mLogger);
+            Logger = LoggerFactory.CreateLogger(mName);
+            mContext.Logger.AddChildLogger(Logger);
             //Read in the entites components here
         }
 
@@ -82,5 +82,16 @@ namespace GameUtilities.Entities
         }
 
         #endregion IEntity Methods
+
+        #region Methods
+        /// <summary>
+        /// toString method
+        /// </summary>
+        /// <returns>the entity's name</returns>
+        public String ToString()
+        {
+            return mName;
+        }
+        #endregion Methods
     }
 }

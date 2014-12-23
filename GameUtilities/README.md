@@ -2,9 +2,9 @@
 
 /Config/
 	/Entities/
-		Names.txt
+		Names.xml
 		/EntityName1/
 		/EntityName2/
 		...
 		/EntityNameN/
-			Components.txt
+			Components.xml

@@ -1,5 +1,6 @@
 ﻿using GameUtilities.Components;
 using GameUtilities.Framework;
+using GameUtilities.Framework.Loggers;
 
 namespace GameUtilities.Entities
 {
@@ -9,8 +10,13 @@ namespace GameUtilities.Entities
     interface IEntity
     {
         /// <summary>
+        /// The Entities' logger
+        /// </summary>
+        ILogger Logger { get; }
+
+        /// <summary>
         /// Initializes the Entity
-        /// 
+        /// </summary>
         public void Init(ExecutableContext Context);
 
         /// <summary>

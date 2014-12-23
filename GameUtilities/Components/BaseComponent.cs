@@ -1,5 +1,6 @@
 ﻿using GameUtilities.Entities;
 using GameUtilities.Framework;
+using GameUtilities.Framework.Loggers;
 using System;
 
 namespace GameUtilities.Components
@@ -13,7 +14,17 @@ namespace GameUtilities.Components
         /// <summary>
         /// The context
         /// </summary>
-        private ExecutableContext mContext = null;
+        protected ExecutableContext mContext = null;
+
+        /// <summary>
+        /// The component's Logger
+        /// </summary>
+        protected ILogger mLogger;
+
+        /// <summary>
+        /// The name of the Component
+        /// </summary>
+        protected String mName;
         #endregion Fields
 
         #region Constructors
@@ -47,6 +58,9 @@ namespace GameUtilities.Components
                 throw new NullReferenceException("Context");
             }
             mContext = Context;
+            mName = string.Format("{0}@{1}",this.GetType().Name,mContext.Entity.ToString());
+            mLogger = LoggerFactory.CreateLogger(mName);
+            mContext.Entity.Logger.AddChildLogger(mLogger);
         }
         #endregion IComponent Methods
     }
