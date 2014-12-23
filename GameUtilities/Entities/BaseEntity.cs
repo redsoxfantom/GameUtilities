@@ -88,7 +88,7 @@ namespace GameUtilities.Entities
         /// toString method
         /// </summary>
         /// <returns>the entity's name</returns>
-        public String ToString()
+        public override String ToString()
         {
             return mName;
         }

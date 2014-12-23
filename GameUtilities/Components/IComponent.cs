@@ -12,18 +12,18 @@ namespace GameUtilities.Components
         /// Called once a frame, draws the component
         /// </summary>
         /// <param name="timeSinceLastFrame">How long its been since the last frame</param>
-        public void Draw(double timeSinceLastFrame);
+        void Draw(double timeSinceLastFrame);
 
         /// <summary>
         /// Called once a frame, updates the component's internal state
         /// </summary>
         /// <param name="timeSinceLastFrame">How long its been since the last frame</param>
-        public void Update(double timeSinceLastFrame);
+        void Update(double timeSinceLastFrame);
 
         /// <summary>
         /// Initialize the Component
         /// </summary>
         /// <param name="Context">The component's executable context</param>
-        public void Init(ExecutableContext Context);
+        void Init(ExecutableContext Context);
     }
 }

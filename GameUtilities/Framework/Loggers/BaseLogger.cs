@@ -19,6 +19,7 @@ namespace GameUtilities.Framework.Loggers
         /// <param name="level">The starting log level</param>
         public BaseLogger(string Name, LoggerLevel level)
         {
+            childLoggers = new List<ILogger>();
             LoggerName = Name;
             LoggingLevel = level;
         }
@@ -27,11 +28,8 @@ namespace GameUtilities.Framework.Loggers
         /// The Constructor, sets Logging level to Info
         /// </summary>
         /// <param name="Name">The name of the Logger</param>
-        public BaseLogger(string Name)
-        {
-            LoggerName = Name;
-            LoggingLevel = LoggerLevel.INFO;
-        }
+        public BaseLogger(string Name) : this(Name,LoggerLevel.INFO)
+        { }
 
         #endregion Constructors
 
@@ -166,7 +164,7 @@ namespace GameUtilities.Framework.Loggers
         /// Child loggers take on the parent's Logging Level
         /// </summary>
         /// <param name="logger">the logger to add</param>
-        void AddChildLogger(ILogger logger)
+        public void AddChildLogger(ILogger logger)
         {
             logger.LoggingLevel = mLevel;
             childLoggers.Add(logger);
@@ -176,7 +174,7 @@ namespace GameUtilities.Framework.Loggers
         /// Removes a child logger from this one
         /// </summary>
         /// <param name="logger">the logger to remove</param>
-        void RemoveChildLogger(ILogger logger)
+        public void RemoveChildLogger(ILogger logger)
         {
             childLoggers.Remove(logger);
         }
