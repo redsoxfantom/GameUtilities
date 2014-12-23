@@ -67,5 +67,18 @@ namespace GameUtilities.Framework.Loggers
         /// </summary>
         /// <param name="msg">The message to print</param>
         void Fatal(String msg);
+
+        /// <summary>
+        /// Adds a logger as a child to this one
+        /// Child loggers take on the parent's Logging Level
+        /// </summary>
+        /// <param name="logger">the logger to add</param>
+        void AddChildLogger(ILogger logger);
+
+        /// <summary>
+        /// Removes a child logger from this one
+        /// </summary>
+        /// <param name="logger">the logger to remove</param>
+        void RemoveChildLogger(ILogger logger);
     }
 }

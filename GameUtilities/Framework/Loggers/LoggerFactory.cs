@@ -17,6 +17,7 @@ namespace GameUtilities.Framework.Loggers
             return new ConsoleLogger(Name);
 #else
             return new NullLogger(Name);
+#endif
         }
     }
 }

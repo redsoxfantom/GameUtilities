@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System;
 using System.Reflection;
+using System.Collections.Generic;
 
 namespace GameUtilities.Framework.Loggers
 {
@@ -35,16 +36,36 @@ namespace GameUtilities.Framework.Loggers
         #endregion Constructors
 
         #region Properties
-
         /// <summary>
         /// The current Logging level of the logger
         /// </summary>
-        public LoggerLevel LoggingLevel { get; set; }
+        public LoggerLevel LoggingLevel 
+        { 
+            get
+            {
+                return mLevel;
+            }
+            set
+            {
+                mLevel = value;
+                foreach(ILogger logger in childLoggers)
+                {
+                    logger.LoggingLevel = value;
+                }
+            }
+        }
 
         /// <summary>
         /// The Name of the logger
         /// </summary>
         public string LoggerName { get; set; }
+
+        /// <summary>
+        /// A list of all the child loggers of this logger
+        /// </summary>
+        private List<ILogger> childLoggers;
+
+        private LoggerLevel mLevel;
 
         #endregion Properties
 
@@ -138,6 +159,26 @@ namespace GameUtilities.Framework.Loggers
             string stackInfo = getCallingMethod();
             string finalmsg = string.Format("[{0}] {1}", stackInfo, msg);
             Print(LoggerLevel.FATAL, finalmsg, ConsoleColor.White, ConsoleColor.Magenta);
+        }
+
+        /// <summary>
+        /// Adds a logger as a child to this one
+        /// Child loggers take on the parent's Logging Level
+        /// </summary>
+        /// <param name="logger">the logger to add</param>
+        void AddChildLogger(ILogger logger)
+        {
+            logger.LoggingLevel = mLevel;
+            childLoggers.Add(logger);
+        }
+
+        /// <summary>
+        /// Removes a child logger from this one
+        /// </summary>
+        /// <param name="logger">the logger to remove</param>
+        void RemoveChildLogger(ILogger logger)
+        {
+            childLoggers.Remove(logger);
         }
 
         #endregion ILogger methods

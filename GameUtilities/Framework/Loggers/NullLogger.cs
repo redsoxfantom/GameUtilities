@@ -42,7 +42,7 @@ namespace GameUtilities.Framework.Loggers
         /// <returns>an empty string</returns>
         protected override string getCallingMethod()
         {
-            return "";
+            return string.Empty;
         }
 
         /// <summary>
