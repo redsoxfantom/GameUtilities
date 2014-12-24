@@ -85,7 +85,7 @@ namespace GameUtilities.Entities
         {
             foreach(IComponent component in mComponents)
             {
-                component.Update(timeSinceLastFrame);
+                component.Draw(timeSinceLastFrame);
             }
         }
 

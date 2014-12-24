@@ -44,7 +44,7 @@ namespace GameUtilitiesUnitTests.Worlds
         /// Test of the constructor
         /// </summary>
         [TestMethod]
-        public void ConstructorTest()
+        public void WorldConstructorTest()
         {
             Assert.IsNotNull(obj.GetFieldOrProperty("EntityIdDictionary"));
             Assert.IsNotNull(obj.GetFieldOrProperty("EntityList"));
@@ -67,7 +67,7 @@ namespace GameUtilitiesUnitTests.Worlds
         /// Test the Draw method
         /// </summary>
         [TestMethod]
-        public void DrawTest()
+        public void WorldDrawTest()
         {
             target.Draw(12345);
             entityMock.Verify(f => f.Draw(12345), Times.Once());
@@ -77,7 +77,7 @@ namespace GameUtilitiesUnitTests.Worlds
         /// Test the Update method
         /// </summary>
         [TestMethod]
-        public void UpdateTest()
+        public void WorldUpdateTest()
         {
             target.Update(12345);
             entityMock.Verify(f => f.Update(12345), Times.Once());
