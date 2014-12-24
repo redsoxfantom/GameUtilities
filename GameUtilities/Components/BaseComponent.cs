@@ -25,6 +25,11 @@ namespace GameUtilities.Components
         /// The name of the Component
         /// </summary>
         protected String mName;
+
+        /// <summary>
+        /// The entity this Component is associated with
+        /// </summary>
+        protected IEntity mEntity;
         #endregion Fields
 
         #region Constructors
@@ -60,7 +65,8 @@ namespace GameUtilities.Components
             mContext = Context;
             mName = string.Format("{0}@{1}",this.GetType().Name,mContext.Entity.ToString());
             mLogger = LoggerFactory.CreateLogger(mName);
-            mContext.Entity.Logger.AddChildLogger(mLogger);
+            mEntity = mContext.Entity;
+            mEntity.Logger.AddChildLogger(mLogger);
         }
         #endregion IComponent Methods
     }

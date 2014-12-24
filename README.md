@@ -1,10 +1,25 @@
-﻿Layout of Config files:
+﻿GameUtilities
+====
+
+Layout of Config files:
+===
 
 /Config/
-	/Entities/
+
+	/Worlds/
+	
 		Names.xml
-		/EntityName1/
-		/EntityName2/
-		...
-		/EntityNameN/
-			Components.xml
+		
+		/Entities/
+		
+			Names.xml
+			
+			/EntityName1/
+			
+			/EntityName2/
+			
+			...
+			
+			/EntityNameN/
+			
+				Components.xml
