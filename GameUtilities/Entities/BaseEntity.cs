@@ -31,6 +31,14 @@ namespace GameUtilities.Entities
         /// The Entities' logger
         /// </summary>
         public ILogger Logger {get; private set;}
+
+        public string Name
+        {
+            get
+            {
+                return mName;
+            }
+        }
         #endregion Fields
 
         #region Constructors

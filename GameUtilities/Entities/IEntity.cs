@@ -15,6 +15,11 @@ namespace GameUtilities.Entities
         ILogger Logger { get; }
 
         /// <summary>
+        /// The entities' unique name
+        /// </summary>
+        string Name { get; }
+
+        /// <summary>
         /// Initializes the Entity
         /// </summary>
         void Init(ExecutableContext Context);
