@@ -7,7 +7,7 @@ namespace GameUtilities.Worlds
     /// <summary>
     /// The base class of a World instance
     /// </summary>
-    class BaseWorld : IWorld
+    public class BaseWorld : IWorld
     {
         #region Fields
         /// <summary>
