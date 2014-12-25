@@ -4,6 +4,7 @@
   <Entities>
     <Entity>
       <Name>Entity1</Name>
+      <Assembly>GameUtilities.Entities.BaseEntity,GameUtilities</Assembly>
       <Type>Entity1Type</Type>
       <Position>
         <X>0.0</X>

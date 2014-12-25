@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EntityType>
   <Name>Entity1Type</Name>
+  <Assembly>GameUtilities.Entities.BaseEntity,GameUtilities</Assembly>
   <Components>
     <Component>
       <Assembly>GameUtilities.Components.BaseComponent,GameUtilities</Assembly>
