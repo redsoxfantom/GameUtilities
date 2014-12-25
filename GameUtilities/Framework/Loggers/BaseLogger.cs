@@ -17,19 +17,11 @@ namespace GameUtilities.Framework.Loggers
         /// </summary>
         /// <param name="Name">The name of the logger</param>
         /// <param name="level">The starting log level</param>
-        public BaseLogger(string Name, LoggerLevel level)
+        public BaseLogger(string Name, LoggerLevel level = LoggerLevel.INFO)
         {
-            childLoggers = new List<ILogger>();
             LoggerName = Name;
             LoggingLevel = level;
         }
-
-        /// <summary>
-        /// The Constructor, sets Logging level to Info
-        /// </summary>
-        /// <param name="Name">The name of the Logger</param>
-        public BaseLogger(string Name) : this(Name,LoggerLevel.INFO)
-        { }
 
         #endregion Constructors
 
@@ -46,10 +38,6 @@ namespace GameUtilities.Framework.Loggers
             set
             {
                 mLevel = value;
-                foreach(ILogger logger in childLoggers)
-                {
-                    logger.LoggingLevel = value;
-                }
             }
         }
 
@@ -57,11 +45,6 @@ namespace GameUtilities.Framework.Loggers
         /// The Name of the logger
         /// </summary>
         public string LoggerName { get; set; }
-
-        /// <summary>
-        /// A list of all the child loggers of this logger
-        /// </summary>
-        private List<ILogger> childLoggers;
 
         private LoggerLevel mLevel;
 
@@ -157,26 +140,6 @@ namespace GameUtilities.Framework.Loggers
             string stackInfo = getCallingMethod();
             string finalmsg = string.Format("[{0}] {1}", stackInfo, msg);
             Print(LoggerLevel.FATAL, finalmsg, ConsoleColor.White, ConsoleColor.Magenta);
-        }
-
-        /// <summary>
-        /// Adds a logger as a child to this one
-        /// Child loggers take on the parent's Logging Level
-        /// </summary>
-        /// <param name="logger">the logger to add</param>
-        public void AddChildLogger(ILogger logger)
-        {
-            logger.LoggingLevel = mLevel;
-            childLoggers.Add(logger);
-        }
-
-        /// <summary>
-        /// Removes a child logger from this one
-        /// </summary>
-        /// <param name="logger">the logger to remove</param>
-        public void RemoveChildLogger(ILogger logger)
-        {
-            childLoggers.Remove(logger);
         }
 
         #endregion ILogger methods

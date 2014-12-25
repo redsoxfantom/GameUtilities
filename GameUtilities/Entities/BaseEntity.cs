@@ -57,11 +57,10 @@ namespace GameUtilities.Entities
         /// Initialize the Entity
         /// </summary>
         /// <param name="Context">The executable context of the entity</param>
-        public void Init(Framework.ExecutableContext Context)
+        public void Init(ExecutableContext Context)
         {
             mContext = Context;
             Logger = LoggerFactory.CreateLogger(mName);
-            mContext.Logger.AddChildLogger(Logger);
             //Read in the entities components here
         }
 

@@ -66,7 +66,6 @@ namespace GameUtilities.Components
             mName = string.Format("{0}@{1}",this.GetType().Name,mContext.Entity.ToString());
             mLogger = LoggerFactory.CreateLogger(mName);
             mEntity = mContext.Entity;
-            mEntity.Logger.AddChildLogger(mLogger);
         }
         #endregion IComponent Methods
     }
