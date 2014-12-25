@@ -81,4 +81,17 @@ namespace GameUtilities.Framework.Loggers
         /// <param name="logger">the logger to remove</param>
         void RemoveChildLogger(ILogger logger);
     }
+
+    /// <summary>
+    /// Labels what level the logger logs at. A logger at a certain level (i.e, ERROR)
+    /// will also log levels below it (i.e, FATAL).
+    /// </summary>
+    public enum LoggerLevel
+    {
+        FATAL = 0,
+        ERROR,
+        WARN,
+        INFO,
+        DEBUG
+    }
 }
