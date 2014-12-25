@@ -36,7 +36,10 @@ namespace GameUtilities.Components
         /// <summary>
         /// Constructor
         /// </summary>
-        public BaseComponent() {}
+        public BaseComponent() 
+        {
+            
+        }
         #endregion Constructors
 
         #region IComponent Methods

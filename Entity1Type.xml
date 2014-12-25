@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EntityType>
+  <Name>Entity1Type</Name>
+  <Components>
+    <Component>
+      <Assembly>GameUtilities.Components.BaseComponent,GameUtilities</Assembly>
+    </Component>
+  </Components>
+  <DataSet>
+    <DataEntry>
+      <Key>Key1</Key>
+      <Value>Value1</Value>
+    </DataEntry>
+  </DataSet>
+</EntityType>

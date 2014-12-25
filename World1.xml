@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<World>
+  <Name>World1</Name>
+  <Entities>
+    <Entity>
+      <Name>Entity1</Name>
+      <Type>Entity1Type</Type>
+      <Position>
+        <X>0.0</X>
+        <Y>0.0</Y>
+        <Z>0.0</Z>
+      </Position>
+      <Scale>
+        <X>1.0</X>
+        <Y>1.0</Y>
+        <Z>1.0</Z>
+      </Scale>
+      <DataSet>
+        <DataEntry>
+          <Key>KEY</Key>
+          <Value>VALUE</Value>
+        </DataEntry>
+      </DataSet>
+    </Entity>
+  </Entities>
+</World>
