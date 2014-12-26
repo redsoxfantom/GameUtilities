@@ -1,6 +1,7 @@
 ﻿using GameUtilities.Entities;
 using GameUtilities.Framework;
 using GameUtilities.Framework.Loggers;
+using GameUtilities.Framework.DataContracts;
 using System;
 
 namespace GameUtilities.Components
@@ -30,15 +31,20 @@ namespace GameUtilities.Components
         /// The entity this Component is associated with
         /// </summary>
         protected IEntity mEntity;
+
+        /// <summary>
+        /// The data passed in from the Entity
+        /// </summary>
+        private DataSet mDataSet;
         #endregion Fields
 
         #region Constructors
         /// <summary>
         /// Constructor
         /// </summary>
-        public BaseComponent() 
+        public BaseComponent(DataSet data) 
         {
-            
+            mDataSet = data;
         }
         #endregion Constructors
 

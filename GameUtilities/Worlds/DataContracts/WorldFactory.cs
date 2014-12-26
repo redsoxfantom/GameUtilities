@@ -4,7 +4,7 @@ using System;
 namespace GameUtilities.Worlds.DataContracts
 {
     /// <summary>
-    /// A factory for creating a World Instance
+    /// A factory for creating a fully populated World Instance
     /// </summary>
     public class WorldFactory
     {
@@ -19,6 +19,7 @@ namespace GameUtilities.Worlds.DataContracts
             Type worldType = Type.GetType(worldData.Assembly);
             Object[] objArray = { worldData };
             IWorld world = (IWorld)Activator.CreateInstance(worldType, objArray);
+            world.Init();
 
             return world;
         }

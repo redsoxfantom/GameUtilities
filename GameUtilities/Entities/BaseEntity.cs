@@ -3,6 +3,7 @@ using GameUtilities.Framework;
 using System.Collections.Generic;
 using GameUtilities.Framework.Loggers;
 using GameUtilities.Entities.DataContracts;
+using GameUtilities.Framework.DataContracts;
 using System;
 
 namespace GameUtilities.Entities
@@ -79,7 +80,26 @@ namespace GameUtilities.Entities
         {
             mContext = Context;
             mContext.Entity = this;
+
             //Read in the entities components here
+            string path = string.Empty; // TODO: add code to determine the path to the entityType
+            EntityTypeData typeData = DataContractFactory.DeserializeObject<EntityTypeData>(path);
+
+            foreach (ComponentEntry entry in typeData.Components)
+            {
+                try
+                {
+                    Logger.Info(string.Format("Creating component '{0}' for entity '{1}'",entry.Component,mName));
+                    Type componentType = Type.GetType(entry.Component);
+                    Object[] objArray = {mData.DataSet};
+                    IComponent component = (IComponent)Activator.CreateInstance(componentType, objArray);
+                    mComponents.Add(component);
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(string.Format("Failed to create component '{0}' for entity '{1}'! Error: {2}", entry.Component, mName, e.Message));
+                }
+            }
         }
 
         /// <summary>

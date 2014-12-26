@@ -86,14 +86,21 @@ namespace GameUtilities.Worlds
             //The world is given a list of Entities in it, we need to parse through it and create Entity objects
             foreach(EntityData entityData in mData.Entities)
             {
-                mLogger.Info(string.Format("Creating Entity '{0}' of Type '{1}' and Assembly '{2}'", entityData.Name, entityData.Type, entityData.Assembly));
+                try
+                {
+                    mLogger.Info(string.Format("Creating Entity '{0}' of Type '{1}' and Assembly '{2}'", entityData.Name, entityData.Type, entityData.Assembly));
 
-                Type entityType = Type.GetType(entityData.Assembly);
-                Object[] objArray = { entityData };
-                IEntity entity = (IEntity)Activator.CreateInstance(entityType, objArray);
-                AddEntity(entity);
+                    Type entityType = Type.GetType(entityData.Assembly);
+                    Object[] objArray = { entityData };
+                    IEntity entity = (IEntity)Activator.CreateInstance(entityType, objArray);
+                    AddEntity(entity);
 
-                entity.Init(mContext);
+                    entity.Init(mContext);
+                }
+                catch(Exception e)
+                {
+                    mLogger.Error(string.Format("Failed to create entity '{0}'! Error: {1}", entityData.Name, e.Message));
+                }
             }
         }
 
