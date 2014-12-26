@@ -78,6 +78,7 @@ namespace GameUtilities.Entities
         /// <param name="Context">The executable context of the entity</param>
         public void Init(ExecutableContext Context)
         {
+            Logger.Info(string.Format("Initializing Entity '{0}'",mName));
             mContext = Context;
             mContext.Entity = this;
 
@@ -100,6 +101,8 @@ namespace GameUtilities.Entities
                     Logger.Error(string.Format("Failed to create component '{0}' for entity '{1}", entry.Component, mName),e);
                 }
             }
+
+            Logger.Info(string.Format("Finished Initializing Entity '{0}'", mName));
         }
 
         /// <summary>
