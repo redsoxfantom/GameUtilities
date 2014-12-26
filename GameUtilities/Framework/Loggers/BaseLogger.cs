@@ -165,15 +165,15 @@ namespace GameUtilities.Framework.Loggers
         {
             StackTrace trace = new StackTrace();
             StackFrame frame = null;
+            string baseNamespace = typeof(BaseLogger).Namespace;
+            string currNamespace;
             MethodBase method = null;
-            Assembly methodAssembly = null;
-            Assembly baseAssembly = Assembly.GetAssembly(typeof(BaseLogger));
             for (int i = 0; i < trace.FrameCount; i++)
             {
                 frame = trace.GetFrame(i);
                 method = frame.GetMethod();
-                methodAssembly = method.DeclaringType.Assembly;
-                if(!(methodAssembly == baseAssembly))
+                currNamespace = method.DeclaringType.Namespace;
+                if(!(baseNamespace.Equals(currNamespace)))
                 {
                     break;
                 }
