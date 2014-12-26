@@ -18,12 +18,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{AF100A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Worlds", "Worlds", "{C92A5187-D348-434A-BD44-9D6E46A14AE3}"
 	ProjectSection(SolutionItems) = preProject
-		World1.xml = World1.xml
+		Config\Worlds\World1.xml = Config\Worlds\World1.xml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EntityTypes", "EntityTypes", "{1269CBD5-5301-480A-9D52-D04AF4D4D3DF}"
 	ProjectSection(SolutionItems) = preProject
-		Entity1Type.xml = Entity1Type.xml
+		Config\EntityTypes\Entity1Type.xml = Config\EntityTypes\Entity1Type.xml
 	EndProjectSection
 EndProject
 Global

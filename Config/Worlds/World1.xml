@@ -6,10 +6,10 @@
       <Name>Entity1</Name>
       <Type>Entity1Type</Type>
       <DataSet>
-        <DataEntry>
+        <Entry>
           <Key>KEY</Key>
           <Value>VALUE</Value>
-        </DataEntry>
+        </Entry>
       </DataSet>
     </Entity>
   </Entities>
