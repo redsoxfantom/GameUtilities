@@ -81,6 +81,7 @@ namespace GameUtilities.Worlds
         /// </summary>
         public void Init()
         {
+            mLogger.Info(string.Format("Initializing world '{0}'", mData.Name));
             mContext.World = this;
 
             //The world is given a list of Entities in it, we need to parse through it and create Entity objects
@@ -99,9 +100,11 @@ namespace GameUtilities.Worlds
                 }
                 catch(Exception e)
                 {
-                    mLogger.Error(string.Format("Failed to create entity '{0}'!\n{1}", entityData.Name, e.StackTrace));
+                    mLogger.Error(string.Format("Failed to create entity '{0}'", entityData.Name), e);
                 }
             }
+
+            mLogger.Info(string.Format("Done initializing world '{0}'", mData.Name));
         }
 
         /// <summary>

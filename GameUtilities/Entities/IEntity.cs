@@ -1,6 +1,7 @@
 ﻿using GameUtilities.Components;
 using GameUtilities.Framework;
 using GameUtilities.Framework.Loggers;
+using GameUtilities.Entities.DataContracts;
 
 namespace GameUtilities.Entities
 {

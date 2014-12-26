@@ -1,5 +1,6 @@
 ﻿using GameUtilities.Entities;
 using GameUtilities.Framework;
+using GameUtilities.Framework.DataContracts;
 
 namespace GameUtilities.Components
 {

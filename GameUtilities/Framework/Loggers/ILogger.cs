@@ -63,6 +63,13 @@ namespace GameUtilities.Framework.Loggers
         void Error(String msg);
 
         /// <summary>
+        /// Prints an Error Message with an exception
+        /// </summary>
+        /// <param name="msg">the error message</param>
+        /// <param name="e">the exception</param>
+        void Error(String msg, Exception e);
+
+        /// <summary>
         /// Prints a Fatal Message
         /// </summary>
         /// <param name="msg">The message to print</param>

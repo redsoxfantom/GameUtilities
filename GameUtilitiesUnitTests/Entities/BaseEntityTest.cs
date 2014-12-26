@@ -26,7 +26,7 @@ namespace GameUtilitiesUnitTests.Entities
         [TestInitialize]
         public void Initializer()
         {
-            target = new BaseEntity(new EntityData("TEST"));
+            target = new BaseEntity(new EntityData("TEST","ASSEMBLY"));
             po = new PrivateObject(target);
             componentMock = new Mock<IComponent>();
             list = new List<IComponent>();

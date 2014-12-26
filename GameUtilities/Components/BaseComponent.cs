@@ -72,7 +72,7 @@ namespace GameUtilities.Components
                 throw new NullReferenceException("Context");
             }
             mContext = Context;
-            mName = string.Format("{0}@{1}",this.GetType().Name,mContext.Entity.ToString());
+            mName = string.Format("{0}@{1}",this.GetType().Name,mContext.Entity.Name);
             mLogger = LoggerFactory.CreateLogger(mName);
             mEntity = mContext.Entity;
         }

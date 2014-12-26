@@ -97,7 +97,7 @@ namespace GameUtilities.Entities
                 }
                 catch (Exception e)
                 {
-                    Logger.Error(string.Format("Failed to create component '{0}' for entity '{1}'!\n{2}", entry.Component, mName, e.Message));
+                    Logger.Error(string.Format("Failed to create component '{0}' for entity '{1}", entry.Component, mName),e);
                 }
             }
         }

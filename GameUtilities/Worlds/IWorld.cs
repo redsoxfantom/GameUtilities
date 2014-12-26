@@ -1,5 +1,6 @@
 ﻿using GameUtilities.Entities;
 using GameUtilities.Framework.Loggers;
+using GameUtilities.Worlds.DataContracts;
 
 namespace GameUtilities.Worlds
 {
