@@ -1,5 +1,6 @@
 ﻿using GameUtilities.Entities;
 using GameUtilities.Framework.Loggers;
+using GameUtilities.Worlds;
 
 namespace GameUtilities.Framework
 {
@@ -9,14 +10,14 @@ namespace GameUtilities.Framework
     public class ExecutableContext
     {
         /// <summary>
+        /// The root World
+        /// </summary>
+        public IWorld World { set; get; }
+
+        /// <summary>
         /// The Entity the context is associated with
         /// </summary>
         public IEntity Entity { set; get; }
-
-        /// <summary>
-        /// The World-level logger
-        /// </summary>
-        public ILogger Logger { get; set; }
 
         /// <summary>
         /// The constructor

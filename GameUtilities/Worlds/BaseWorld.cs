@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using GameUtilities.Framework.Loggers;
+using GameUtilities.Framework;
 using GameUtilities.Entities;
 using GameUtilities.Entities.DataContracts;
 using GameUtilities.Worlds.DataContracts;
+using System;
 
 namespace GameUtilities.Worlds
 {
@@ -31,26 +33,24 @@ namespace GameUtilities.Worlds
         /// The world's logger
         /// </summary>
         private ILogger mLogger;
+
+        /// <summary>
+        /// The executable context of the world. Passed to all Entities.
+        /// </summary>
+        private ExecutableContext mContext;
         #endregion Fields
 
         #region Constructors
         /// <summary>
         /// The constructor
         /// </summary>
-        public BaseWorld()
-        {
-            EntityIdDictionary = new Dictionary<string, IEntity>();
-            EntityList = new List<IEntity>();
-            mData = new WorldData("UNDEFINED WORLD", "UNDEFINED ASSEMBLY");
-            mLogger = LoggerFactory.CreateLogger(mData.Name);
-        }
-
         public BaseWorld(WorldData data)
         {
             EntityIdDictionary = new Dictionary<string, IEntity>();
             EntityList = new List<IEntity>();
             mData = data;
             mLogger = LoggerFactory.CreateLogger(mData.Name);
+            mContext = new ExecutableContext();
 
             mLogger.Info(string.Format("Created world '{0}'", mData.Name));
         }
@@ -81,10 +81,19 @@ namespace GameUtilities.Worlds
         /// </summary>
         public void Init()
         {
+            mContext.World = this;
+
             //The world is given a list of Entities in it, we need to parse through it and create Entity objects
             foreach(EntityData entityData in mData.Entities)
             {
+                mLogger.Info(string.Format("Creating Entity '{0}' of Type '{1}' and Assembly '{2}'", entityData.Name, entityData.Type, entityData.Assembly));
 
+                Type entityType = Type.GetType(entityData.Assembly);
+                Object[] objArray = { entityData };
+                IEntity entity = (IEntity)Activator.CreateInstance(entityType, objArray);
+                AddEntity(entity);
+
+                entity.Init(mContext);
             }
         }
 

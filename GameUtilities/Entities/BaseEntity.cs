@@ -2,6 +2,7 @@
 using GameUtilities.Framework;
 using System.Collections.Generic;
 using GameUtilities.Framework.Loggers;
+using GameUtilities.Entities.DataContracts;
 using System;
 
 namespace GameUtilities.Entities
@@ -28,6 +29,11 @@ namespace GameUtilities.Entities
         protected string mName;
 
         /// <summary>
+        /// The data the Entity was created with
+        /// </summary>
+        private EntityData mData;
+
+        /// <summary>
         /// The Entities' logger
         /// </summary>
         public ILogger Logger {get; private set;}
@@ -45,10 +51,22 @@ namespace GameUtilities.Entities
         /// <summary>
         /// The Constructor
         /// </summary>
-        public BaseEntity(string Name)
+        public BaseEntity(EntityData data)
         {
-            mName = string.Format("{0}.{1}",Name,Guid.NewGuid());
             mComponents = new List<IComponent>();
+            mData = data;
+            if(string.IsNullOrEmpty(data.Name))
+            {
+                mName = data.Type;
+            }
+            else
+            {
+                mName = data.Name;
+            }
+            mName += string.Format(".{0}", Guid.NewGuid());
+            Logger = LoggerFactory.CreateLogger(mName);
+
+            Logger.Info(string.Format("Created Entity '{0}'", mName));
         }
         #endregion Contructors
 
@@ -60,7 +78,7 @@ namespace GameUtilities.Entities
         public void Init(ExecutableContext Context)
         {
             mContext = Context;
-            Logger = LoggerFactory.CreateLogger(mName);
+            mContext.Entity = this;
             //Read in the entities components here
         }
 

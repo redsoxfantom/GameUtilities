@@ -16,15 +16,9 @@ namespace GameUtilities.Entities.DataContracts
         public string Name { get; private set; }
 
         /// <summary>
-        /// The assembly the Entity will instantiate
-        /// </summary>
-        [DataMember(IsRequired=true,Order=1)]
-        public string Assembly { get; private set; }
-
-        /// <summary>
         /// A list of Components associated with a Entity Type
         /// </summary>
-        [DataMember(IsRequired=false,Order=2)]
+        [DataMember(IsRequired=false,Order=1)]
         public ComponentList Components { get; private set; }
 
         /// <summary>
@@ -33,10 +27,9 @@ namespace GameUtilities.Entities.DataContracts
         /// <param name="name">The Entity Type Name</param>
         /// <param name="assembly">The Entity Assembly</param>
         /// <param name="components">The Entity's Components</param>
-        public EntityTypeData(string name, string assembly, ComponentList components = null)
+        public EntityTypeData(string name, ComponentList components = null)
         {
             Name = name;
-            Assembly = assembly;
             if(components == null)
             {
                 Components = new ComponentList();

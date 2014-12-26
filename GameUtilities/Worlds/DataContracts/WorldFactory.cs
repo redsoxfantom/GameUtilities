@@ -18,7 +18,7 @@ namespace GameUtilities.Worlds.DataContracts
             WorldData worldData = DataContractFactory.DeserializeObject<WorldData>(path);
             Type worldType = Type.GetType(worldData.Assembly);
             Object[] objArray = { worldData };
-            IWorld world = Activator.CreateInstance<IWorld>(worldType, objArray);
+            IWorld world = (IWorld)Activator.CreateInstance(worldType, objArray);
 
             return world;
         }

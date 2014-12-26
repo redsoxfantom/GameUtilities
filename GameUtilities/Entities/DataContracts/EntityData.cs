@@ -17,6 +17,12 @@ namespace GameUtilities.Entities.DataContracts
         public string Name { get; private set; }
 
         /// <summary>
+        /// The assembly the Entity will instantiate
+        /// </summary>
+        [DataMember(IsRequired = true, Order = 1)]
+        public string Assembly { get; private set; }
+
+        /// <summary>
         /// The Type of Entity this is. Must be defined and must have the same name as an EntityType config file
         /// </summary>
         [DataMember(IsRequired=true, Order=2)]
@@ -25,7 +31,7 @@ namespace GameUtilities.Entities.DataContracts
         /// <summary>
         /// A list of optional Data to feed to Components
         /// </summary>
-        [DataMember(IsRequired=false,Order=5)]
+        [DataMember(IsRequired=false,Order=3)]
         public DataSet DataSet { get; private set; }
 
         /// <summary>
