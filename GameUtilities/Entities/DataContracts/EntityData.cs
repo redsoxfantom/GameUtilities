@@ -40,10 +40,11 @@ namespace GameUtilities.Entities.DataContracts
         /// <param name="type">The Type of entity</param>
         /// <param name="name">The entity's name</param>
         /// <param name="dataSet">optional data</param>
-        public EntityData(string type, string name = null, DataSet dataSet = null)
+        public EntityData(string type, string assembly, string name = null, DataSet dataSet = null)
         {
             Type = type;
             Name = name;
+            Assembly = assembly;
             if(dataSet == null)
             {
                 DataSet = new DataSet();

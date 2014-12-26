@@ -10,7 +10,12 @@ namespace GameUtilitiesRunner
     {
         static void Main(string[] args)
         {
-
+            EntityData entityData = new EntityData("UnknownType", "GameUtilities.Entities.BaseEntity,GameUtilities");
+            EntityDataSet entityDataSet = new EntityDataSet();
+            entityDataSet.Add(entityData);
+            WorldData worldData = new WorldData("TEST WORLD", "GameUtilities.Worlds.BaseWorld,GameUtilities",entityDataSet);
+            BaseWorld world = new BaseWorld(worldData);
+            world.Init();
             Console.ReadKey();
         }
     }

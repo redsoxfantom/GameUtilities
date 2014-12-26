@@ -99,7 +99,7 @@ namespace GameUtilities.Worlds
                 }
                 catch(Exception e)
                 {
-                    mLogger.Error(string.Format("Failed to create entity '{0}'! Error: {1}", entityData.Name, e.Message));
+                    mLogger.Error(string.Format("Failed to create entity '{0}'!\n{1}", entityData.Name, e.StackTrace));
                 }
             }
         }
