@@ -64,7 +64,7 @@
     <Compile Include="Worlds\IWorld.cs" />
     <Compile Include="Worlds\BaseWorld.cs" />
     <Compile Include="Worlds\DataContracts\WorldData.cs" />
-    <Compile Include="Worlds\WorldFactory.cs" />
+    <Compile Include="Worlds\DataContracts\WorldFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

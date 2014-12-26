@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using GameUtilities.Framework.Loggers;
 using GameUtilities.Entities;
+using GameUtilities.Entities.DataContracts;
+using GameUtilities.Worlds.DataContracts;
 
 namespace GameUtilities.Worlds
 {
@@ -19,6 +21,16 @@ namespace GameUtilities.Worlds
         /// A List of all entities in the world
         /// </summary>
         private List<IEntity> EntityList;
+
+        /// <summary>
+        /// The data used to define this World
+        /// </summary>
+        private WorldData mData;
+
+        /// <summary>
+        /// The world's logger
+        /// </summary>
+        private ILogger mLogger;
         #endregion Fields
 
         #region Constructors
@@ -29,6 +41,18 @@ namespace GameUtilities.Worlds
         {
             EntityIdDictionary = new Dictionary<string, IEntity>();
             EntityList = new List<IEntity>();
+            mData = new WorldData("UNDEFINED WORLD", "UNDEFINED ASSEMBLY");
+            mLogger = LoggerFactory.CreateLogger(mData.Name);
+        }
+
+        public BaseWorld(WorldData data)
+        {
+            EntityIdDictionary = new Dictionary<string, IEntity>();
+            EntityList = new List<IEntity>();
+            mData = data;
+            mLogger = LoggerFactory.CreateLogger(mData.Name);
+
+            mLogger.Info(string.Format("Created world '{0}'", mData.Name));
         }
         #endregion Constructors
 
@@ -57,8 +81,11 @@ namespace GameUtilities.Worlds
         /// </summary>
         public void Init()
         {
-            //Read in from filesystem here
-            //Create all entites associated with the World, and call them to create their Components
+            //The world is given a list of Entities in it, we need to parse through it and create Entity objects
+            foreach(EntityData entityData in mData.Entities)
+            {
+
+            }
         }
 
         /// <summary>

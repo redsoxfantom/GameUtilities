@@ -17,9 +17,15 @@ namespace GameUtilities.Worlds.DataContracts
         public string Name { get; private set; }
 
         /// <summary>
+        /// The world's class
+        /// </summary>
+        [DataMember(IsRequired=true, Order=1)]
+        public string Assembly { get; private set; }
+
+        /// <summary>
         /// Stores a list of all entities defined in the world
         /// </summary>
-        [DataMember(IsRequired=false,Order=1)]
+        [DataMember(IsRequired=false,Order=2)]
         public EntityDataSet Entities { get; private set; }
 
         /// <summary>
@@ -27,9 +33,10 @@ namespace GameUtilities.Worlds.DataContracts
         /// </summary>
         /// <param name="name">The World's Name</param>
         /// <param name="entities">The list of entities</param>
-        public WorldData(string name, EntityDataSet entities = null)
+        public WorldData(string name, string assembly, EntityDataSet entities = null)
         {
             Name = name;
+            Assembly = assembly;
             if(entities != null)
             {
                 Entities = entities;

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <World>
   <Name>World1</Name>
+  <Assembly>GameUtilities.Worlds.BaseWorld,GameUtilities</Assembly>
   <Entities>
     <Entity>
       <Name>Entity1</Name>
