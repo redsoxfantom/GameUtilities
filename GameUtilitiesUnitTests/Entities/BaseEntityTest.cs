@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using GameUtilities.Entities;
+using GameUtilities.Entities.DataContracts;
 using GameUtilities.Components;
 
 namespace GameUtilitiesUnitTests.Entities
@@ -25,7 +26,7 @@ namespace GameUtilitiesUnitTests.Entities
         [TestInitialize]
         public void Initializer()
         {
-            target = new BaseEntity("TEST");
+            target = new BaseEntity(new EntityData("TEST"));
             po = new PrivateObject(target);
             componentMock = new Mock<IComponent>();
             list = new List<IComponent>();

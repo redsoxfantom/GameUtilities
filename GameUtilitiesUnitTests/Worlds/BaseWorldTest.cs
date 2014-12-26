@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GameUtilities.Worlds;
 using GameUtilities.Entities;
+using GameUtilities.Worlds.DataContracts;
 using Moq;
 using System.Collections.Generic;
 
@@ -25,7 +26,7 @@ namespace GameUtilitiesUnitTests.Worlds
         [TestInitialize]
         public void TestIntializer()
         {
-            target = new BaseWorld();
+            target = new BaseWorld(new WorldData("TEST","TEST"));
             obj = new PrivateObject(target);
             
             entityMock = new Mock<IEntity>();
