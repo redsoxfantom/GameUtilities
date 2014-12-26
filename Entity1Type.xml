@@ -3,14 +3,6 @@
   <Name>Entity1Type</Name>
   <Assembly>GameUtilities.Entities.BaseEntity,GameUtilities</Assembly>
   <Components>
-    <Component>
-      <Assembly>GameUtilities.Components.BaseComponent,GameUtilities</Assembly>
-    </Component>
+    <Component>GameUtilities.Components.BaseComponent,GameUtilities</Component>
   </Components>
-  <DataSet>
-    <DataEntry>
-      <Key>Key1</Key>
-      <Value>Value1</Value>
-    </DataEntry>
-  </DataSet>
 </EntityType>

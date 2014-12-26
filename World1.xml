@@ -4,18 +4,7 @@
   <Entities>
     <Entity>
       <Name>Entity1</Name>
-      <Assembly>GameUtilities.Entities.BaseEntity,GameUtilities</Assembly>
       <Type>Entity1Type</Type>
-      <Position>
-        <X>0.0</X>
-        <Y>0.0</Y>
-        <Z>0.0</Z>
-      </Position>
-      <Scale>
-        <X>1.0</X>
-        <Y>1.0</Y>
-        <Z>1.0</Z>
-      </Scale>
       <DataSet>
         <DataEntry>
           <Key>KEY</Key>
