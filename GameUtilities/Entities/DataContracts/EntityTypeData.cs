@@ -6,7 +6,7 @@ namespace GameUtilities.Entities.DataContracts
     /// <summary>
     /// Data contract for each Entity Type
     /// </summary>
-    [DataContract]
+    [DataContract(Name="EntityType")]
     public class EntityTypeData
     {
         /// <summary>
@@ -44,7 +44,7 @@ namespace GameUtilities.Entities.DataContracts
     /// <summary>
     /// Data contract for a list of Components associated with each Entity type
     /// </summary>
-    [DataContract]
+    [DataContract(Name="Components")]
     public class ComponentList : List<ComponentEntry>
     {
 

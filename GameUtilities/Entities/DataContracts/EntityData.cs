@@ -7,7 +7,7 @@ namespace GameUtilities.Entities.DataContracts
     /// <summary>
     /// Data contract defining an Entity in the game World
     /// </summary>
-    [DataContract]
+    [DataContract(Name="Entity")]
     public class EntityData
     {
         /// <summary>

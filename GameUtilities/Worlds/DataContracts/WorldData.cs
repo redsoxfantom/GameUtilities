@@ -7,7 +7,7 @@ namespace GameUtilities.Worlds.DataContracts
     /// <summary>
     /// A Data Contract for reading in World data files
     /// </summary>
-    [DataContract]
+    [DataContract(Name="World")]
     public class WorldData
     {
         /// <summary>
