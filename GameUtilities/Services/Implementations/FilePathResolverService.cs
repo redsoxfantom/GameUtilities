@@ -27,7 +27,7 @@ namespace GameUtilities.Services.Implementations
         /// Initialize the Service
         /// </summary>
         /// <param name="pathToConfigDirectory">path to the /Config/ directory</param>
-        void Init(string pathToConfigDirectory)
+        public void Init(string pathToConfigDirectory)
         {
             mRootDirectory = pathToConfigDirectory;
         }
@@ -37,7 +37,7 @@ namespace GameUtilities.Services.Implementations
         /// </summary>
         /// <param name="worldName">The name of the World to find</param>
         /// <returns>A string with the complete path to the world</returns>
-        string FindWorld(string worldName)
+        public string FindWorld(string worldName)
         {
             return mRootDirectory + "\\Worlds\\" + worldName + ".xml";
         }
@@ -47,7 +47,7 @@ namespace GameUtilities.Services.Implementations
         /// </summary>
         /// <param name="entityTypeName">The name of the entity type to find</param>
         /// <returns>A string with the complete path to the entity type file</returns>
-        string FindEntityType(string entityTypeName)
+        public string FindEntityType(string entityTypeName)
         {
             return mRootDirectory + "\\EntityTypes\\" + entityTypeName + ".xml";
         }

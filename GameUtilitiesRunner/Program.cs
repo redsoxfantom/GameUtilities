@@ -3,6 +3,7 @@ using System;
 using GameUtilities.Worlds;
 using GameUtilities.Worlds.DataContracts;
 using GameUtilities.Entities.DataContracts;
+using GameUtilities.Framework;
 
 namespace GameUtilitiesRunner
 {
@@ -15,7 +16,9 @@ namespace GameUtilitiesRunner
             entityDataSet.Add(entityData);
             WorldData worldData = new WorldData("TEST WORLD", "GameUtilities.Worlds.BaseWorld,GameUtilities",entityDataSet);
             BaseWorld world = new BaseWorld(worldData);
-            world.Init();
+            ExecutableContext mContext = new ExecutableContext();
+
+            world.Init(mContext);
             Console.ReadKey();
         }
     }

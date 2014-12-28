@@ -58,6 +58,7 @@
     <Compile Include="Framework\Loggers\BaseLoggerTest.cs" />
     <Compile Include="Framework\Loggers\LoggerFactoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\FilePathResolverServiceTest.cs" />
     <Compile Include="Worlds\BaseWorldTest.cs" />
   </ItemGroup>
   <ItemGroup>
