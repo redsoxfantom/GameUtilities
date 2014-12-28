@@ -8,7 +8,7 @@ namespace GameUtilities.Entities
     /// <summary>
     /// Represents an object in the game world
     /// </summary>
-    public interface IEntity
+    public interface IEntity : IDrawable, IUpdatable
     {
         /// <summary>
         /// The Entities' logger
@@ -24,17 +24,5 @@ namespace GameUtilities.Entities
         /// Initializes the Entity
         /// </summary>
         void Init(ExecutableContext Context);
-
-        /// <summary>
-        /// Calls "Update" on all components attached to the entity
-        /// </summary>
-        /// <param name="timeSinceLastFrame">How long its been since the last time Update was called</param>
-        void Update(double timeSinceLastFrame);
-
-        /// <summary>
-        /// Calls "Draw" on all componets attached to the entity
-        /// </summary>
-        /// <param name="timeSinceLastFrame">How long its been since the last time Draw was called</param>
-        void Draw(double timeSinceLastFrame);
     }
 }

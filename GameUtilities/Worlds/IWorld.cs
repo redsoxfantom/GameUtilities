@@ -8,7 +8,7 @@ namespace GameUtilities.Worlds
     /// <summary>
     /// An interface to the game World (a container for entities)
     /// </summary>
-    public interface IWorld
+    public interface IWorld : IUpdatable, IDrawable
     {
         /// <summary>
         /// Get an entity given its unique ID (The entities name)
@@ -21,17 +21,5 @@ namespace GameUtilities.Worlds
         /// Initialize the World (Read in Entities and Components)
         /// </summary>
         void Init(ExecutableContext context);
-
-        /// <summary>
-        /// Call "Update" on all Entities
-        /// </summary>
-        /// <param name="timeSinceLastUpdate">Time since Update was called</param>
-        void Update(double timeSinceLastUpdate);
-
-        /// <summary>
-        /// Call "Draw" on all Entities
-        /// </summary>
-        /// <param name="timeSinceLastUpdate">Time since Draw was called</param>
-        void Draw(double timeSinceLastUpdate);
     }
 }

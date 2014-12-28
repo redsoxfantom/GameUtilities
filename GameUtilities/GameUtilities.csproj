@@ -54,7 +54,9 @@
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Framework\DataContracts\DataContractFactory.cs" />
     <Compile Include="Framework\DataContracts\DataSet.cs" />
+    <Compile Include="Framework\IDrawable.cs" />
     <Compile Include="Framework\ExecutableContext.cs" />
+    <Compile Include="Framework\IUpdatable.cs" />
     <Compile Include="Framework\Loggers\BaseLogger.cs" />
     <Compile Include="Framework\Loggers\ConsoleLogger.cs" />
     <Compile Include="Framework\Loggers\ILogger.cs" />
