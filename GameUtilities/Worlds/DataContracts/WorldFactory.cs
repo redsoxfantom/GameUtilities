@@ -1,4 +1,5 @@
 ﻿using GameUtilities.Framework.DataContracts;
+using GameUtilities.Framework;
 using System;
 
 namespace GameUtilities.Worlds.DataContracts
@@ -13,13 +14,13 @@ namespace GameUtilities.Worlds.DataContracts
         /// </summary>
         /// <param name="path">the path to the File defining the world to create</param>
         /// <returns>an IWorld object</returns>
-        public static IWorld CreateWorld(string path)
+        public static IWorld CreateWorld(string path, ExecutableContext context)
         {
             WorldData worldData = DataContractFactory.DeserializeObject<WorldData>(path);
             Type worldType = Type.GetType(worldData.Assembly);
             Object[] objArray = { worldData };
             IWorld world = (IWorld)Activator.CreateInstance(worldType, objArray);
-            world.Init();
+            world.Init(context);
 
             return world;
         }

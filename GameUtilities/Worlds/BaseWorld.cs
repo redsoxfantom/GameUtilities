@@ -50,7 +50,6 @@ namespace GameUtilities.Worlds
             EntityList = new List<IEntity>();
             mData = data;
             mLogger = LoggerFactory.CreateLogger(mData.Name);
-            mContext = new ExecutableContext();
 
             mLogger.Info(string.Format("Created world '{0}'", mData.Name));
         }
@@ -79,9 +78,10 @@ namespace GameUtilities.Worlds
         /// <summary>
         /// Initialize the World (Read in Entities and Components)
         /// </summary>
-        public void Init()
+        public void Init(ExecutableContext context)
         {
             mLogger.Info(string.Format("Initializing world '{0}'", mData.Name));
+            mContext = context;
             mContext.World = this;
 
             //The world is given a list of Entities in it, we need to parse through it and create Entity objects
