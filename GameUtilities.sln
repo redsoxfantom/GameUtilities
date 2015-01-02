@@ -14,18 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameUtilitiesRunner", "GameUtilitiesRunner\GameUtilitiesRunner.csproj", "{63B376AD-78C4-4749-B34E-FDCBC25CC10E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{AF100A25-3AC6-47FE-982C-E968999D7BF6}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Worlds", "Worlds", "{C92A5187-D348-434A-BD44-9D6E46A14AE3}"
-	ProjectSection(SolutionItems) = preProject
-		Config\Worlds\World1.xml = Config\Worlds\World1.xml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EntityTypes", "EntityTypes", "{1269CBD5-5301-480A-9D52-D04AF4D4D3DF}"
-	ProjectSection(SolutionItems) = preProject
-		Config\EntityTypes\Entity1Type.xml = Config\EntityTypes\Entity1Type.xml
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,9 +35,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{C92A5187-D348-434A-BD44-9D6E46A14AE3} = {AF100A25-3AC6-47FE-982C-E968999D7BF6}
-		{1269CBD5-5301-480A-9D52-D04AF4D4D3DF} = {AF100A25-3AC6-47FE-982C-E968999D7BF6}
 	EndGlobalSection
 EndGlobal
