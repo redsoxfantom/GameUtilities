@@ -13,9 +13,39 @@ namespace GameUtilitiesRunner
         static void Main(string[] args)
         {
             IEngine engine = new Engine();
-            engine.Init(".\\Config","World1");
 
-            Console.ReadKey();
+            using(var game = new GameWindow())
+            {
+                game.Load += (sender, e) =>
+                {
+                    engine.Init(".\\Config", "World1");
+                    game.VSync = VSyncMode.On;
+                    GL.ClearColor(Color.Black);
+                };
+                
+                game.Resize += (sender, e) =>
+                {
+                    GL.Viewport(0, 0, game.Width, game.Height);
+                };
+                
+                game.UpdateFrame += (sender, e) =>
+                {
+                    engine.Update(0);
+                    if (game.Keyboard[Key.Escape])
+                    {
+                        engine.Terminate();
+                        game.Exit();
+                    }
+                };
+
+                game.RenderFrame += (sender, e) =>
+                {
+                    engine.Draw(0);
+                    game.SwapBuffers();
+                };
+
+                game.Run();
+            }
         }
     }
 }
