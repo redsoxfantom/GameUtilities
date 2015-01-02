@@ -139,7 +139,7 @@ namespace GameUtilities.Framework.Loggers
         public void Error(String msg, Exception e)
         {
             string stackInfo = getCallingMethod();
-            string finalmsg = string.Format("[{0}] {1}\n{2}", stackInfo, msg, e.StackTrace);
+            string finalmsg = string.Format("[{0}] {1}\n{2}\n{3}", stackInfo, msg,e.Message, e.StackTrace);
             Print(LoggerLevel.ERROR, finalmsg, ConsoleColor.White, ConsoleColor.Red);
         }
 

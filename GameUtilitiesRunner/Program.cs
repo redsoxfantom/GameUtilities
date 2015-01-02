@@ -11,12 +11,12 @@ namespace GameUtilitiesRunner
     {
         static void Main(string[] args)
         {
-            EntityData entityData = new EntityData("UnknownType", "GameUtilities.Entities.BaseEntity,GameUtilities");
+            EntityData entityData = new EntityData("Entity1Type", "GameUtilities.Entities.BaseEntity,GameUtilities");
             EntityDataSet entityDataSet = new EntityDataSet();
             entityDataSet.Add(entityData);
             WorldData worldData = new WorldData("TEST WORLD", "GameUtilities.Worlds.BaseWorld,GameUtilities",entityDataSet);
             BaseWorld world = new BaseWorld(worldData);
-            ExecutableContext mContext = new ExecutableContext(".\\Config\\");
+            ExecutableContext mContext = new ExecutableContext(".\\Config");
 
             world.Init(mContext);
             Console.ReadKey();
