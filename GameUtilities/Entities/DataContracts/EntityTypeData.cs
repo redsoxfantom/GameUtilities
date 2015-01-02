@@ -19,7 +19,7 @@ namespace GameUtilities.Entities.DataContracts
         /// A list of Components associated with a Entity Type
         /// </summary>
         [DataMember(IsRequired=false,Order=1)]
-        public List<ComponentEntry> Components { get; private set; }
+        public ComponentEntry Components { get; private set; }
 
         /// <summary>
         /// The constructor
@@ -27,12 +27,12 @@ namespace GameUtilities.Entities.DataContracts
         /// <param name="name">The Entity Type Name</param>
         /// <param name="assembly">The Entity Assembly</param>
         /// <param name="components">The Entity's Components</param>
-        public EntityTypeData(string name, List<ComponentEntry> components = null)
+        public EntityTypeData(string name, ComponentEntry components = null)
         {
             Name = name;
             if(components == null)
             {
-                Components = new List<ComponentEntry>();
+                Components = new ComponentEntry();
             }
             else
             {
@@ -44,22 +44,7 @@ namespace GameUtilities.Entities.DataContracts
     /// <summary>
     /// Data contract representing a single component in the ComponentList
     /// </summary>
-    [DataContract]
-    public class ComponentEntry
-    {
-        /// <summary>
-        /// The assembly of the Component
-        /// </summary>
-        [DataMember(IsRequired=true,Order=0)]
-        public string Component{get; private set;}
-
-        /// <summary>
-        /// The Constructor
-        /// </summary>
-        /// <param name="component">the component's assembly</param>
-        public ComponentEntry(string component)
-        {
-            Component = component;
-        }
-    }
+    [CollectionDataContract(ItemName="Component")]
+    public class ComponentEntry : List<string>
+    {}
 }

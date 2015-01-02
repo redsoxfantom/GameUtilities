@@ -14,5 +14,16 @@
         </Entry>
       </DataSet>
     </Entity>
+    <Entity>
+      <Name>Entity2</Name>
+      <Assembly>GameUtilities.Entities.BaseEntity,GameUtilities</Assembly>
+      <Type>Entity1Type</Type>
+      <DataSet>
+        <Entry>
+          <Key>KEY</Key>
+          <Value>VALUE</Value>
+        </Entry>
+      </DataSet>
+    </Entity>
   </Entities>
 </World>

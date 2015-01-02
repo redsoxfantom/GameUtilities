@@ -86,19 +86,19 @@ namespace GameUtilities.Entities
             string path = Context.ConfigManager.FindEntityType(mData.Type);
             EntityTypeData typeData = DataContractFactory.DeserializeObject<EntityTypeData>(path);
 
-            foreach (ComponentEntry entry in typeData.Components)
+            foreach (string entry in typeData.Components)
             {
                 try
                 {
-                    Logger.Info(string.Format("Creating component '{0}' for entity '{1}'",entry.Component,mName));
-                    Type componentType = Type.GetType(entry.Component);
+                    Logger.Info(string.Format("Creating component '{0}' for entity '{1}'",entry,mName));
+                    Type componentType = Type.GetType(entry);
                     Object[] objArray = {mData.DataSet};
                     IComponent component = (IComponent)Activator.CreateInstance(componentType, objArray);
                     mComponents.Add(component);
                 }
                 catch (Exception e)
                 {
-                    Logger.Error(string.Format("Failed to create component '{0}' for entity '{1}", entry.Component, mName),e);
+                    Logger.Error(string.Format("Failed to create component '{0}' for entity '{1}", entry, mName),e);
                 }
             }
 
