@@ -7,20 +7,8 @@ namespace GameUtilities.Components
     /// <summary>
     /// Represents a "Component" attached to an entity. Entitys are defined by what Components they use.
     /// </summary>
-    public interface IComponent
+    public interface IComponent : IUpdatable, IDrawable, ITerminatable
     {
-        /// <summary>
-        /// Called once a frame, draws the component
-        /// </summary>
-        /// <param name="timeSinceLastFrame">How long its been since the last frame</param>
-        void Draw(double timeSinceLastFrame);
-
-        /// <summary>
-        /// Called once a frame, updates the component's internal state
-        /// </summary>
-        /// <param name="timeSinceLastFrame">How long its been since the last frame</param>
-        void Update(double timeSinceLastFrame);
-
         /// <summary>
         /// Initialize the Component
         /// </summary>

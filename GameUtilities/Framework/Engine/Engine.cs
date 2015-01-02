@@ -65,5 +65,17 @@ namespace GameUtilities.Framework.Engine
         {
             mWorld.Draw(timeSinceLastFrame);
         }
+
+        /// <summary>
+        /// Called to termminate the Engine
+        /// </summary>
+        public void Terminate()
+        {
+            mLogger.Info("Beginning Engine Shutdown...");
+            mWorld.Terminate();
+            //TODO: Shut down any Services
+
+            mLogger.Info("Engine Shutdown Complete");
+        }
     }
 }

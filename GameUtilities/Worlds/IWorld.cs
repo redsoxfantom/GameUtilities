@@ -8,7 +8,7 @@ namespace GameUtilities.Worlds
     /// <summary>
     /// An interface to the game World (a container for entities)
     /// </summary>
-    public interface IWorld : IUpdatable, IDrawable
+    public interface IWorld : IUpdatable, IDrawable, ITerminatable
     {
         /// <summary>
         /// Get an entity given its unique ID (The entities name)

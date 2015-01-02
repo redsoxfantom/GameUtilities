@@ -58,6 +58,7 @@
     <Compile Include="Framework\Engine\IEngine.cs" />
     <Compile Include="Framework\IDrawable.cs" />
     <Compile Include="Framework\ExecutableContext.cs" />
+    <Compile Include="Framework\ITerminatable.cs" />
     <Compile Include="Framework\IUpdatable.cs" />
     <Compile Include="Framework\Loggers\BaseLogger.cs" />
     <Compile Include="Framework\Loggers\ConsoleLogger.cs" />

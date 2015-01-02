@@ -6,7 +6,7 @@ namespace GameUtilities.Framework.Engine
     /// Interface between the Engine and the outside world. Responsible for initializing the Engine
     /// and updating it every frame.
     /// </summary>
-    public interface IEngine : IUpdatable, IDrawable
+    public interface IEngine : IUpdatable, IDrawable, ITerminatable
     {
         /// <summary>
         /// Initialize the Engine. Creates the World and all the Services

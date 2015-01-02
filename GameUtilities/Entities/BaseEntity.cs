@@ -129,6 +129,19 @@ namespace GameUtilities.Entities
             }
         }
 
+        /// <summary>
+        /// Shut down the entity
+        /// </summary>
+        public void Terminate()
+        {
+            Logger.Info(string.Format("Entity {0} starting termination...", mName));
+            foreach(IComponent component in mComponents)
+            {
+                component.Terminate();
+            }
+            Logger.Info(string.Format("Entity {0} done termination", mName));
+        }
+
         #endregion IEntity Methods
 
         #region Methods

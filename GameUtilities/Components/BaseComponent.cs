@@ -62,6 +62,14 @@ namespace GameUtilities.Components
         public void Update(double timeSinceLastFrame) { }
 
         /// <summary>
+        /// Shut down the component
+        /// </summary>
+        public void Terminate()
+        {
+            mLogger.Info(string.Format("Component {0} terminating", mName));
+        }
+
+        /// <summary>
         /// Initialize the Component
         /// </summary>
         /// <param name="Context">The component's executable context</param>

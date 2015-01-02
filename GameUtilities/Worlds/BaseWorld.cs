@@ -130,6 +130,19 @@ namespace GameUtilities.Worlds
                 entity.Draw(timeSinceLastUpdate);
             }
         }
+
+        /// <summary>
+        /// Shut down the World
+        /// </summary>
+        public void Terminate()
+        {
+            mLogger.Info(string.Format("World {0} starting termination...",mData.Name));
+            foreach(IEntity entity in EntityList)
+            {
+                entity.Terminate();
+            }
+            mLogger.Info(string.Format("World {0} finished termination",mData.Name));
+        }
         #endregion IWorld Methods
 
         #region Methods

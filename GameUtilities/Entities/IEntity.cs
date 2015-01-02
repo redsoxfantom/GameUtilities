@@ -8,7 +8,7 @@ namespace GameUtilities.Entities
     /// <summary>
     /// Represents an object in the game world
     /// </summary>
-    public interface IEntity : IDrawable, IUpdatable
+    public interface IEntity : IDrawable, IUpdatable, ITerminatable
     {
         /// <summary>
         /// The Entities' logger
