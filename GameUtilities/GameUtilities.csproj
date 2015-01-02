@@ -54,6 +54,8 @@
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Framework\DataContracts\DataContractFactory.cs" />
     <Compile Include="Framework\DataContracts\DataSet.cs" />
+    <Compile Include="Framework\Engine\Engine.cs" />
+    <Compile Include="Framework\Engine\IEngine.cs" />
     <Compile Include="Framework\IDrawable.cs" />
     <Compile Include="Framework\ExecutableContext.cs" />
     <Compile Include="Framework\IUpdatable.cs" />

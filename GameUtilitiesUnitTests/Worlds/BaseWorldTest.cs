@@ -88,7 +88,7 @@ namespace GameUtilitiesUnitTests.Worlds
         /// Test the Init method
         /// </summary>
         [TestMethod]
-        public void InitTest()
+        public void WorldInitTest()
         {
             //TODO: fill in this test when Init is complete
         }

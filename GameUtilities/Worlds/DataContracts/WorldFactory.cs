@@ -14,8 +14,9 @@ namespace GameUtilities.Worlds.DataContracts
         /// </summary>
         /// <param name="path">the path to the File defining the world to create</param>
         /// <returns>an IWorld object</returns>
-        public static IWorld CreateWorld(string path, ExecutableContext context)
+        public static IWorld CreateWorld(string worldName, ExecutableContext context)
         {
+            string path = context.ConfigManager.FindWorld(worldName);
             WorldData worldData = DataContractFactory.DeserializeObject<WorldData>(path);
             Type worldType = Type.GetType(worldData.Assembly);
             Object[] objArray = { worldData };
