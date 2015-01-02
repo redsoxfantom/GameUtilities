@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameUtilities.Services.Interfaces
+namespace GameUtilities.Framework.FilePathResolver
 {
     /// <summary>
     /// Interface for finding the path to various config files
     /// </summary>
-    interface IFilePathResolverService
+    interface IFilePathResolver
     {
         /// <summary>
         /// Initialize the Service

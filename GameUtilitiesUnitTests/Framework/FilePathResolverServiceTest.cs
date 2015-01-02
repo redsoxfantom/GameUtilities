@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using GameUtilities.Services.Implementations;
+using GameUtilities.Framework.FilePathResolver;
 
 namespace GameUtilitiesUnitTests.Services
 {
@@ -19,7 +19,7 @@ namespace GameUtilitiesUnitTests.Services
         /// <summary>
         /// the test target
         /// </summary>
-        FilePathResolverService target;
+        FilePathResolver target;
 
         /// <summary>
         /// Used to access private fields
@@ -32,7 +32,7 @@ namespace GameUtilitiesUnitTests.Services
         [TestInitialize]
         public void Initializer()
         {
-            target = new FilePathResolverService();
+            target = new FilePathResolver();
             po = new PrivateObject(target);
         }
 

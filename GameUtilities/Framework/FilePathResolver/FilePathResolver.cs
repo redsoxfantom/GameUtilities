@@ -1,11 +1,9 @@
-﻿using GameUtilities.Services.Interfaces;
-
-namespace GameUtilities.Services.Implementations
+﻿namespace GameUtilities.Framework.FilePathResolver
 {
     /// <summary>
     /// Service to allow components to find file paths
     /// </summary>
-    public class FilePathResolverService : IFilePathResolverService
+    public class FilePathResolver : IFilePathResolver
     {
         #region Fields
         /// <summary>
@@ -18,7 +16,7 @@ namespace GameUtilities.Services.Implementations
         /// <summary>
         /// The constructor
         /// </summary>
-        public FilePathResolverService()
+        public FilePathResolver()
         {
             mRootDirectory = string.Empty;
         }

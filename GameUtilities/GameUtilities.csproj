@@ -63,8 +63,8 @@
     <Compile Include="Framework\Loggers\LoggerFactory.cs" />
     <Compile Include="Framework\Loggers\NullLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Implementations\FilePathResolverService.cs" />
-    <Compile Include="Services\Interfaces\IFilePathResolverService.cs" />
+    <Compile Include="Framework\FilePathResolver\FilePathResolver.cs" />
+    <Compile Include="Framework\FilePathResolver\IFilePathResolver.cs" />
     <Compile Include="Worlds\IWorld.cs" />
     <Compile Include="Worlds\BaseWorld.cs" />
     <Compile Include="Worlds\DataContracts\WorldData.cs" />
@@ -73,7 +73,10 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Services\Implementations\" />
+    <Folder Include="Services\Interfaces\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
