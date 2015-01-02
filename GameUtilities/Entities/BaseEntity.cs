@@ -83,7 +83,7 @@ namespace GameUtilities.Entities
             mContext.Entity = this;
 
             //Read in the entities components here
-            string path = string.Empty; // TODO: add code to determine the path to the entityType
+            string path = Context.ConfigManager.FindEntityType(mData.Type);
             EntityTypeData typeData = DataContractFactory.DeserializeObject<EntityTypeData>(path);
 
             foreach (ComponentEntry entry in typeData.Components)

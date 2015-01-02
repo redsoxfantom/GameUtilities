@@ -9,7 +9,7 @@ namespace GameUtilities.Framework.FilePathResolver
     /// <summary>
     /// Interface for finding the path to various config files
     /// </summary>
-    interface IFilePathResolver
+    public interface IFilePathResolver
     {
         /// <summary>
         /// Initialize the Service

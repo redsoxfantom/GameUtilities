@@ -1,6 +1,7 @@
 ﻿using GameUtilities.Entities;
 using GameUtilities.Framework.Loggers;
 using GameUtilities.Worlds;
+using GameUtilities.Framework.FilePathResolver;
 
 namespace GameUtilities.Framework
 {
@@ -20,9 +21,17 @@ namespace GameUtilities.Framework
         public IEntity Entity { set; get; }
 
         /// <summary>
+        /// The File Path resolver object
+        /// </summary>
+        public IFilePathResolver ConfigManager { set; get; }
+
+        /// <summary>
         /// The constructor
         /// </summary>
-        public ExecutableContext()
-        {}
+        public ExecutableContext(string PathToConfig)
+        {
+            ConfigManager = new ConfigManager();
+            ConfigManager.Init(PathToConfig);
+        }
     }
 }

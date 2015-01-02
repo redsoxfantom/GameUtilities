@@ -3,7 +3,7 @@
     /// <summary>
     /// Service to allow components to find file paths
     /// </summary>
-    public class FilePathResolver : IFilePathResolver
+    public class ConfigManager : IFilePathResolver
     {
         #region Fields
         /// <summary>
@@ -16,7 +16,7 @@
         /// <summary>
         /// The constructor
         /// </summary>
-        public FilePathResolver()
+        public ConfigManager()
         {
             mRootDirectory = string.Empty;
         }

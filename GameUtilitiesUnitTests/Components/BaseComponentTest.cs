@@ -37,7 +37,7 @@ namespace GameUtilitiesUnitTests.Components
             DataSet data = new DataSet();
             BaseComponent comp = new BaseComponent(data);
             PrivateObject obj = new PrivateObject(comp);
-            ExecutableContext mContext = new ExecutableContext();
+            ExecutableContext mContext = new ExecutableContext("test");
             Mock<IEntity> entityMock = new Mock<IEntity>().SetupAllProperties();
             entityMock.Setup(f => f.Name).Returns("TEST");
             mContext.Entity = entityMock.Object;

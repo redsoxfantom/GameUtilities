@@ -19,7 +19,7 @@ namespace GameUtilitiesUnitTests.Services
         /// <summary>
         /// the test target
         /// </summary>
-        FilePathResolver target;
+        ConfigManager target;
 
         /// <summary>
         /// Used to access private fields
@@ -32,7 +32,7 @@ namespace GameUtilitiesUnitTests.Services
         [TestInitialize]
         public void Initializer()
         {
-            target = new FilePathResolver();
+            target = new ConfigManager();
             po = new PrivateObject(target);
         }
 

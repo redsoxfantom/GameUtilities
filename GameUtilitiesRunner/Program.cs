@@ -16,7 +16,7 @@ namespace GameUtilitiesRunner
             entityDataSet.Add(entityData);
             WorldData worldData = new WorldData("TEST WORLD", "GameUtilities.Worlds.BaseWorld,GameUtilities",entityDataSet);
             BaseWorld world = new BaseWorld(worldData);
-            ExecutableContext mContext = new ExecutableContext();
+            ExecutableContext mContext = new ExecutableContext(".\\Config\\");
 
             world.Init(mContext);
             Console.ReadKey();
