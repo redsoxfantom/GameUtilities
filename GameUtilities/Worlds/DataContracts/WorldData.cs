@@ -7,7 +7,7 @@ namespace GameUtilities.Worlds.DataContracts
     /// <summary>
     /// A Data Contract for reading in World data files
     /// </summary>
-    [DataContract(Name="World")]
+    [DataContract(Name="World",Namespace="")]
     public class WorldData
     {
         /// <summary>
@@ -26,14 +26,14 @@ namespace GameUtilities.Worlds.DataContracts
         /// Stores a list of all entities defined in the world
         /// </summary>
         [DataMember(IsRequired=false,Order=2)]
-        public EntityDataSet Entities { get; private set; }
+        public List<EntityData> Entities { get; private set; }
 
         /// <summary>
         /// The Constructor
         /// </summary>
         /// <param name="name">The World's Name</param>
         /// <param name="entities">The list of entities</param>
-        public WorldData(string name, string assembly, EntityDataSet entities = null)
+        public WorldData(string name, string assembly, List<EntityData> entities = null)
         {
             Name = name;
             Assembly = assembly;
@@ -43,17 +43,8 @@ namespace GameUtilities.Worlds.DataContracts
             }
             else
             {
-                Entities = new EntityDataSet();
+                Entities = new List<EntityData>();
             }
         }
-    }
-
-    /// <summary>
-    /// Data contract defining a list of Entities in use in the world
-    /// </summary>
-    [DataContract]
-    public class EntityDataSet:List<EntityData>
-    {
-
     }
 }
