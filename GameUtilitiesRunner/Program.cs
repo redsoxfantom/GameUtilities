@@ -30,7 +30,7 @@ namespace GameUtilitiesRunner
                 
                 game.UpdateFrame += (sender, e) =>
                 {
-                    engine.Update(0);
+                    engine.Update(e.Time);
                     if (game.Keyboard[Key.Escape])
                     {
                         engine.Terminate();
@@ -40,7 +40,8 @@ namespace GameUtilitiesRunner
 
                 game.RenderFrame += (sender, e) =>
                 {
-                    engine.Draw(0);
+                    GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+                    engine.Draw(e.Time);
                     game.SwapBuffers();
                 };
 

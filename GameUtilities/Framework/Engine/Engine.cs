@@ -52,6 +52,8 @@ namespace GameUtilities.Framework.Engine
         /// <param name="timeSinceLastFrame">How long its been since the last time Update was called</param>
         public void Update(double timeSinceLastFrame)
         {
+            mLogger.Debug(string.Format("Update called, timeSinceLastFrame={0}", timeSinceLastFrame));
+
             mWorld.Update(timeSinceLastFrame);
 
             //TODO: Update Services here
@@ -63,6 +65,8 @@ namespace GameUtilities.Framework.Engine
         /// <param name="timeSinceLastFrame">How long its been since the last time Draw was called</param>
         public void Draw(double timeSinceLastFrame)
         {
+            mLogger.Debug(string.Format("Draw called, timeSinceLastFrame={0}", timeSinceLastFrame));
+
             mWorld.Draw(timeSinceLastFrame);
         }
 
