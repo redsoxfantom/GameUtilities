@@ -33,6 +33,7 @@ namespace GameUtilitiesRunner
             GameUtilitiesRunnerProcessor proc = new GameUtilitiesRunnerProcessor(mLoggingLevel, mWorld, mPath);
             proc.Run();
 
+            Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }
 
