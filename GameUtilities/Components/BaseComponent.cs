@@ -51,18 +51,18 @@ namespace GameUtilities.Components
         /// Called once a frame, draws the component
         /// </summary>
         /// <param name="timeSinceLastFrame">How long its been since the last frame</param>
-        public void Draw(double timeSinceLastFrame) { }
+        public virtual void Draw(double timeSinceLastFrame) { }
 
         /// <summary>
         /// Called once a frame, updates the component's internal state
         /// </summary>
         /// <param name="timeSinceLastFrame">How long its been since the last frame</param>
-        public void Update(double timeSinceLastFrame) { }
+        public virtual void Update(double timeSinceLastFrame) { }
 
         /// <summary>
         /// Shut down the component
         /// </summary>
-        public void Terminate()
+        public virtual void Terminate()
         {
             mLogger.Info(string.Format("Component {0} terminating", mName));
         }
@@ -72,7 +72,7 @@ namespace GameUtilities.Components
         /// </summary>
         /// <param name="Context">The component's executable context</param>
         /// <param name="data">Optional data for the Component</param>
-        public void Init(ExecutableContext Context, DataSet data = null)
+        public virtual void Init(ExecutableContext Context, DataSet data = null)
         {
             if(Context == null)
             {
