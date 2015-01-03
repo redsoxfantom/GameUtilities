@@ -7,22 +7,11 @@
       <Name>Entity1</Name>
       <Assembly>GameUtilities.Entities.BaseEntity,GameUtilities</Assembly>
       <Type>Entity1Type</Type>
-      <DataSet>
-        <Entry>
-          <Key>KEY</Key>
-          <Value>VALUE</Value>
-        </Entry>
-      </DataSet>
-    </Entity>
-    <Entity>
-      <Name>Entity2</Name>
-      <Assembly>GameUtilities.Entities.BaseEntity,GameUtilities</Assembly>
-      <Type>Entity1Type</Type>
-      <DataSet>
-        <Entry>
-          <Key>KEY</Key>
-          <Value>VALUE</Value>
-        </Entry>
+      <DataSet xmlns:a="http://schemas.datacontract.org/2004/07/GameUtilities.Framework.DataContracts">
+        <a:Entry>
+          <a:Key>KEY</a:Key>
+          <a:Value>VALUE</a:Value>
+        </a:Entry>
       </DataSet>
     </Entity>
   </Entities>

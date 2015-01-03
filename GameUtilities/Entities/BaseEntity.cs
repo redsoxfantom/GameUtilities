@@ -94,6 +94,7 @@ namespace GameUtilities.Entities
                     Type componentType = Type.GetType(entry);
                     Object[] objArray = {mData.DataSet};
                     IComponent component = (IComponent)Activator.CreateInstance(componentType, objArray);
+                    component.Init(mContext);
                     mComponents.Add(component);
                 }
                 catch (Exception e)
