@@ -29,6 +29,12 @@ namespace GameUtilities.Framework.DataContracts
             return obj;
         }
 
+        /// <summary>
+        /// Serialize an Object
+        /// </summary>
+        /// <typeparam name="T">Type of object to serialize</typeparam>
+        /// <param name="path">Path of the file that should be serialized to</param>
+        /// <param name="obj">The object to serialize</param>
         public static void SerializeObject<T>(string path, T obj)
         {
             FileStream fs = new FileStream(path,FileMode.Create);
