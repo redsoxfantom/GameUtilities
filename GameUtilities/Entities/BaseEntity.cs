@@ -92,9 +92,9 @@ namespace GameUtilities.Entities
                 {
                     Logger.Info(string.Format("Creating component '{0}' for entity '{1}'",entry,mName));
                     Type componentType = Type.GetType(entry);
-                    Object[] objArray = {mData.DataSet};
+                    Object[] objArray = {};
                     IComponent component = (IComponent)Activator.CreateInstance(componentType, objArray);
-                    component.Init(mContext);
+                    component.Init(mContext, mData.DataSet);
                     mComponents.Add(component);
                 }
                 catch (Exception e)

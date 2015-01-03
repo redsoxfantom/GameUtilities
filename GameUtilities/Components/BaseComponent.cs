@@ -42,10 +42,8 @@ namespace GameUtilities.Components
         /// <summary>
         /// Constructor
         /// </summary>
-        public BaseComponent(DataSet data) 
-        {
-            mDataSet = data;
-        }
+        public BaseComponent() 
+        { }
         #endregion Constructors
 
         #region IComponent Methods
@@ -73,11 +71,20 @@ namespace GameUtilities.Components
         /// Initialize the Component
         /// </summary>
         /// <param name="Context">The component's executable context</param>
-        public void Init(ExecutableContext Context)
+        /// <param name="data">Optional data for the Component</param>
+        public void Init(ExecutableContext Context, DataSet data = null)
         {
             if(Context == null)
             {
                 throw new NullReferenceException("Context");
+            }
+            if (data == null)
+            {
+                mDataSet = new DataSet();
+            }
+            else
+            {
+                mDataSet = data;                
             }
             mContext = Context;
             mName = string.Format("{0}@{1}",this.GetType().Name,mContext.Entity.Name);

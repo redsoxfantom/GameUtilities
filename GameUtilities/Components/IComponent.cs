@@ -13,6 +13,7 @@ namespace GameUtilities.Components
         /// Initialize the Component
         /// </summary>
         /// <param name="Context">The component's executable context</param>
-        void Init(ExecutableContext Context);
+        /// <param name="data">Optional data for the Component</param>
+        void Init(ExecutableContext Context, DataSet data = null);
     }
 }
