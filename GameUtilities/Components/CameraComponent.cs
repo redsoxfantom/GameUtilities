@@ -1,6 +1,7 @@
 ﻿using GameUtilities.Framework.DataContracts;
 using GameUtilities.Framework;
 using OpenTK;
+using Constants = GameUtilities.Components.ComponentConstants;
 
 namespace GameUtilities.Components
 {
@@ -12,17 +13,17 @@ namespace GameUtilities.Components
         /// <summary>
         /// The camera's Position vector
         /// </summary>
-        private Vector3d Pos;
+        private Vector3d Pos = new Vector3d(0.0,0.0,0.0);
 
         /// <summary>
         /// The Camera's target vector
         /// </summary>
-        private Vector3d Target;
+        private Vector3d Target = new Vector3d(0.0, 0.0, -1.0);
 
         /// <summary>
         /// The Camera's Up vector
         /// </summary>
-        private Vector3d Up;
+        private Vector3d Up = new Vector3d(0.0, 1.0, 0.0);
 
         /// <summary>
         /// The camera's near plane
@@ -60,15 +61,15 @@ namespace GameUtilities.Components
 
         /// <summary>
         /// Initialize the Camera. Needs the following from the Dataset:
-        /// PosX - The camera's X position
-        /// PosY - The camera's Y position
-        /// PosZ - The camera's Z position
-        /// TargetX - The camera target's X position
-        /// TargetY - The camera target's Y position
-        /// TargetZ - The camera target's Z position
-        /// UpX - The camera up vector's X component
-        /// UpY - The camera up vector's Y component
-        /// UpZ - The camera up vector's Z component
+        /// CamPosX - The camera's X position
+        /// CamPosY - The camera's Y position
+        /// CamPosZ - The camera's Z position
+        /// CamTargetX - The camera target's X position
+        /// CamTargetY - The camera target's Y position
+        /// CamTargetZ - The camera target's Z position
+        /// CamUpX - The camera up vector's X component
+        /// CamUpY - The camera up vector's Y component
+        /// CamUpZ - The camera up vector's Z component
         /// CameraNear - the Z value of the Near Plane
         /// CameraFar - the Z value of the FarPlane
         /// CameraType - {PERSPECTIVE | ORTHOGRAPHIC}
@@ -85,10 +86,15 @@ namespace GameUtilities.Components
         {
             base.Init(Context, data);
 
-            Pos = new Vector3d();
-            Pos.X = double.Parse(data["PosX"]);
-            Pos.Y = double.Parse(data["PosY"]);
-            Pos.Z = double.Parse(data["PosZ"]);
+            //Pos will have a value (0,0,0) if the dataset does not define a value for it
+            double.TryParse(data[Constants.CAMERA_POS_X],out Pos.X);
+            double.TryParse(data[Constants.CAMERA_POS_Y],out Pos.Y);
+            double.TryParse(data[Constants.CAMERA_POS_Z],out Pos.Z);
+
+            //Target will have a value (0,0,-1) if the dataset does not define a value for it
+            double.TryParse(data[Constants.CAMERA_TARGET_X], out Target.X);
+            double.TryParse(data[Constants.CAMERA_TARGET_Y], out Target.Y);
+            double.TryParse(data[Constants.CAMERA_TARGET_Z], out Target.Z);
         }
     }
 }
