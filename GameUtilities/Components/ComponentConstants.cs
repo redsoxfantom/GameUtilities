@@ -34,5 +34,20 @@
         /// The camera target's Z position
         /// </summary>
         public static const string CAMERA_TARGET_Z = "CamTargetZ";
+
+        /// <summary>
+        /// The camera Up vector's X position
+        /// </summary>
+        public static const string CAMERA_UP_X = "CamUpX";
+
+        /// <summary>
+        /// The camera Up vector's Y position
+        /// </summary>
+        public static const string CAMERA_UP_Y = "CamUpY";
+
+        /// <summary>
+        /// The camera Up vector's Z position
+        /// </summary>
+        public static const string CAMERA_UP_Z = "CamUpZ";
     }
 }

@@ -95,6 +95,11 @@ namespace GameUtilities.Components
             double.TryParse(data[Constants.CAMERA_TARGET_X], out Target.X);
             double.TryParse(data[Constants.CAMERA_TARGET_Y], out Target.Y);
             double.TryParse(data[Constants.CAMERA_TARGET_Z], out Target.Z);
+
+            //Up will have a value (0,1,0) if the dataset does not define a value for it
+            double.TryParse(data[Constants.CAMERA_UP_X], out Up.X);
+            double.TryParse(data[Constants.CAMERA_UP_Y], out Up.Y);
+            double.TryParse(data[Constants.CAMERA_UP_Z], out Up.Z);
         }
     }
 }
