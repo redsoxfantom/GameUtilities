@@ -61,6 +61,11 @@ namespace GameUtilities.Components
         private double cameraheight;
 
         /// <summary>
+        /// The camera's type
+        /// </summary>
+        private Constants.CAM_TYPES cameraType;
+
+        /// <summary>
         /// Initialize the Camera. Needs the following from the Dataset:
         /// CamPosX - The camera's X position
         /// CamPosY - The camera's Y position
@@ -75,11 +80,11 @@ namespace GameUtilities.Components
         /// CamFar - the Z value of the FarPlane
         /// CamType - {PERSPECTIVE | ORTHOGRAPHIC}
         /// If CameraType = PERSPECTIVE
-        ///     CameraFOV - The field of view of the camera
-        ///     CameraAspect - The aspect ratio of the camera
+        ///     CamFOV - The field of view of the camera
+        ///     CamAspect - The aspect ratio of the camera
         /// If CameraType = ORTHOGRAHIC
-        ///     CameraWidth - The width of the camera field
-        ///     Cameraheight - the Height of the camera field
+        ///     CamWidth - The width of the camera field
+        ///     CamHeight - the Height of the camera field
         /// </summary>
         /// <param name="Context"></param>
         /// <param name="data"></param>
@@ -107,14 +112,15 @@ namespace GameUtilities.Components
             zFar = double.Parse(data[Constants.CAM_ZFAR]);
 
             //determine the type of camera the user selected
-            Constants.CAM_TYPES cameraType = (Constants.CAM_TYPES)Enum.Parse(typeof(Constants.CAM_TYPES), data[Constants.CAM_TYPE]);
+            cameraType = (Constants.CAM_TYPES)Enum.Parse(typeof(Constants.CAM_TYPES), data[Constants.CAM_TYPE]);
             if(cameraType == Constants.CAM_TYPES.ORTHOGRAPHIC)
             {
 
             }
             else
             {
-
+                CameraFOV = double.Parse(data[Constants.CAM_FOV]);
+                CameraAspect = double.Parse(data[Constants.CAM_ASPECT]);
             }
         }
     }

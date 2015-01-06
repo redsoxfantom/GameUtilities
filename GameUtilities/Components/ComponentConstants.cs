@@ -69,5 +69,15 @@
         /// The supported camera types
         /// </summary>
         public static enum CAM_TYPES { ORTHOGRAPHIC, PERSPECTIVE };
+
+        /// <summary>
+        /// The camera's Field Of View
+        /// </summary>
+        public static const string CAM_FOV = "CamFOV";
+
+        /// <summary>
+        /// The camera's aspect ratio
+        /// </summary>
+        public static const string CAM_ASPECT = "CamAspect";
     }
 }
