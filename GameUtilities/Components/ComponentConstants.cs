@@ -59,5 +59,15 @@
         /// The camera's Far Plane
         /// </summary>
         public static const string CAM_ZFAR = "CamFar";
+
+        /// <summary>
+        /// The camera's type (ORTHOGRAPHIC|PERSPECTIVE)
+        /// </summary>
+        public static const string CAM_TYPE = "CamType";
+
+        /// <summary>
+        /// The supported camera types
+        /// </summary>
+        public static enum CAM_TYPES { ORTHOGRAPHIC, PERSPECTIVE };
     }
 }

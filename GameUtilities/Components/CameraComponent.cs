@@ -2,6 +2,7 @@
 using GameUtilities.Framework;
 using OpenTK;
 using Constants = GameUtilities.Components.ComponentConstants;
+using System;
 
 namespace GameUtilities.Components
 {
@@ -104,6 +105,17 @@ namespace GameUtilities.Components
             //Get the near and far planes
             zNear = double.Parse(data[Constants.CAM_ZNEAR]);
             zFar = double.Parse(data[Constants.CAM_ZFAR]);
+
+            //determine the type of camera the user selected
+            Constants.CAM_TYPES cameraType = (Constants.CAM_TYPES)Enum.Parse(typeof(Constants.CAM_TYPES), data[Constants.CAM_TYPE]);
+            if(cameraType == Constants.CAM_TYPES.ORTHOGRAPHIC)
+            {
+
+            }
+            else
+            {
+
+            }
         }
     }
 }
