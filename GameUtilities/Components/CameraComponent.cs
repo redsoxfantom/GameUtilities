@@ -1,7 +1,8 @@
 ﻿using GameUtilities.Framework.DataContracts;
 using GameUtilities.Framework;
 using OpenTK;
-using Constants = GameUtilities.Components.ComponentConstants;
+using GameUtilities.Components.Camera;
+using Constants = GameUtilities.Components.Camera.ComponentConstants;
 using System;
 
 namespace GameUtilities.Components
