@@ -58,7 +58,7 @@ namespace GameUtilities.Components
         /// The camera's height
         /// Only used for Perspective cameras
         /// </summary>
-        private double cameraheight;
+        private double cameraHeight;
 
         /// <summary>
         /// The camera's type
@@ -116,7 +116,7 @@ namespace GameUtilities.Components
             if (cameraType == ComponentConstants.CAM_TYPES.ORTHOGRAPHIC)
             {
                 cameraWidth = double.Parse(data[ComponentConstants.CAMERA_WIDTH]);
-                cameraheight = double.Parse(data[ComponentConstants.CAMERA_HEIGHT]);
+                cameraHeight = double.Parse(data[ComponentConstants.CAMERA_HEIGHT]);
             }
             else
             {
