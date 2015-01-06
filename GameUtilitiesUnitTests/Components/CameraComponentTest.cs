@@ -45,6 +45,7 @@ namespace GameUtilitiesUnitTests.Components
             CameraComponent target = new CameraComponent();
             PrivateObject obj = new PrivateObject(target);
             Mock<IExecutableContext> contextMock = new Mock<IExecutableContext>();
+            contextMock.Setup(f => f.Entity.Name).Returns("TEST");
 
             target.Init(contextMock.Object, set);
         }
