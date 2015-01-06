@@ -6,6 +6,7 @@ using GameUtilities.Framework.DataContracts;
 using GameUtilities.Components.Constants.Camera;
 using GameUtilities.Framework.ExecutableContext;
 using OpenTK;
+using System.Collections.Generic;
 
 namespace GameUtilitiesUnitTests.Components
 {
@@ -129,6 +130,24 @@ namespace GameUtilitiesUnitTests.Components
             Assert.AreEqual(expectedCameraType, actualCameraType);
             Assert.AreEqual(expectedFOV, actualFOV);
             Assert.AreEqual(expectedAspect, actualAspect);
+        }
+
+        /// <summary>
+        /// A failure test of the Camera Init method
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(KeyNotFoundException))]
+        public void CameraInitFailureTest()
+        {
+            DataSet set = new DataSet();
+
+            CameraComponent target = new CameraComponent();
+            PrivateObject obj = new PrivateObject(target);
+            Mock<IExecutableContext> contextMock = new Mock<IExecutableContext>();
+            contextMock.Setup(f => f.Entity.Name).Returns("TEST");
+
+
+            target.Init(contextMock.Object, set);
         }
     }
 }
