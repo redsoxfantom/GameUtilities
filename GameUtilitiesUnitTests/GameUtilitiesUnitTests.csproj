@@ -54,6 +54,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Components\BaseComponentTest.cs" />
+    <Compile Include="Components\CameraComponentTest.cs" />
     <Compile Include="Entities\BaseEntityTest.cs" />
     <Compile Include="Framework\Loggers\BaseLoggerTest.cs" />
     <Compile Include="Framework\Loggers\LoggerFactoryTest.cs" />

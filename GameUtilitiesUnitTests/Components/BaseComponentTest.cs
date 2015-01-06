@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GameUtilities.Framework.DataContracts;
 using GameUtilities.Components;
-using GameUtilities.Framework;
+using GameUtilities.Framework.ExecutableContext;
 using GameUtilities.Entities;
 using Moq;
 
@@ -23,7 +23,7 @@ namespace GameUtilitiesUnitTests.Components
             DataSet data = new DataSet();
             BaseComponent comp = new BaseComponent();
             PrivateObject obj = new PrivateObject(comp);
-            ExecutableContext mContext = new ExecutableContext("test");
+            BaseExecutableContext mContext = new BaseExecutableContext("test");
             Mock<IEntity> entityMock = new Mock<IEntity>().SetupAllProperties();
             entityMock.Setup(f => f.Name).Returns("TEST");
             mContext.Entity = entityMock.Object;

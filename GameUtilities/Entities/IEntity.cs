@@ -1,5 +1,6 @@
 ﻿using GameUtilities.Components;
 using GameUtilities.Framework;
+using GameUtilities.Framework.ExecutableContext;
 using GameUtilities.Framework.Loggers;
 using GameUtilities.Entities.DataContracts;
 
@@ -23,6 +24,6 @@ namespace GameUtilities.Entities
         /// <summary>
         /// Initializes the Entity
         /// </summary>
-        void Init(ExecutableContext Context);
+        void Init(IExecutableContext Context);
     }
 }

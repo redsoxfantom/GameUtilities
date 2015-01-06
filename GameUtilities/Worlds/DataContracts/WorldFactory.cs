@@ -1,5 +1,5 @@
 ﻿using GameUtilities.Framework.DataContracts;
-using GameUtilities.Framework;
+using GameUtilities.Framework.ExecutableContext;
 using System;
 
 namespace GameUtilities.Worlds.DataContracts
@@ -14,7 +14,7 @@ namespace GameUtilities.Worlds.DataContracts
         /// </summary>
         /// <param name="path">the path to the File defining the world to create</param>
         /// <returns>an IWorld object</returns>
-        public static IWorld CreateWorld(string worldName, ExecutableContext context)
+        public static IWorld CreateWorld(string worldName, IExecutableContext context)
         {
             string path = context.ConfigManager.FindWorld(worldName);
             WorldData worldData = DataContractFactory.DeserializeObject<WorldData>(path);

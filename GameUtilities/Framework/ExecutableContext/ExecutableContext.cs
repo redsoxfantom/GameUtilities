@@ -3,12 +3,12 @@ using GameUtilities.Framework.Loggers;
 using GameUtilities.Worlds;
 using GameUtilities.Framework.FilePathResolver;
 
-namespace GameUtilities.Framework
+namespace GameUtilities.Framework.ExecutableContext
 {
     /// <summary>
     /// Stores entity-level information
     /// </summary>
-    public class ExecutableContext
+    public class BaseExecutableContext : IExecutableContext
     {
         /// <summary>
         /// The root World
@@ -28,7 +28,7 @@ namespace GameUtilities.Framework
         /// <summary>
         /// The constructor
         /// </summary>
-        public ExecutableContext(string PathToConfig)
+        public BaseExecutableContext(string PathToConfig)
         {
             ConfigManager = new ConfigManager();
             ConfigManager.Init(PathToConfig);

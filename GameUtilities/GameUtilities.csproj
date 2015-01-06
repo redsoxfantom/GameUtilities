@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="Components\BaseComponent.cs" />
     <Compile Include="Components\CameraComponent.cs" />
-    <Compile Include="Components\ComponentConstants.cs" />
+    <Compile Include="Components\Constants\CameraConstants.cs" />
     <Compile Include="Components\IComponent.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\DataContracts\EntityData.cs" />
@@ -58,8 +58,9 @@
     <Compile Include="Framework\DataContracts\DataSet.cs" />
     <Compile Include="Framework\Engine\Engine.cs" />
     <Compile Include="Framework\Engine\IEngine.cs" />
+    <Compile Include="Framework\ExecutableContext\IExecutableContext.cs" />
     <Compile Include="Framework\IDrawable.cs" />
-    <Compile Include="Framework\ExecutableContext.cs" />
+    <Compile Include="Framework\ExecutableContext\ExecutableContext.cs" />
     <Compile Include="Framework\ITerminatable.cs" />
     <Compile Include="Framework\IUpdatable.cs" />
     <Compile Include="Framework\Loggers\BaseLogger.cs" />

@@ -1,4 +1,4 @@
-﻿using GameUtilities.Framework;
+﻿using GameUtilities.Framework.ExecutableContext;
 using GameUtilities.Worlds.DataContracts;
 using GameUtilities.Worlds;
 using GameUtilities.Framework.Loggers;
@@ -15,7 +15,7 @@ namespace GameUtilities.Framework.Engine
         /// <summary>
         /// The base Executable context for the Engine
         /// </summary>
-        private ExecutableContext mContext;
+        private IExecutableContext mContext;
 
         /// <summary>
         /// Logger for the Engine
@@ -38,7 +38,7 @@ namespace GameUtilities.Framework.Engine
         public void Init(string PathToConfig, string world)
         {
             mLogger.Info(string.Format("Initializing engine with world: {0} and config path: {1}",world,PathToConfig));
-            mContext = new ExecutableContext(PathToConfig);
+            mContext = new BaseExecutableContext(PathToConfig);
             mWorld = WorldFactory.CreateWorld(world, mContext);
 
             //TODO: initialize services here

@@ -1,8 +1,7 @@
 ﻿using GameUtilities.Framework.DataContracts;
-using GameUtilities.Framework;
+using GameUtilities.Framework.ExecutableContext;
 using OpenTK;
-using GameUtilities.Components.Camera;
-using Constants = GameUtilities.Components.Camera.ComponentConstants;
+using GameUtilities.Components.Constants.Camera;
 using System;
 
 namespace GameUtilities.Components
@@ -64,7 +63,7 @@ namespace GameUtilities.Components
         /// <summary>
         /// The camera's type
         /// </summary>
-        private Constants.CAM_TYPES cameraType;
+        private  ComponentConstants.CAM_TYPES cameraType;
 
         /// <summary>
         /// Initialize the Camera. Needs the following from the Dataset:
@@ -89,40 +88,40 @@ namespace GameUtilities.Components
         /// </summary>
         /// <param name="Context"></param>
         /// <param name="data"></param>
-        public override void Init(ExecutableContext Context, DataSet data = null)
+        public override void Init(IExecutableContext Context, DataSet data = null)
         {
             base.Init(Context, data);
 
             //Get the Position 
-            Pos.X = double.Parse(data[Constants.CAMERA_POS_X]);
-            Pos.Y = double.Parse(data[Constants.CAMERA_POS_Y]);
-            Pos.Z = double.Parse(data[Constants.CAMERA_POS_Z]);
+            Pos.X = double.Parse(data[ComponentConstants.CAMERA_POS_X]);
+            Pos.Y = double.Parse(data[ComponentConstants.CAMERA_POS_Y]);
+            Pos.Z = double.Parse(data[ComponentConstants.CAMERA_POS_Z]);
 
             //Get the Target vector
-            Target.X = double.Parse(data[Constants.CAMERA_TARGET_X]);
-            Target.Z = double.Parse(data[Constants.CAMERA_TARGET_Z]);
-            Target.Y = double.Parse(data[Constants.CAMERA_TARGET_Y]);
+            Target.X = double.Parse(data[ComponentConstants.CAMERA_TARGET_X]);
+            Target.Z = double.Parse(data[ComponentConstants.CAMERA_TARGET_Z]);
+            Target.Y = double.Parse(data[ComponentConstants.CAMERA_TARGET_Y]);
 
             //Get the Up vector
-            Up.X = double.Parse(data[Constants.CAMERA_UP_X]);
-            Up.Y = double.Parse(data[Constants.CAMERA_UP_Y]);
-            Up.Z = double.Parse(data[Constants.CAMERA_UP_Z]);
+            Up.X = double.Parse(data[ComponentConstants.CAMERA_UP_X]);
+            Up.Y = double.Parse(data[ComponentConstants.CAMERA_UP_Y]);
+            Up.Z = double.Parse(data[ComponentConstants.CAMERA_UP_Z]);
 
             //Get the near and far planes
-            zNear = double.Parse(data[Constants.CAM_ZNEAR]);
-            zFar = double.Parse(data[Constants.CAM_ZFAR]);
+            zNear = double.Parse(data[ComponentConstants.CAMERA_ZNEAR]);
+            zFar = double.Parse(data[ComponentConstants.CAMERA_ZFAR]);
 
             //determine the type of camera the user selected
-            cameraType = (Constants.CAM_TYPES)Enum.Parse(typeof(Constants.CAM_TYPES), data[Constants.CAM_TYPE]);
-            if(cameraType == Constants.CAM_TYPES.ORTHOGRAPHIC)
+            cameraType = (ComponentConstants.CAM_TYPES)Enum.Parse(typeof(ComponentConstants.CAM_TYPES), data[ComponentConstants.CAMERA_TYPE]);
+            if (cameraType == ComponentConstants.CAM_TYPES.ORTHOGRAPHIC)
             {
-                cameraWidth = double.Parse(data[Constants.CAM_WIDTH]);
-                cameraheight = double.Parse(data[Constants.CAM_HEIGHT]);
+                cameraWidth = double.Parse(data[ComponentConstants.CAMERA_WIDTH]);
+                cameraheight = double.Parse(data[ComponentConstants.CAMERA_HEIGHT]);
             }
             else
             {
-                cameraFOV = double.Parse(data[Constants.CAM_FOV]);
-                cameraAspect = double.Parse(data[Constants.CAM_ASPECT]);
+                cameraFOV = double.Parse(data[ComponentConstants.CAMERA_FOV]);
+                cameraAspect = double.Parse(data[ComponentConstants.CAMERA_ASPECT]);
             }
         }
     }

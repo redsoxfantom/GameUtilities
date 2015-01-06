@@ -1,5 +1,5 @@
 ﻿using GameUtilities.Components;
-using GameUtilities.Framework;
+using GameUtilities.Framework.ExecutableContext;
 using System.Collections.Generic;
 using GameUtilities.Framework.Loggers;
 using GameUtilities.Entities.DataContracts;
@@ -17,7 +17,7 @@ namespace GameUtilities.Entities
         /// <summary>
         /// The entities' executable context
         /// </summary>
-        protected ExecutableContext mContext;
+        protected IExecutableContext mContext;
 
         /// <summary>
         /// Stores the entites Components, in no particular order
@@ -76,7 +76,7 @@ namespace GameUtilities.Entities
         /// Initialize the Entity
         /// </summary>
         /// <param name="Context">The executable context of the entity</param>
-        public void Init(ExecutableContext Context)
+        public void Init(IExecutableContext Context)
         {
             Logger.Info(string.Format("Initializing Entity '{0}'",mName));
             mContext = Context;

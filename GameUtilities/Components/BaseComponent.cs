@@ -1,5 +1,5 @@
 ﻿using GameUtilities.Entities;
-using GameUtilities.Framework;
+using GameUtilities.Framework.ExecutableContext;
 using GameUtilities.Framework.Loggers;
 using GameUtilities.Framework.DataContracts;
 using System;
@@ -15,7 +15,7 @@ namespace GameUtilities.Components
         /// <summary>
         /// The context
         /// </summary>
-        protected ExecutableContext mContext = null;
+        protected IExecutableContext mContext = null;
 
         /// <summary>
         /// The component's Logger
@@ -72,7 +72,7 @@ namespace GameUtilities.Components
         /// </summary>
         /// <param name="Context">The component's executable context</param>
         /// <param name="data">Optional data for the Component</param>
-        public virtual void Init(ExecutableContext Context, DataSet data = null)
+        public virtual void Init(IExecutableContext Context, DataSet data = null)
         {
             if(Context == null)
             {

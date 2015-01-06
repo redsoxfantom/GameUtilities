@@ -1,5 +1,6 @@
 ﻿using GameUtilities.Entities;
 using GameUtilities.Framework;
+using GameUtilities.Framework.ExecutableContext;
 using GameUtilities.Framework.DataContracts;
 
 namespace GameUtilities.Components
@@ -14,6 +15,6 @@ namespace GameUtilities.Components
         /// </summary>
         /// <param name="Context">The component's executable context</param>
         /// <param name="data">Optional data for the Component</param>
-        void Init(ExecutableContext Context, DataSet data = null);
+        void Init(IExecutableContext Context, DataSet data = null);
     }
 }

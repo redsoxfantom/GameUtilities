@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using GameUtilities.Framework.Loggers;
-using GameUtilities.Framework;
+using GameUtilities.Framework.ExecutableContext;
 using GameUtilities.Entities;
 using GameUtilities.Entities.DataContracts;
 using GameUtilities.Worlds.DataContracts;
@@ -37,7 +37,7 @@ namespace GameUtilities.Worlds
         /// <summary>
         /// The executable context of the world. Passed to all Entities.
         /// </summary>
-        private ExecutableContext mContext;
+        private IExecutableContext mContext;
         #endregion Fields
 
         #region Constructors
@@ -78,7 +78,7 @@ namespace GameUtilities.Worlds
         /// <summary>
         /// Initialize the World (Read in Entities and Components)
         /// </summary>
-        public void Init(ExecutableContext context)
+        public void Init(IExecutableContext context)
         {
             mLogger.Info(string.Format("Initializing world '{0}'", mData.Name));
             mContext = context;

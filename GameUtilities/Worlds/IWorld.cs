@@ -1,5 +1,6 @@
 ﻿using GameUtilities.Entities;
 using GameUtilities.Framework.Loggers;
+using GameUtilities.Framework.ExecutableContext;
 using GameUtilities.Framework;
 using GameUtilities.Worlds.DataContracts;
 
@@ -20,6 +21,6 @@ namespace GameUtilities.Worlds
         /// <summary>
         /// Initialize the World (Read in Entities and Components)
         /// </summary>
-        void Init(ExecutableContext context);
+        void Init(IExecutableContext context);
     }
 }
