@@ -13,17 +13,17 @@ namespace GameUtilities.Components
         /// <summary>
         /// The camera's Position vector
         /// </summary>
-        private Vector3d Pos = new Vector3d(0.0,0.0,0.0);
+        private Vector3d Pos;
 
         /// <summary>
         /// The Camera's target vector
         /// </summary>
-        private Vector3d Target = new Vector3d(0.0, 0.0, -1.0);
+        private Vector3d Target;
 
         /// <summary>
         /// The Camera's Up vector
         /// </summary>
-        private Vector3d Up = new Vector3d(0.0, 1.0, 0.0);
+        private Vector3d Up;
 
         /// <summary>
         /// The camera's near plane
@@ -86,20 +86,20 @@ namespace GameUtilities.Components
         {
             base.Init(Context, data);
 
-            //Pos will have a value (0,0,0) if the dataset does not define a value for it
-            double.TryParse(data[Constants.CAMERA_POS_X],out Pos.X);
-            double.TryParse(data[Constants.CAMERA_POS_Y],out Pos.Y);
-            double.TryParse(data[Constants.CAMERA_POS_Z],out Pos.Z);
+            //Get the Position 
+            Pos.X = double.Parse(data[Constants.CAMERA_POS_X]);
+            Pos.Y = double.Parse(data[Constants.CAMERA_POS_Y]);
+            Pos.Z = double.Parse(data[Constants.CAMERA_POS_Z]);
 
-            //Target will have a value (0,0,-1) if the dataset does not define a value for it
-            double.TryParse(data[Constants.CAMERA_TARGET_X], out Target.X);
-            double.TryParse(data[Constants.CAMERA_TARGET_Y], out Target.Y);
-            double.TryParse(data[Constants.CAMERA_TARGET_Z], out Target.Z);
+            //Get the Target vector
+            Target.X = double.Parse(data[Constants.CAMERA_TARGET_X]);
+            Target.Z = double.Parse(data[Constants.CAMERA_TARGET_Z]);
+            Target.Y = double.Parse(data[Constants.CAMERA_TARGET_Y]);
 
-            //Up will have a value (0,1,0) if the dataset does not define a value for it
-            double.TryParse(data[Constants.CAMERA_UP_X], out Up.X);
-            double.TryParse(data[Constants.CAMERA_UP_Y], out Up.Y);
-            double.TryParse(data[Constants.CAMERA_UP_Z], out Up.Z);
+            //Get the Up vector
+            Up.X = double.Parse(data[Constants.CAMERA_UP_X]);
+            Up.Y = double.Parse(data[Constants.CAMERA_UP_Y]);
+            Up.Z = double.Parse(data[Constants.CAMERA_UP_Z]);
         }
     }
 }
