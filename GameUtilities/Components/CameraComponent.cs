@@ -40,13 +40,13 @@ namespace GameUtilities.Components
         /// The camera's field of view
         /// Only used for Perspective cameras
         /// </summary>
-        private double CameraFOV;
+        private double cameraFOV;
 
         /// <summary>
         /// The camera's aspect ratio
         /// Only used for Perspective cameras
         /// </summary>
-        private double CameraAspect;
+        private double cameraAspect;
 
         /// <summary>
         /// The camera's width
@@ -115,12 +115,13 @@ namespace GameUtilities.Components
             cameraType = (Constants.CAM_TYPES)Enum.Parse(typeof(Constants.CAM_TYPES), data[Constants.CAM_TYPE]);
             if(cameraType == Constants.CAM_TYPES.ORTHOGRAPHIC)
             {
-
+                cameraWidth = double.Parse(data[Constants.CAM_WIDTH]);
+                cameraheight = double.Parse(data[Constants.CAM_HEIGHT]);
             }
             else
             {
-                CameraFOV = double.Parse(data[Constants.CAM_FOV]);
-                CameraAspect = double.Parse(data[Constants.CAM_ASPECT]);
+                cameraFOV = double.Parse(data[Constants.CAM_FOV]);
+                cameraAspect = double.Parse(data[Constants.CAM_ASPECT]);
             }
         }
     }

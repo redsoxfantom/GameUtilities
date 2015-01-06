@@ -79,5 +79,15 @@
         /// The camera's aspect ratio
         /// </summary>
         public static const string CAM_ASPECT = "CamAspect";
+
+        /// <summary>
+        /// The camera's width
+        /// </summary>
+        public static const string CAM_WIDTH = "CamWidth";
+
+        /// <summary>
+        /// The camera's height
+        /// </summary>
+        public static const string CAM_HEIGHT = "CamHeight";
     }
 }
