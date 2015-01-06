@@ -49,5 +49,15 @@
         /// The camera Up vector's Z position
         /// </summary>
         public static const string CAMERA_UP_Z = "CamUpZ";
+
+        /// <summary>
+        /// The camera's Near Plane
+        /// </summary>
+        public static const string CAM_ZNEAR = "CamNear";
+
+        /// <summary>
+        /// The camera's Far Plane
+        /// </summary>
+        public static const string CAM_ZFAR = "CamFar";
     }
 }

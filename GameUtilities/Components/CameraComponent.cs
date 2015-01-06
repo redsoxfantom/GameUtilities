@@ -70,9 +70,9 @@ namespace GameUtilities.Components
         /// CamUpX - The camera up vector's X component
         /// CamUpY - The camera up vector's Y component
         /// CamUpZ - The camera up vector's Z component
-        /// CameraNear - the Z value of the Near Plane
-        /// CameraFar - the Z value of the FarPlane
-        /// CameraType - {PERSPECTIVE | ORTHOGRAPHIC}
+        /// CamNear - the Z value of the Near Plane
+        /// CamFar - the Z value of the FarPlane
+        /// CamType - {PERSPECTIVE | ORTHOGRAPHIC}
         /// If CameraType = PERSPECTIVE
         ///     CameraFOV - The field of view of the camera
         ///     CameraAspect - The aspect ratio of the camera
@@ -100,6 +100,10 @@ namespace GameUtilities.Components
             Up.X = double.Parse(data[Constants.CAMERA_UP_X]);
             Up.Y = double.Parse(data[Constants.CAMERA_UP_Y]);
             Up.Z = double.Parse(data[Constants.CAMERA_UP_Z]);
+
+            //Get the near and far planes
+            zNear = double.Parse(data[Constants.CAM_ZNEAR]);
+            zFar = double.Parse(data[Constants.CAM_ZFAR]);
         }
     }
 }
