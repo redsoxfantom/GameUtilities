@@ -63,7 +63,10 @@ namespace GameUtilitiesUnitTests.Components
             double actualHeight = (double)obj.GetFieldOrProperty("cameraHeight");
             double expectedWidth = 1.2;
             double expectedHeight = 1.3;
+            Matrix4d actualViewMatrix = (Matrix4d)obj.GetFieldOrProperty("viewPerspectiveMatrix");
+            Matrix4d expectedViewMatrix = new Matrix4d(0.68041381743977, -1.17851130197758, -0.962250448649376, 0, -1.25614858604266, 1.4091292235627E-15, -0.888231183368655, 0, -8.16496580927727, -14.1421356237309, 11.5470053837925, 0,-8.57321409974113, -14.9906637611548, 12.4707658144959, 1);
 
+            Assert.IsTrue(expectedViewMatrix.Equals(actualViewMatrix));
             Assert.IsTrue(actualPos.Equals(expectedPos));
             Assert.IsTrue(actualTarget.Equals(expectedTarget));
             Assert.IsTrue(actualUp.Equals(expectedUp));
@@ -121,7 +124,10 @@ namespace GameUtilitiesUnitTests.Components
             double actualAspect = (double)obj.GetFieldOrProperty("cameraAspect");
             double expectedFOV = 1.2;
             double expectedAspect = 1.3;
+            Matrix4d actualViewMatrix = (Matrix4d)obj.GetFieldOrProperty("viewPerspectiveMatrix");
+            Matrix4d expectedViewMatrix = new Matrix4d(0.459026824286609, -0.7950577817014, -0.649161960399175, 0, -1.19346974314519, 1.33881700874409E-15, -0.843910548518927, 0, -8.57321409974113, -14.7078210486802, 11.7779454914684, -1, -8.98146239020499, -15.556349186104, 12.7017059221718, 0);
 
+            Assert.IsTrue(expectedViewMatrix.Equals(actualViewMatrix));
             Assert.IsTrue(actualPos.Equals(expectedPos));
             Assert.IsTrue(actualTarget.Equals(expectedTarget));
             Assert.IsTrue(actualUp.Equals(expectedUp));
