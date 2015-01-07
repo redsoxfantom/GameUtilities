@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using GameUtilities.Framework.Loggers;
-using GameUtilities.Framework.ExecutableContext;
+using GameUtilities.Framework.Utilities.Loggers;
+using GameUtilities.Framework.Utilities.ExecutableContext;
 using GameUtilities.Entities;
 using GameUtilities.Entities.DataContracts;
 using GameUtilities.Worlds.DataContracts;

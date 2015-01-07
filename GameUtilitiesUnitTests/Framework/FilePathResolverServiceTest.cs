@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using GameUtilities.Framework.FilePathResolver;
+using GameUtilities.Framework.Utilities.FilePathResolver;
 
 namespace GameUtilitiesUnitTests.Services
 {

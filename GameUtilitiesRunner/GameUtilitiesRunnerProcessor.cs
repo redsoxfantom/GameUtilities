@@ -1,5 +1,5 @@
 ﻿using GameUtilities.Framework.Engine;
-using GameUtilities.Framework.Loggers;
+using GameUtilities.Framework.Utilities.Loggers;
 using System;
 using System.Drawing;
 using OpenTK;

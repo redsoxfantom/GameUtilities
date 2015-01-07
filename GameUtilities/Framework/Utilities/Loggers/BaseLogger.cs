@@ -3,7 +3,7 @@ using System;
 using System.Reflection;
 using System.Collections.Generic;
 
-namespace GameUtilities.Framework.Loggers
+namespace GameUtilities.Framework.Utilities.Loggers
 {
     /// <summary>
     /// A generic Logger class. Prints to the console

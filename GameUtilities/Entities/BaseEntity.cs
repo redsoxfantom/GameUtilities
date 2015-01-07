@@ -1,7 +1,7 @@
 ﻿using GameUtilities.Components;
-using GameUtilities.Framework.ExecutableContext;
+using GameUtilities.Framework.Utilities.ExecutableContext;
 using System.Collections.Generic;
-using GameUtilities.Framework.Loggers;
+using GameUtilities.Framework.Utilities.Loggers;
 using GameUtilities.Entities.DataContracts;
 using GameUtilities.Framework.DataContracts;
 using System;

@@ -1,4 +1,4 @@
-﻿using GameUtilities.Framework.Loggers;
+﻿using GameUtilities.Framework.Utilities.Loggers;
 using System;
 
 namespace GameUtilitiesRunner

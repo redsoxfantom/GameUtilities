@@ -1,5 +1,5 @@
 ﻿
-namespace GameUtilities.Framework.Loggers
+namespace GameUtilities.Framework.Utilities.Loggers
 {
     /// <summary>
     /// Factory for creating a logger. Makes a Null logger when in Release mode, and a Console logger when not

@@ -1,4 +1,4 @@
-﻿namespace GameUtilities.Framework.FilePathResolver
+﻿namespace GameUtilities.Framework.Utilities.FilePathResolver
 {
     /// <summary>
     /// Service to allow components to find file paths

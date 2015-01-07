@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GameUtilities.Framework.Loggers
+namespace GameUtilities.Framework.Utilities.Loggers
 {
     public interface ILogger
     {

@@ -1,9 +1,9 @@
 ﻿using GameUtilities.Entities;
-using GameUtilities.Framework.Loggers;
+using GameUtilities.Framework.Utilities.Loggers;
 using GameUtilities.Worlds;
-using GameUtilities.Framework.FilePathResolver;
+using GameUtilities.Framework.Utilities.FilePathResolver;
 
-namespace GameUtilities.Framework.ExecutableContext
+namespace GameUtilities.Framework.Utilities.ExecutableContext
 {
     /// <summary>
     /// Stores entity-level information

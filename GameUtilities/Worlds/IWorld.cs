@@ -1,6 +1,6 @@
 ﻿using GameUtilities.Entities;
-using GameUtilities.Framework.Loggers;
-using GameUtilities.Framework.ExecutableContext;
+using GameUtilities.Framework.Utilities.Loggers;
+using GameUtilities.Framework.Utilities.ExecutableContext;
 using GameUtilities.Framework;
 using GameUtilities.Worlds.DataContracts;
 

@@ -1,7 +1,7 @@
-﻿using GameUtilities.Framework.ExecutableContext;
+﻿using GameUtilities.Framework.Utilities.ExecutableContext;
 using GameUtilities.Worlds.DataContracts;
 using GameUtilities.Worlds;
-using GameUtilities.Framework.Loggers;
+using GameUtilities.Framework.Utilities.Loggers;
 
 namespace GameUtilities.Framework.Engine
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameUtilities.Framework.FilePathResolver
+namespace GameUtilities.Framework.Utilities.FilePathResolver
 {
     /// <summary>
     /// Interface for finding the path to various config files
