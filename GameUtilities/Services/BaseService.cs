@@ -28,7 +28,7 @@ namespace GameUtilities.Services
         /// </summary>
         public BaseService()
         {
-            mName = this.GetType().ToString();
+            mName = this.GetType().Name;
             mLogger = LoggerFactory.CreateLogger(mName);
         }
 
