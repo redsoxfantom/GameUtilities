@@ -37,9 +37,12 @@ namespace GameUtilities.Entities
         /// <summary>
         /// The Entities' logger
         /// </summary>
-        public ILogger Logger {get; private set;}
+        public virtual ILogger Logger {get; private set;}
 
-        public string Name
+        /// <summary>
+        /// The entites' name
+        /// </summary>
+        public virtual string Name
         {
             get
             {
@@ -76,7 +79,7 @@ namespace GameUtilities.Entities
         /// Initialize the Entity
         /// </summary>
         /// <param name="Context">The executable context of the entity</param>
-        public void Init(IExecutableContext Context)
+        public virtual void Init(IExecutableContext Context)
         {
             Logger.Info(string.Format("Initializing Entity '{0}'",mName));
             mContext = Context;
@@ -110,7 +113,7 @@ namespace GameUtilities.Entities
         /// Call Update on all Entity components
         /// </summary>
         /// <param name="timeSinceLastFrame">time since Update was last called</param>
-        public void Update(double timeSinceLastFrame)
+        public virtual void Update(double timeSinceLastFrame)
         {
             foreach(IComponent component in mComponents)
             {
@@ -122,7 +125,7 @@ namespace GameUtilities.Entities
         /// Call Draw on all Entity components
         /// </summary>
         /// <param name="timeSinceLastFrame">time since Draw was last called</param>
-        public void Draw(double timeSinceLastFrame)
+        public virtual void Draw(double timeSinceLastFrame)
         {
             foreach(IComponent component in mComponents)
             {
@@ -133,7 +136,7 @@ namespace GameUtilities.Entities
         /// <summary>
         /// Shut down the entity
         /// </summary>
-        public void Terminate()
+        public virtual void Terminate()
         {
             Logger.Info(string.Format("Entity {0} starting termination...", mName));
             foreach(IComponent component in mComponents)
@@ -144,16 +147,5 @@ namespace GameUtilities.Entities
         }
 
         #endregion IEntity Methods
-
-        #region Methods
-        /// <summary>
-        /// toString method
-        /// </summary>
-        /// <returns>the entity's name</returns>
-        public override String ToString()
-        {
-            return mName;
-        }
-        #endregion Methods
     }
 }
