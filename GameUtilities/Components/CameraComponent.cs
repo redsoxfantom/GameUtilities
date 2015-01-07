@@ -66,6 +66,18 @@ namespace GameUtilities.Components
         private  ComponentConstants.CAM_TYPES cameraType;
 
         /// <summary>
+        /// Determines if this component is "dirty" (needs to be updated)
+        /// </summary>
+        private bool isDirty;
+
+        /// <summary>
+        /// The generated ViewPerspective matrix for this camera
+        /// </summary>
+        private Matrix4d viewPerspectiveMatrix;
+
+
+#region IComponentMethods
+        /// <summary>
         /// Initialize the Camera. Needs the following from the Dataset:
         /// CamPosX - The camera's X position
         /// CamPosY - The camera's Y position
@@ -123,6 +135,60 @@ namespace GameUtilities.Components
                 cameraFOV = double.Parse(data[ComponentConstants.CAMERA_FOV]);
                 cameraAspect = double.Parse(data[ComponentConstants.CAMERA_ASPECT]);
             }
+
+            viewPerspectiveMatrix = generateMatrix(Pos, Up, Target, cameraType, zNear, zFar, cameraWidth, cameraHeight,cameraAspect,cameraFOV);
+            isDirty = false;
         }
+
+        /// <summary>
+        /// Moves the Camera if necessary
+        /// </summary>
+        /// <param name="timeSinceLastFrame">How long it's been since the last frame</param>
+        public override void Update(double timeSinceLastFrame)
+        {
+            base.Update(timeSinceLastFrame);
+
+            if(isDirty)
+            {
+                viewPerspectiveMatrix = generateMatrix(Pos, Up, Target, cameraType, zNear, zFar, cameraWidth, cameraHeight, cameraAspect, cameraFOV);
+                isDirty = false;
+            }
+        }
+#endregion IComponentMethods
+
+#region Private Methods
+        /// <summary>
+        /// Generates a 4x4 double Matrix representing the camera's View (with Perspective added)
+        /// </summary>
+        /// <param name="Pos">The camera's Position</param>
+        /// <param name="Up">The camera's Up vector</param>
+        /// <param name="Target">The camera's Target vector</param>
+        /// <param name="cameraType">The camera's Type</param>
+        /// <param name="zFar">The camera's ZFar</param>
+        /// <param name="zNear">The camera's zNear</param>
+        /// <param name="cameraWidth">The camera's width</param>
+        /// <param name="cameraHeight">The camera's height</param>
+        /// <param name="cameraAspect">The camera's aspect ratio</param>
+        /// <param name="cameraFOV">The camera's field of view</param>
+        /// <returns>a 4x4 double Matrix</returns>
+        private Matrix4d generateMatrix(Vector3d Pos, Vector3d Up, Vector3d Target, ComponentConstants.CAM_TYPES cameraType, double zNear, double zFar, double cameraWidth = 0, double cameraHeight = 0, double cameraAspect = 0, double cameraFOV = 0)
+        {
+            Matrix4d ProjectionMatrix;
+            if(cameraType == ComponentConstants.CAM_TYPES.ORTHOGRAPHIC)
+            {
+                ProjectionMatrix = Matrix4d.CreateOrthographic(cameraWidth, cameraHeight, zNear, zFar);
+            }
+            else
+            {
+                ProjectionMatrix = Matrix4d.CreatePerspectiveFieldOfView(cameraFOV, cameraAspect, zNear, zFar);
+            }
+
+            Matrix4d ViewMatrix = Matrix4d.LookAt(Pos, Target, Up);
+
+            Matrix4d ResultMatrix = ProjectionMatrix * ViewMatrix;
+
+            return ResultMatrix;
+        }
+#endregion Private Methods
     }
 }
