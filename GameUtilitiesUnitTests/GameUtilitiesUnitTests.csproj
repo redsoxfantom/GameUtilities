@@ -62,9 +62,9 @@
     <Compile Include="Entities\BaseEntityTest.cs" />
     <Compile Include="Framework\Loggers\BaseLoggerTest.cs" />
     <Compile Include="Framework\Loggers\LoggerFactoryTest.cs" />
-    <Compile Include="Framework\EngineTest.cs" />
+    <Compile Include="Framework\Engine\EngineTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Framework\FilePathResolverServiceTest.cs" />
+    <Compile Include="Framework\FilePathResolver\FilePathResolverServiceTest.cs" />
     <Compile Include="Services\BaseServiceTest.cs" />
     <Compile Include="Worlds\BaseWorldTest.cs" />
   </ItemGroup>
