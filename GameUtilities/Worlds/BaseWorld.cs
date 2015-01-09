@@ -115,7 +115,14 @@ namespace GameUtilities.Worlds
         {
             foreach(IEntity entity in EntityList)
             {
-                entity.Update(timeSinceLastUpdate);
+                try
+                {
+                    entity.Update(timeSinceLastUpdate);
+                }
+                catch(Exception e)
+                {
+                    mLogger.Warn(string.Format("World {0} error updating Entity {1}",mData.Name,entity.Name), e);
+                }
             }
         }
 
@@ -127,7 +134,14 @@ namespace GameUtilities.Worlds
         {
             foreach(IEntity entity in EntityList)
             {
-                entity.Draw(timeSinceLastUpdate);
+                try
+                {
+                    entity.Draw(timeSinceLastUpdate);
+                }
+                catch(Exception e)
+                {
+                    mLogger.Warn(string.Format("World {0} error drawing Entity {1}",mData.Name,entity.Name), e);
+                }
             }
         }
 
