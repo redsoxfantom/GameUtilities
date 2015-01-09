@@ -23,6 +23,9 @@ namespace GameUtilitiesRunner
         /// </summary>
         private static LoggerLevel mLoggingLevel = LoggerLevel.INFO;
 
+        /// <summary>
+        /// The error string to display when on an error
+        /// </summary>
         private static string UsageString =
             "USAGE: GameUtilitiesRunner.exe -loglevel {DEBUG,INFO,WARN,ERROR,FATAL} -world <world name> -path <path\\to\\config\\directory>";
 
