@@ -121,6 +121,18 @@ namespace GameUtilities.Framework.Utilities.Loggers
         }
 
         /// <summary>
+        /// Print a message and Exception
+        /// </summary>
+        /// <param name="msg">The message</param>
+        /// <param name="e">The Exception</param>
+        public void Warn(string msg, Exception e)
+        {
+            string stackInfo = getCallingMethod();
+            string finalmsg = string.Format("[{0}] {1}\n{2}\n{3}",stackInfo,msg,e.Message,e.StackTrace);
+            Print(LoggerLevel.WARN, finalmsg, ConsoleColor.White, ConsoleColor.DarkYellow);
+        }
+
+        /// <summary>
         /// Prints an Error Message
         /// </summary>
         /// <param name="msg">The message to print</param>

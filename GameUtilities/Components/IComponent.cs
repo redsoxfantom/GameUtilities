@@ -11,6 +11,11 @@ namespace GameUtilities.Components
     public interface IComponent : IUpdatable, IDrawable, ITerminatable
     {
         /// <summary>
+        /// The name of the component
+        /// </summary>
+        string Name { get; }
+
+        /// <summary>
         /// Initialize the Component
         /// </summary>
         /// <param name="Context">The component's executable context</param>

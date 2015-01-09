@@ -117,7 +117,14 @@ namespace GameUtilities.Entities
         {
             foreach(IComponent component in mComponents)
             {
-                component.Update(timeSinceLastFrame);
+                try
+                {
+                    component.Update(timeSinceLastFrame);
+                }
+                catch(Exception e)
+                {
+                    Logger.Warn(string.Format("Entity {0} error updating component {1}",mName,component.Name), e);
+                }
             }
         }
 
@@ -129,7 +136,14 @@ namespace GameUtilities.Entities
         {
             foreach(IComponent component in mComponents)
             {
-                component.Draw(timeSinceLastFrame);
+                try
+                {
+                    component.Draw(timeSinceLastFrame);
+                }
+                catch(Exception e)
+                {
+                    Logger.Warn(string.Format("Entity {0} error drawing component {1}", mName, component.Name), e);
+                }
             }
         }
 

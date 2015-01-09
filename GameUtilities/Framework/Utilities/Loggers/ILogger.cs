@@ -57,6 +57,13 @@ namespace GameUtilities.Framework.Utilities.Loggers
         void Warn(String msg);
 
         /// <summary>
+        /// Print a warning and Exception
+        /// </summary>
+        /// <param name="msg">The message</param>
+        /// <param name="e">The exception</param>
+        void Warn(String msg, Exception e);
+
+        /// <summary>
         /// Prints an Error Message
         /// </summary>
         /// <param name="msg">The message to print</param>

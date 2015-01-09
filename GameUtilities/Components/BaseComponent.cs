@@ -36,6 +36,14 @@ namespace GameUtilities.Components
         /// The data passed in from the Entity
         /// </summary>
         private DataSet mDataSet;
+
+        /// <summary>
+        /// The name of the Component
+        /// </summary>
+        public string Name
+        {
+            get { return mName; }
+        }
         #endregion Fields
 
         #region Constructors
