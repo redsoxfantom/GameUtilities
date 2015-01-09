@@ -2,6 +2,7 @@
 using GameUtilities.Worlds.DataContracts;
 using GameUtilities.Worlds;
 using GameUtilities.Framework.Utilities.Loggers;
+using System;
 
 namespace GameUtilities.Framework.Engine
 {
@@ -54,7 +55,14 @@ namespace GameUtilities.Framework.Engine
         {
             mLogger.Debug(string.Format("Update called, timeSinceLastFrame={0}", timeSinceLastFrame));
 
-            mWorld.Update(timeSinceLastFrame);
+            try
+            {
+                mWorld.Update(timeSinceLastFrame);
+            }
+            catch(Exception e)
+            {
+                mLogger.Warn("Error updating world", e);
+            }
 
             //TODO: Update Services here
         }
@@ -67,7 +75,14 @@ namespace GameUtilities.Framework.Engine
         {
             mLogger.Debug(string.Format("Draw called, timeSinceLastFrame={0}", timeSinceLastFrame));
 
-            mWorld.Draw(timeSinceLastFrame);
+            try
+            {
+                mWorld.Draw(timeSinceLastFrame);
+            }
+            catch(Exception e)
+            {
+                mLogger.Warn("Error drawing world", e);
+            }
         }
 
         /// <summary>
