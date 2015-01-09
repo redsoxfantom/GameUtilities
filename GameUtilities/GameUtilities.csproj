@@ -80,6 +80,7 @@
     <Compile Include="Worlds\BaseWorld.cs" />
     <Compile Include="Worlds\DataContracts\WorldData.cs" />
     <Compile Include="Worlds\DataContracts\WorldFactory.cs" />
+    <Compile Include="Worlds\NullWorld.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
