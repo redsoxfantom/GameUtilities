@@ -3,7 +3,7 @@
     /// <summary>
     /// Interface for any object that can receive a message
     /// </summary>
-    interface IMessageDestination
+    public interface IMessageDestination
     {
         /// <summary>
         /// Handle a direct message from the message router
