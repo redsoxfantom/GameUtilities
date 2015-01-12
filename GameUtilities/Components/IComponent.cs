@@ -2,13 +2,14 @@
 using GameUtilities.Framework;
 using GameUtilities.Framework.Utilities.ExecutableContext;
 using GameUtilities.Framework.DataContracts;
+using GameUtilities.Framework.Utilities.Message;
 
 namespace GameUtilities.Components
 {
     /// <summary>
     /// Represents a "Component" attached to an entity. Entitys are defined by what Components they use.
     /// </summary>
-    public interface IComponent : IUpdatable, IDrawable, ITerminatable
+    public interface IComponent : IUpdatable, IDrawable, ITerminatable, IMessageDestination
     {
         /// <summary>
         /// The name of the component
