@@ -3,6 +3,7 @@ using GameUtilities.Framework.Utilities.ExecutableContext;
 using GameUtilities.Framework.Utilities.Loggers;
 using GameUtilities.Framework.DataContracts;
 using System;
+using GameUtilities.Framework.Utilities.Message;
 
 namespace GameUtilities.Components
 {
@@ -99,6 +100,19 @@ namespace GameUtilities.Components
             mLogger = LoggerFactory.CreateLogger(mName);
             mEntity = mContext.Entity;
         }
+
+        /// <summary>
+        /// Handle a direct message from the message router
+        /// </summary>
+        /// <param name="message">The message</param>
+        /// <param name="returnValue">the return value</param>
+        /// <returns>Always returns false, should be overriden</returns>
+        public virtual bool HandleMessage(IMessage message, ref object returnValue)
+        {
+            return false;
+        }
+
         #endregion IComponent Methods
+
     }
 }

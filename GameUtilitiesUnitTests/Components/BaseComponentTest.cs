@@ -37,5 +37,19 @@ namespace GameUtilitiesUnitTests.Components
             DataSet actualData = (DataSet)obj.GetFieldOrProperty("mDataSet");
             Assert.AreEqual(data, actualData);
         }
+
+        /// <summary>
+        /// Test the ReceiveMessage function
+        /// </summary>
+        [TestMethod]
+        public void BaseComponentMessageTest()
+        {
+            BaseComponent comp = new BaseComponent();
+            object ret = new object();
+
+            bool actual = comp.HandleMessage(null, ref ret);
+
+            Assert.IsFalse(actual);
+        }
     }
 }
