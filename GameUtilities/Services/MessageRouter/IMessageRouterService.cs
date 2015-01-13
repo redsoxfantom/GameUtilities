@@ -20,5 +20,12 @@ namespace GameUtilities.Services.MessageRouter
         /// <param name="Topic">The topic to subscribe for</param>
         /// <param name="consumer">The object that is subscribing for this Topic</param>
         void RegisterTopic(string Topic, IMessageDestination consumer);
+
+        /// <summary>
+        /// Send a message to anyone subscribed to a Topic
+        /// </summary>
+        /// <param name="Topic">The topic to associate this message with</param>
+        /// <param name="message">The message to send</param>
+        void SendMessage(string Topic, IMessage message);
     }
 }
