@@ -12,7 +12,7 @@ namespace GameUtilities.Services.MessageRouter
         /// Get all messages for subscribed topics
         /// </summary>
         /// <returns>A dictionary of topics and list of messages associated with the topic</returns>
-        Dictionary<string,List<IMessage>> GetMessages();
+        Dictionary<string,List<IMessage>> GetMessages(IMessageDestination consumer);
 
         /// <summary>
         /// Register to receive Messages pertaining to a Topic

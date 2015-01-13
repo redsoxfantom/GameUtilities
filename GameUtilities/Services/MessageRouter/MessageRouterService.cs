@@ -29,7 +29,7 @@ namespace GameUtilities.Services.MessageRouter
         /// Get all messages for subscribed topics
         /// </summary>
         /// <returns>A dictionary of topics and list of messages associated with the topic</returns>
-        public Dictionary<string, List<IMessage>> GetMessages()
+        public Dictionary<string, List<IMessage>> GetMessages(IMessageDestination consumer)
         {
             throw new System.NotImplementedException();
         }
