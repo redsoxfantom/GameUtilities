@@ -22,6 +22,13 @@ namespace GameUtilities.Services.MessageRouter
         void RegisterTopic(string Topic, IMessageDestination consumer);
 
         /// <summary>
+        /// Deregister a consumer from a topic
+        /// </summary>
+        /// <param name="Topic">The topic to degister from</param>
+        /// <param name="consumer">The consumer to deregister</param>
+        void DeregisterTopic(string Topic, IMessageDestination consumer);
+
+        /// <summary>
         /// Send a message to anyone subscribed to a Topic. The recepients will get it next frame
         /// </summary>
         /// <param name="Topic">The topic to associate this message with</param>

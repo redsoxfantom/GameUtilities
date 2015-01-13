@@ -17,10 +17,22 @@ namespace GameUtilities.Services.MessageRouter
         private ILogger mLogger;
 
         /// <summary>
+        /// Dictionary linking Consumers to their Topics
+        /// </summary>
+        private Dictionary<IMessageDestination, List<string>> ConsumerTopicDictionary;
+
+        /// <summary>
+        /// Dictionary linking Topics to all consumers subscribed for them
+        /// </summary>
+        private Dictionary<string, List<IMessageDestination>> TopicConsumerDictionary;
+
+        /// <summary>
         /// The constructor
         /// </summary>
         public MessageRouterService()
         {
+            ConsumerTopicDictionary = new Dictionary<IMessageDestination, List<string>>();
+            TopicConsumerDictionary = new Dictionary<string, List<IMessageDestination>>();
             mLogger = LoggerFactory.CreateLogger("MessageRouter");
             mLogger.Info("Created Message Router");
         }
@@ -41,7 +53,37 @@ namespace GameUtilities.Services.MessageRouter
         /// <param name="consumer">The object that is subscribing for this Topic</param>
         public void RegisterTopic(string Topic, IMessageDestination consumer)
         {
-            throw new System.NotImplementedException();
+            if(ConsumerTopicDictionary.ContainsKey(consumer))
+            {
+                ConsumerTopicDictionary[consumer].Add(Topic);
+            }
+            else
+            {
+                List<string> list = new List<string>();
+                list.Add(Topic);
+                ConsumerTopicDictionary.Add(consumer, list);
+            }
+
+            if(TopicConsumerDictionary.ContainsKey(Topic))
+            {
+                TopicConsumerDictionary[Topic].Add(consumer);
+            }
+            else
+            {
+                List<IMessageDestination> list = new List<IMessageDestination>();
+                list.Add(consumer);
+                TopicConsumerDictionary.Add(Topic, list);
+            }
+        }
+
+        /// <summary>
+        /// Deregister a consumer from a topic
+        /// </summary>
+        /// <param name="Topic">The topic to degister from</param>
+        /// <param name="consumer">The consumer to deregister</param>
+        public void DeregisterTopic(string Topic, IMessageDestination consumer)
+        {
+
         }
 
         /// <summary>
