@@ -2,6 +2,7 @@
 using GameUtilities.Framework.Utilities.Loggers;
 using GameUtilities.Worlds;
 using GameUtilities.Framework.Utilities.FilePathResolver;
+using GameUtilities.Services.MessageRouter;
 
 namespace GameUtilities.Framework.Utilities.ExecutableContext
 {
@@ -23,6 +24,11 @@ namespace GameUtilities.Framework.Utilities.ExecutableContext
         /// <summary>
         /// The File Path resolver object
         /// </summary>
-        IFilePathResolver ConfigManager { set; get; }
+        IFilePathResolver ConfigManager { get; }
+
+        /// <summary>
+        /// The Message Router
+        /// </summary>
+        IMessageRouterService MessageRouter { get; }
     }
 }

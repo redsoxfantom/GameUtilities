@@ -2,6 +2,7 @@
 using GameUtilities.Framework.Utilities.Loggers;
 using GameUtilities.Worlds;
 using GameUtilities.Framework.Utilities.FilePathResolver;
+using GameUtilities.Services.MessageRouter;
 
 namespace GameUtilities.Framework.Utilities.ExecutableContext
 {
@@ -23,7 +24,12 @@ namespace GameUtilities.Framework.Utilities.ExecutableContext
         /// <summary>
         /// The File Path resolver object
         /// </summary>
-        public IFilePathResolver ConfigManager { set; get; }
+        public IFilePathResolver ConfigManager { private set; get; }
+
+        /// <summary>
+        /// The message router
+        /// </summary>
+        public IMessageRouterService MessageRouter { private set; get; }
 
         /// <summary>
         /// The constructor
@@ -32,6 +38,8 @@ namespace GameUtilities.Framework.Utilities.ExecutableContext
         {
             ConfigManager = new ConfigManager();
             ConfigManager.Init(PathToConfig);
+
+            MessageRouter = new MessageRouterService();
         }
     }
 }

@@ -40,10 +40,10 @@ namespace GameUtilities.Framework.Engine
         {
             mLogger.Info(string.Format("Initializing engine with world: {0} and config path: {1}",world,PathToConfig));
             mContext = new BaseExecutableContext(PathToConfig);
-            mWorld = WorldFactory.CreateWorld(world, mContext);
 
             //TODO: initialize services here
 
+            mWorld = WorldFactory.CreateWorld(world, mContext);
             mLogger.Info("Done initializing Engine");
         }
 

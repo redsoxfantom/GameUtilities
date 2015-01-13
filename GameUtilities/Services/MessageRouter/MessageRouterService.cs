@@ -1,4 +1,5 @@
-﻿using GameUtilities.Framework.Utilities.Message;
+﻿using GameUtilities.Framework.Utilities.Loggers;
+using GameUtilities.Framework.Utilities.Message;
 using GameUtilities.Services;
 using System.Collections.Generic;
 
@@ -8,15 +9,20 @@ namespace GameUtilities.Services.MessageRouter
     /// The message router service.
     /// Uses a subscription-based model where Components and Services can register for Topics, and then retrieve Messages each Frame
     /// </summary>
-    public class MessageRouterService : BaseService, IMessageRouterService
+    public class MessageRouterService : IMessageRouterService
     {
         /// <summary>
-        /// Initialize the MessageRouter
+        /// The logger
         /// </summary>
-        /// <param name="context">The executable context</param>
-        public override void Init(Framework.Utilities.ExecutableContext.IExecutableContext context)
+        private ILogger mLogger;
+
+        /// <summary>
+        /// The constructor
+        /// </summary>
+        public MessageRouterService()
         {
-            base.Init(context);
+            mLogger = LoggerFactory.CreateLogger("MessageRouter");
+            mLogger.Info("Created Message Router");
         }
 
         /// <summary>
