@@ -11,6 +11,15 @@ namespace GameUtilities.Services.MessageRouter
     public class MessageRouterService : BaseService, IMessageRouterService
     {
         /// <summary>
+        /// Initialize the MessageRouter
+        /// </summary>
+        /// <param name="context">The executable context</param>
+        public override void Init(Framework.Utilities.ExecutableContext.IExecutableContext context)
+        {
+            base.Init(context);
+        }
+
+        /// <summary>
         /// Get all messages for subscribed topics
         /// </summary>
         /// <returns>A dictionary of topics and list of messages associated with the topic</returns>
