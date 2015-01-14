@@ -67,11 +67,11 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
             Mock<IMessageDestination> destMock1 = new Mock<IMessageDestination>();
             Mock<IMessageDestination> destMock2 = new Mock<IMessageDestination>();
             Mock<IMessageDestination> destMock3 = new Mock<IMessageDestination>();
-
             target.RegisterTopic("TEST1", destMock1.Object);
             target.RegisterTopic("TEST3", destMock1.Object);
             target.RegisterTopic("TEST2", destMock2.Object);
             target.RegisterTopic("TEST1", destMock3.Object);
+
             target.DeregisterTopic("TEST1", destMock1.Object);
 
             List<string> dest1List = ConsumerTopicDictionary[destMock1.Object];
@@ -86,6 +86,36 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
             List<IMessageDestination> topic2List = TopicConsumerDictionary["TEST2"];
             Assert.IsTrue(topic2List.Count == 1);
             Assert.IsTrue(topic2List.Contains(destMock2.Object));
+        }
+
+        /// <summary>
+        /// Test the SendMessageImmediate test
+        /// </summary>
+        [TestMethod]
+        public void SendMessageImmediateTest()
+        {
+            MessageRouter target = new MessageRouter();
+            PrivateObject obj = new PrivateObject(target);
+            object ret = new object();
+            Mock<IMessage> msgMock = new Mock<IMessage>();
+            Dictionary<IMessageDestination, List<string>> ConsumerTopicDictionary = (Dictionary<IMessageDestination, List<string>>)obj.GetFieldOrProperty("ConsumerTopicDictionary");
+            Dictionary<string, List<IMessageDestination>> TopicConsumerDictionary = (Dictionary<string, List<IMessageDestination>>)obj.GetFieldOrProperty("TopicConsumerDictionary");
+            Mock<IMessageDestination> destMock1 = new Mock<IMessageDestination>();
+            destMock1.Setup(f => f.HandleMessage(msgMock.Object, ref ret)).Returns(true);
+            Mock<IMessageDestination> destMock3 = new Mock<IMessageDestination>();
+            destMock3.Setup(f => f.HandleMessage(msgMock.Object, ref ret)).Returns(false);
+            target.RegisterTopic("TEST1", destMock1.Object);
+            target.RegisterTopic("TEST1", destMock3.Object);
+
+            bool actual = target.SendMessageImmediate("TEST1", msgMock.Object, ref ret);
+            Assert.IsTrue(actual);
+            destMock1.Verify(f => f.HandleMessage(msgMock.Object, ref ret),Times.Once());
+            actual = target.SendMessageImmediate("TEST1", msgMock.Object, ref ret);
+            Assert.IsFalse(actual);
+            destMock3.Verify(f => f.HandleMessage(msgMock.Object, ref ret), Times.Once());
+            actual = target.SendMessageImmediate("TEST1", msgMock.Object, ref ret);
+            Assert.IsTrue(actual);
+            destMock1.Verify(f => f.HandleMessage(msgMock.Object, ref ret), Times.Exactly(2));
         }
     }
 }
