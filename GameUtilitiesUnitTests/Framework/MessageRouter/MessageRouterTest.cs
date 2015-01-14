@@ -117,5 +117,32 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
             Assert.IsTrue(actual);
             destMock1.Verify(f => f.HandleMessage(msgMock.Object, ref ret), Times.Exactly(2));
         }
+
+        /// <summary>
+        /// Test for the send message method
+        /// </summary>
+        public void SendMessageTest()
+        {
+            MessageRouter target = new MessageRouter();
+            PrivateObject obj = new PrivateObject(target);
+            Mock<IMessage> msgMock = new Mock<IMessage>();
+            Mock<IMessage> msgMock2 = new Mock<IMessage>();
+            Mock<IMessage> msgMock3 = new Mock<IMessage>();
+            Dictionary<string, List<IMessage>> mNextFrameMessages = (Dictionary<string, List<IMessage>>)obj.GetFieldOrProperty("mNextFrameMessages");
+
+            target.SendMessage("TEST1", msgMock.Object);
+            target.SendMessage("TEST2", msgMock2.Object);
+            target.SendMessage("TEST1", msgMock3.Object);
+
+            Assert.IsTrue(mNextFrameMessages.ContainsKey("TEST1"));
+            Assert.IsTrue(mNextFrameMessages.ContainsKey("TEST2"));
+            List<IMessage> actual = mNextFrameMessages["TEST1"];
+            Assert.AreEqual(actual.Count, 2);
+            Assert.IsTrue(actual.Contains(msgMock.Object));
+            Assert.IsTrue(actual.Contains(msgMock3.Object));
+            actual = mNextFrameMessages["TEST2"];
+            Assert.AreEqual(actual.Count, 1);
+            Assert.IsTrue(actual.Contains(msgMock2.Object));
+        }
     }
 }
