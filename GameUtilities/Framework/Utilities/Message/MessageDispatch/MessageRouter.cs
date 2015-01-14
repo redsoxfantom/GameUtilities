@@ -83,7 +83,15 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         /// <param name="consumer">The consumer to deregister</param>
         public void DeregisterTopic(string Topic, IMessageDestination consumer)
         {
+            if(ConsumerTopicDictionary.ContainsKey(consumer))
+            {
+                ConsumerTopicDictionary[consumer].Remove(Topic);
+            }
 
+            if(TopicConsumerDictionary.ContainsKey(Topic))
+            {
+                TopicConsumerDictionary[Topic].Remove(consumer);
+            }
         }
 
         /// <summary>
