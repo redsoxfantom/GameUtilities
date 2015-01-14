@@ -144,5 +144,50 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
             Assert.AreEqual(actual.Count, 1);
             Assert.IsTrue(actual.Contains(msgMock2.Object));
         }
+
+        /// <summary>
+        /// Test for the GetMessages method
+        /// </summary>
+        [TestMethod]
+        public void GetMessagesTest()
+        {
+            MessageRouter target = new MessageRouter();
+            PrivateObject obj = new PrivateObject(target);
+            Mock<IMessage> msgMock = new Mock<IMessage>();
+            Mock<IMessage> msgMock2 = new Mock<IMessage>();
+            Mock<IMessage> msgMock3 = new Mock<IMessage>();
+            Mock<IMessage> msgMock4 = new Mock<IMessage>();
+            Mock<IMessageDestination> destMock = new Mock<IMessageDestination>();
+            Dictionary<string, List<IMessage>> mCurrentFrameMessages = (Dictionary<string, List<IMessage>>)obj.GetFieldOrProperty("mCurrentFrameMessages");
+            Dictionary<IMessageDestination, List<string>> ConsumerTopicDictionary = (Dictionary<IMessageDestination, List<string>>)obj.GetFieldOrProperty("ConsumerTopicDictionary");
+            List<string> topics = new List<string>();
+            topics.Add("TEST1");
+            topics.Add("TEST3");
+            topics.Add("TEST4");
+            ConsumerTopicDictionary.Add(destMock.Object, topics);
+            List<IMessage> messages1 = new List<IMessage>();
+            messages1.Add(msgMock.Object);
+            messages1.Add(msgMock2.Object);
+            List<IMessage> messages2 = new List<IMessage>();
+            messages2.Add(msgMock3.Object);
+            List<IMessage> messages3 = new List<IMessage>();
+            messages3.Add(msgMock4.Object);
+            mCurrentFrameMessages.Add("TEST1", messages1);
+            mCurrentFrameMessages.Add("TEST2", messages2);
+            mCurrentFrameMessages.Add("TEST3", messages3);
+
+            Dictionary<string,List<IMessage>> actual = target.GetMessages(destMock.Object);
+
+            Assert.IsTrue(actual.ContainsKey("TEST1"));
+            Assert.IsTrue(actual.ContainsKey("TEST3"));
+            Assert.IsFalse(actual.ContainsKey("TEST4"));
+            List<IMessage> actual1 = actual["TEST1"];
+            Assert.IsTrue(actual1.Count == 2);
+            Assert.IsTrue(actual1.Contains(msgMock.Object));
+            Assert.IsTrue(actual1.Contains(msgMock2.Object));
+            List<IMessage> actual2 = actual["TEST3"];
+            Assert.IsTrue(actual2.Count == 1);
+            Assert.IsTrue(actual2.Contains(msgMock4.Object));
+        }
     }
 }

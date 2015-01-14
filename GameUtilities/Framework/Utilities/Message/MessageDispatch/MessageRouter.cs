@@ -46,6 +46,8 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         {
             ConsumerTopicDictionary = new Dictionary<IMessageDestination, List<string>>();
             TopicConsumerDictionary = new Dictionary<string, List<IMessageDestination>>();
+            mCurrentFrameMessages = new Dictionary<string, List<IMessage>>();
+            mNextFrameMessages = new Dictionary<string, List<IMessage>>();
             mLogger = LoggerFactory.CreateLogger("MessageRouter");
             mLogger.Info("Created Message Router");
         }
