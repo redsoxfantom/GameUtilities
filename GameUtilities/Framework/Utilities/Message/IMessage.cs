@@ -3,17 +3,17 @@
     /// <summary>
     /// The interface for Message objects
     /// </summary>
-    public interface IMessage<T>
+    public interface IMessage
     {
         /// <summary>
         /// Initialize the Message
         /// </summary>
-        void Init(T obj);
+        void Init(object obj);
 
         /// <summary>
         /// Gets the data associated with the message
         /// </summary>
         /// <returns>a data object</returns>
-        T GetData();
+        object GetData();
     }
 }

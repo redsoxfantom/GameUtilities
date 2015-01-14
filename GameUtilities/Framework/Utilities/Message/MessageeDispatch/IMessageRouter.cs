@@ -12,7 +12,7 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         /// Get all messages for subscribed topics
         /// </summary>
         /// <returns>A dictionary of topics and list of messages associated with the topic</returns>
-        Dictionary<string,List<IMessage<object>>> GetMessages(IMessageDestination consumer);
+        Dictionary<string,List<IMessage>> GetMessages(IMessageDestination consumer);
 
         /// <summary>
         /// Register to receive Messages pertaining to a Topic
@@ -33,7 +33,7 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         /// </summary>
         /// <param name="Topic">The topic to associate this message with</param>
         /// <param name="message">The message to send</param>
-        void SendMessage(string Topic, IMessage<object> message);
+        void SendMessage(string Topic, IMessage message);
 
         /// <summary>
         /// Send a message to one subscriber. The recepient will handle it immediately
@@ -42,6 +42,6 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         /// <param name="message">The message to send</param>
         /// <param name="ReturnValue">An object to return</param>
         /// <returns>Whether or not the message successfully went through</returns>
-        bool SendMessageImmediate(string Topic, IMessage<object> message, ref object ReturnValue);
+        bool SendMessageImmediate(string Topic, IMessage message, ref object ReturnValue);
     }
 }

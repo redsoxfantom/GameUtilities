@@ -41,7 +41,7 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         /// Get all messages for subscribed topics
         /// </summary>
         /// <returns>A dictionary of topics and list of messages associated with the topic</returns>
-        public Dictionary<string, List<IMessage<object>>> GetMessages(IMessageDestination consumer)
+        public Dictionary<string, List<IMessage>> GetMessages(IMessageDestination consumer)
         {
             throw new System.NotImplementedException();
         }
@@ -91,7 +91,7 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         /// </summary>
         /// <param name="Topic">The topic to associate this message with</param>
         /// <param name="message">The message to send</param>
-        public void SendMessage(string Topic, IMessage<object> message)
+        public void SendMessage(string Topic, IMessage message)
         {
             throw new System.NotImplementedException();
         }
@@ -103,7 +103,7 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         /// <param name="message">The message to send</param>
         /// <param name="ReturnValue">An object to return</param>
         /// <returns>Whether or not the message successfully went through</returns>
-        public bool SendMessageImmediate(string Topic, IMessage<object> message, ref object ReturnValue)
+        public bool SendMessageImmediate(string Topic, IMessage message, ref object ReturnValue)
         {
             throw new System.NotImplementedException();
         }

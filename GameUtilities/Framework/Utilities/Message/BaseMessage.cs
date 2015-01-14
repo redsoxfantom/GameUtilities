@@ -3,12 +3,12 @@
     /// <summary>
     /// The base class for Messages
     /// </summary>
-    public class BaseMessage<T> : IMessage<T>
+    public class BaseMessage : IMessage
     {
         /// <summary>
         /// The object
         /// </summary>
-        private T mObj;
+        private object mObj;
 
         /// <summary>
         /// The constructor
@@ -21,7 +21,7 @@
         /// <summary>
         /// Initialize the Message
         /// </summary>
-        public virtual void Init(T obj)
+        public virtual void Init(object obj)
         {
             mObj = obj;
         }
@@ -30,7 +30,7 @@
         /// Gets the message's data
         /// </summary>
         /// <returns>a data object</returns>
-        public virtual T GetData()
+        public virtual object GetData()
         {
             return mObj;
         }
