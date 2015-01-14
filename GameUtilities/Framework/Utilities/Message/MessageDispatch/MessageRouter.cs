@@ -106,6 +106,7 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
 
         /// <summary>
         /// Send a message to one subscriber. The recepient will handle it immediately
+        /// If there are multiple subscribers, the first will handle it, and move to the end of the line (like a queue)
         /// </summary>
         /// <param name="Topic">The topic to associate with this message</param>
         /// <param name="message">The message to send</param>
@@ -113,7 +114,18 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         /// <returns>Whether or not the message successfully went through</returns>
         public bool SendMessageImmediate(string Topic, IMessage message, ref object ReturnValue)
         {
-            throw new System.NotImplementedException();
+            if(TopicConsumerDictionary.ContainsKey(Topic))
+            {
+                IMessageDestination dest = TopicConsumerDictionary[Topic][0];
+                TopicConsumerDictionary[Topic].Remove(dest);
+                TopicConsumerDictionary[Topic].Add(dest);
+
+                return dest.HandleMessage(message, ref ReturnValue);
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
