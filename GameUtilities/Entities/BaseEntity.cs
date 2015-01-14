@@ -5,6 +5,7 @@ using GameUtilities.Framework.Utilities.Loggers;
 using GameUtilities.Entities.DataContracts;
 using GameUtilities.Framework.DataContracts;
 using System;
+using GameUtilities.Framework.Utilities.Message;
 
 namespace GameUtilities.Entities
 {
@@ -105,6 +106,7 @@ namespace GameUtilities.Entities
                     Logger.Error(string.Format("Failed to create component '{0}' for entity '{1}", entry, mName),e);
                 }
             }
+            mContext.MessageRouter.RegisterTopic(mName, this);
 
             Logger.Info(string.Format("Finished Initializing Entity '{0}'", mName));
         }
@@ -158,6 +160,17 @@ namespace GameUtilities.Entities
                 component.Terminate();
             }
             Logger.Info(string.Format("Entity {0} done termination", mName));
+        }
+
+        /// <summary>
+        /// Handle a direct message from the message router
+        /// </summary>
+        /// <param name="message">The message</param>
+        /// <param name="returnValue">the return value</param>
+        /// <returns>Always returns false, should be overriden</returns>
+        public virtual bool HandleMessage(IMessage message, ref object returnValue)
+        {
+            return false;
         }
 
         #endregion IEntity Methods

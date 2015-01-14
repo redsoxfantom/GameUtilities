@@ -71,5 +71,16 @@ namespace GameUtilities.Entities
         {
 
         }
+
+        /// <summary>
+        /// Handle the message
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="returnValue"></param>
+        /// <returns></returns>
+        public bool HandleMessage(Framework.Utilities.Message.IMessage message, ref object returnValue)
+        {
+            return false;
+        }
     }
 }

@@ -99,6 +99,7 @@ namespace GameUtilities.Components
             mName = string.Format("{0}@{1}",this.GetType().Name,mContext.Entity.Name);
             mLogger = LoggerFactory.CreateLogger(mName);
             mEntity = mContext.Entity;
+            mContext.MessageRouter.RegisterTopic(mName, this);
         }
 
         /// <summary>
