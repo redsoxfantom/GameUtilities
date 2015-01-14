@@ -3,6 +3,7 @@ using GameUtilities.Framework.Utilities.ExecutableContext;
 using OpenTK;
 using GameUtilities.Components.Constants.Camera;
 using System;
+using GameUtilities.Framework.Utilities.Message;
 
 namespace GameUtilities.Components
 {
@@ -153,6 +154,10 @@ namespace GameUtilities.Components
                 viewPerspectiveMatrix = generateMatrix(Pos, Up, Target, cameraType, zNear, zFar, cameraWidth, cameraHeight, cameraAspect, cameraFOV);
                 isDirty = false;
             }
+
+            CameraMatrixMessage msg = new CameraMatrixMessage();
+            msg.Init(viewPerspectiveMatrix);
+            mContext.MessageRouter.SendMessage(MessagingConstants.CAMERA_MATRIX_TOPIC, msg);
         }
 #endregion IComponentMethods
 
