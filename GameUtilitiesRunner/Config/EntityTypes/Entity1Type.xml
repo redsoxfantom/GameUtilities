@@ -3,6 +3,5 @@
   <Name>Entity1Type</Name>
   <Components xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
     <a:string>GameUtilities.Components.BaseComponent,GameUtilities</a:string>
-    <a:string>GameUtilities.Components.BaseComponent,GameUtilities</a:string>
   </Components>
 </EntityType>
