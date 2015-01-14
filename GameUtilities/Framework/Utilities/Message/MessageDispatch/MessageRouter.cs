@@ -83,6 +83,8 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         /// <param name="consumer">The object that is subscribing for this Topic</param>
         public void RegisterTopic(string Topic, IMessageDestination consumer)
         {
+            mLogger.Debug(string.Format("Consumer {0} registered for topic {1}",consumer.GetType(),Topic));
+
             if(ConsumerTopicDictionary.ContainsKey(consumer))
             {
                 ConsumerTopicDictionary[consumer].Add(Topic);
@@ -113,6 +115,8 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         /// <param name="consumer">The consumer to deregister</param>
         public void DeregisterTopic(string Topic, IMessageDestination consumer)
         {
+            mLogger.Debug(string.Format("Consumer {0} deregistered for topic {1}", consumer.GetType(), Topic));
+
             if(ConsumerTopicDictionary.ContainsKey(consumer))
             {
                 ConsumerTopicDictionary[consumer].Remove(Topic);
