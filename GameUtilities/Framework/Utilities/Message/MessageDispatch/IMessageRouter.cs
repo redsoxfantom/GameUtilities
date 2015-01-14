@@ -43,5 +43,10 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         /// <param name="ReturnValue">An object to return</param>
         /// <returns>Whether or not the message successfully went through</returns>
         bool SendMessageImmediate(string Topic, IMessage message, ref object ReturnValue);
+
+        /// <summary>
+        /// Update the message router. This swaps the current and next frame message queues
+        /// </summary>
+        void Update();
     }
 }

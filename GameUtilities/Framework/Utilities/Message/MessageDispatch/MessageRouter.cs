@@ -7,7 +7,8 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
 {
     /// <summary>
     /// The message router service.
-    /// Uses a subscription-based model where Components and Services can register for Topics, and then retrieve Messages each Frame
+    /// Uses a subscription-based model where Components and Services can register for Topics, and then retrieve Messages each Frame.
+    /// The messages are maintained in a double-buffer pattern, where messages sent this frame are not available until next frame
     /// </summary>
     public class MessageRouter : IMessageRouter
     {
@@ -27,6 +28,18 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         private Dictionary<string, List<IMessageDestination>> TopicConsumerDictionary;
 
         /// <summary>
+        /// Messages that will be returned this frame
+        /// Any messages retrieved from GetMessages come from this Dictionary
+        /// </summary>
+        private Dictionary<string, List<IMessage>> mCurrentFrameMessages;
+
+        /// <summary>
+        /// Messages that are being stored for the next frame
+        /// Any messages passed through SendMessage are stored here
+        /// </summary>
+        private Dictionary<string, List<IMessage>> mNextFrameMessages;
+
+        /// <summary>
         /// The constructor
         /// </summary>
         public MessageRouter()
@@ -43,7 +56,22 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         /// <returns>A dictionary of topics and list of messages associated with the topic</returns>
         public Dictionary<string, List<IMessage>> GetMessages(IMessageDestination consumer)
         {
-            throw new System.NotImplementedException();
+            if(!ConsumerTopicDictionary.ContainsKey(consumer))
+            {
+                return new Dictionary<string,List<IMessage>>();
+            }
+            List<string> subscribedTopics = ConsumerTopicDictionary[consumer];
+            Dictionary<string, List<IMessage>> returnDict = new Dictionary<string, List<IMessage>>();
+
+            foreach(string Topic in subscribedTopics)
+            {
+                if(mCurrentFrameMessages.ContainsKey(Topic))
+                {
+                    returnDict.Add(Topic, mCurrentFrameMessages[Topic]);
+                }
+            }
+
+            return returnDict;
         }
 
         /// <summary>
@@ -101,7 +129,16 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         /// <param name="message">The message to send</param>
         public void SendMessage(string Topic, IMessage message)
         {
-            throw new System.NotImplementedException();
+            if(mNextFrameMessages.ContainsKey(Topic))
+            {
+                mNextFrameMessages[Topic].Add(message);
+            }
+            else
+            {
+                List<IMessage> list = new List<IMessage>();
+                list.Add(message);
+                mNextFrameMessages.Add(Topic, list);
+            }
         }
 
         /// <summary>
@@ -126,6 +163,15 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Set the current dictionary to the next one
+        /// </summary>
+        public void Update()
+        {
+            mCurrentFrameMessages = mNextFrameMessages;
+            mNextFrameMessages = new Dictionary<string, List<IMessage>>();
         }
     }
 }
