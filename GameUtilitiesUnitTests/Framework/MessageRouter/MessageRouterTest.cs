@@ -189,5 +189,34 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
             Assert.IsTrue(actual2.Count == 1);
             Assert.IsTrue(actual2.Contains(msgMock4.Object));
         }
+
+        /// <summary>
+        /// Test of the message router update test
+        /// </summary>
+        [TestMethod]
+        public void MessageRouterUpdateTest()
+        {
+            MessageRouter target = new MessageRouter();
+            PrivateObject obj = new PrivateObject(target);
+            Mock<IMessage> msgMock = new Mock<IMessage>();
+            Mock<IMessage> msgMock2 = new Mock<IMessage>();
+            Dictionary<string, List<IMessage>> mNextFrameMessages = (Dictionary<string, List<IMessage>>)obj.GetFieldOrProperty("mNextFrameMessages");
+            List<IMessage> messages1 = new List<IMessage>();
+            messages1.Add(msgMock.Object);
+            messages1.Add(msgMock2.Object);
+            mNextFrameMessages.Add("TEST1", messages1);
+
+            target.Update();
+
+            Dictionary<string, List<IMessage>> mCurrentFrameMessages = (Dictionary<string, List<IMessage>>)obj.GetFieldOrProperty("mCurrentFrameMessages");
+            mNextFrameMessages = (Dictionary<string, List<IMessage>>)obj.GetFieldOrProperty("mNextFrameMessages");
+
+            Assert.IsTrue(mCurrentFrameMessages.ContainsKey("TEST1"));
+            List<IMessage> actual = mCurrentFrameMessages["TEST1"];
+            Assert.IsTrue(actual.Count == 2);
+            Assert.IsTrue(actual.Contains(msgMock.Object));
+            Assert.IsTrue(actual.Contains(msgMock2.Object));
+            Assert.IsTrue(mNextFrameMessages.Count == 0);
+        }
     }
 }
