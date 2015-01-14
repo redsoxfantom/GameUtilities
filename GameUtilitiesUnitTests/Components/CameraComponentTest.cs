@@ -7,6 +7,7 @@ using GameUtilities.Components.Constants.Camera;
 using GameUtilities.Framework.Utilities.ExecutableContext;
 using OpenTK;
 using System.Collections.Generic;
+using GameUtilities.Framework.Utilities.Message.MessageDispatch;
 
 namespace GameUtilitiesUnitTests.Components
 {
@@ -41,7 +42,9 @@ namespace GameUtilitiesUnitTests.Components
             CameraComponent target = new CameraComponent();
             PrivateObject obj = new PrivateObject(target);
             Mock<IExecutableContext> contextMock = new Mock<IExecutableContext>();
+            Mock<IMessageRouter> routerMock = new Mock<IMessageRouter>();
             contextMock.Setup(f => f.Entity.Name).Returns("TEST");
+            contextMock.Setup(f => f.MessageRouter).Returns(routerMock.Object);
 
 
             target.Init(contextMock.Object, set);
@@ -99,7 +102,9 @@ namespace GameUtilitiesUnitTests.Components
             CameraComponent target = new CameraComponent();
             PrivateObject obj = new PrivateObject(target);
             Mock<IExecutableContext> contextMock = new Mock<IExecutableContext>();
+            Mock<IMessageRouter> routerMock = new Mock<IMessageRouter>();
             contextMock.Setup(f => f.Entity.Name).Returns("TEST");
+            contextMock.Setup(f => f.MessageRouter).Returns(routerMock.Object);
 
 
             target.Init(contextMock.Object, set);
@@ -144,7 +149,9 @@ namespace GameUtilitiesUnitTests.Components
             CameraComponent target = new CameraComponent();
             PrivateObject obj = new PrivateObject(target);
             Mock<IExecutableContext> contextMock = new Mock<IExecutableContext>();
+            Mock<IMessageRouter> routerMock = new Mock<IMessageRouter>();
             contextMock.Setup(f => f.Entity.Name).Returns("TEST");
+            contextMock.Setup(f => f.MessageRouter).Returns(routerMock.Object);
 
             target.Init(contextMock.Object, set);
         }
