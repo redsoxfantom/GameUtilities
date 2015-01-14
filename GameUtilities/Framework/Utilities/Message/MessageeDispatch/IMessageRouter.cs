@@ -1,12 +1,12 @@
 ﻿using GameUtilities.Framework.Utilities.Message;
 using System.Collections.Generic;
 
-namespace GameUtilities.Services.MessageRouter
+namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
 {
     /// <summary>
     /// Interface for the message router
     /// </summary>
-    public interface IMessageRouterService
+    public interface IMessageRouter
     {
         /// <summary>
         /// Get all messages for subscribed topics

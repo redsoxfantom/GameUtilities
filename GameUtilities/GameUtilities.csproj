@@ -77,8 +77,8 @@
     <Compile Include="Framework\Utilities\FilePathResolver\IFilePathResolver.cs" />
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\IService.cs" />
-    <Compile Include="Services\MessageRouter\IMessageRouterService.cs" />
-    <Compile Include="Services\MessageRouter\MessageRouterService.cs" />
+    <Compile Include="Framework\Utilities\Message\MessageeDispatch\IMessageRouter.cs" />
+    <Compile Include="Framework\Utilities\Message\MessageeDispatch\MessageRouter.cs" />
     <Compile Include="Worlds\IWorld.cs" />
     <Compile Include="Worlds\BaseWorld.cs" />
     <Compile Include="Worlds\DataContracts\WorldData.cs" />

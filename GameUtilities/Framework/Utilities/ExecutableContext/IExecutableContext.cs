@@ -2,7 +2,7 @@
 using GameUtilities.Framework.Utilities.Loggers;
 using GameUtilities.Worlds;
 using GameUtilities.Framework.Utilities.FilePathResolver;
-using GameUtilities.Services.MessageRouter;
+using GameUtilities.Framework.Utilities.Message.MessageDispatch;
 
 namespace GameUtilities.Framework.Utilities.ExecutableContext
 {
@@ -29,6 +29,6 @@ namespace GameUtilities.Framework.Utilities.ExecutableContext
         /// <summary>
         /// The Message Router
         /// </summary>
-        IMessageRouterService MessageRouter { get; }
+        IMessageRouter MessageRouter { get; }
     }
 }

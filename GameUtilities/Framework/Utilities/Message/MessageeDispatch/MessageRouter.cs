@@ -3,13 +3,13 @@ using GameUtilities.Framework.Utilities.Message;
 using GameUtilities.Services;
 using System.Collections.Generic;
 
-namespace GameUtilities.Services.MessageRouter
+namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
 {
     /// <summary>
     /// The message router service.
     /// Uses a subscription-based model where Components and Services can register for Topics, and then retrieve Messages each Frame
     /// </summary>
-    public class MessageRouterService : IMessageRouterService
+    public class MessageRouter : IMessageRouter
     {
         /// <summary>
         /// The logger
@@ -29,7 +29,7 @@ namespace GameUtilities.Services.MessageRouter
         /// <summary>
         /// The constructor
         /// </summary>
-        public MessageRouterService()
+        public MessageRouter()
         {
             ConsumerTopicDictionary = new Dictionary<IMessageDestination, List<string>>();
             TopicConsumerDictionary = new Dictionary<string, List<IMessageDestination>>();
