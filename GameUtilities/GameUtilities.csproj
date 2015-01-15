@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Components\BaseComponent.cs" />
     <Compile Include="Components\CameraComponent.cs" />
+    <Compile Include="Components\Constants\BaseConstants.cs" />
     <Compile Include="Components\Constants\CameraConstants.cs" />
     <Compile Include="Components\IComponent.cs" />
     <Compile Include="Components\TestComponent.cs" />
