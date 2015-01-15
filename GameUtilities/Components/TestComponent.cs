@@ -1,5 +1,6 @@
 ﻿using GameUtilities.Framework.DataContracts;
 using GameUtilities.Framework.Utilities.ExecutableContext;
+using GameUtilities.Components.Constants;
 using OpenTK;
 
 namespace GameUtilities.Components
@@ -10,6 +11,11 @@ namespace GameUtilities.Components
     public class TestComponent : BaseComponent
     {
         /// <summary>
+        /// The test component's position
+        /// </summary>
+        private Vector3d Pos;
+
+        /// <summary>
         /// Initialize the component
         /// </summary>
         /// <param name="Context">The context</param>
@@ -17,6 +23,11 @@ namespace GameUtilities.Components
         public override void Init(IExecutableContext Context, DataSet data = null)
         {
             base.Init(Context, data);
+            Pos = new Vector3d();
+
+            Pos.X = double.Parse(data[BaseConstants.POS_X]);
+            Pos.Y = double.Parse(data[BaseConstants.POS_Y]);
+            Pos.Z = double.Parse(data[BaseConstants.POS_Z]);
         }
 
         /// <summary>
