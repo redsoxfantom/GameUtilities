@@ -50,6 +50,7 @@
     <Compile Include="Components\CameraComponent.cs" />
     <Compile Include="Components\Constants\CameraConstants.cs" />
     <Compile Include="Components\IComponent.cs" />
+    <Compile Include="Components\TestComponent.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\DataContracts\EntityData.cs" />
     <Compile Include="Entities\DataContracts\EntityTypeData.cs" />

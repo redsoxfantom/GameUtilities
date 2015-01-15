@@ -6,11 +6,19 @@
     <Entity>
       <Name>Entity1</Name>
       <Assembly>GameUtilities.Entities.BaseEntity,GameUtilities</Assembly>
-      <Type>Entity1Type</Type>
+      <Type>TestEntityType</Type>
       <DataSet xmlns:a="http://schemas.datacontract.org/2004/07/GameUtilities.Framework.DataContracts">
         <a:Entry>
-          <a:Key>KEY</a:Key>
-          <a:Value>VALUE</a:Value>
+          <a:Key>PosX</a:Key>
+          <a:Value>0.0</a:Value>
+        </a:Entry>
+        <a:Entry>
+          <a:Key>PosY</a:Key>
+          <a:Value>0.0</a:Value>
+        </a:Entry>
+        <a:Entry>
+          <a:Key>PosZ</a:Key>
+          <a:Value>0.0</a:Value>
         </a:Entry>
       </DataSet>
     </Entity>

@@ -62,7 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\EntityTypes\CameraEntityType.xml" />
-    <Content Include="Config\EntityTypes\Entity1Type.xml" />
+    <Content Include="Config\EntityTypes\TestEntityType.xml" />
     <Content Include="Config\Worlds\World1.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
