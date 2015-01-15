@@ -6,7 +6,7 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
     /// <summary>
     /// Interface for the message router
     /// </summary>
-    public interface IMessageRouter
+    public interface IMessageRouter : ITerminatable
     {
         /// <summary>
         /// Get all messages for subscribed topics

@@ -179,5 +179,13 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
             mCurrentFrameMessages = mNextFrameMessages;
             mNextFrameMessages = new Dictionary<string, List<IMessage>>();
         }
+
+        /// <summary>
+        /// Terminate the MessageRouter
+        /// </summary>
+        public void Terminate()
+        {
+            mLogger.Terminate();
+        }
     }
 }

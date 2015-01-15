@@ -89,6 +89,7 @@ namespace GameUtilities.Framework.Engine
             mLogger.Info("Beginning Engine Shutdown...");
             mWorld.Terminate();
             //TODO: Shut down any Services
+            mContext.MessageRouter.Terminate();
 
             mLogger.Info("Engine Shutdown Complete");
             mLogger.Terminate();
