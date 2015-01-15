@@ -81,6 +81,11 @@ namespace GameUtilities.Framework.Utilities.Loggers
         /// </summary>
         /// <param name="msg">The message to print</param>
         void Fatal(String msg);
+
+        /// <summary>
+        /// Close the Logger
+        /// </summary>
+        void Terminate();
     }
 
     /// <summary>

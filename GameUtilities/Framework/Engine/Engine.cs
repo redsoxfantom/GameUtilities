@@ -53,8 +53,6 @@ namespace GameUtilities.Framework.Engine
         /// <param name="timeSinceLastFrame">How long its been since the last time Update was called</param>
         public void Update(double timeSinceLastFrame)
         {
-            mLogger.Debug(string.Format("Update called, timeSinceLastFrame={0}", timeSinceLastFrame));
-
             try
             {
                 mWorld.Update(timeSinceLastFrame);
@@ -73,8 +71,6 @@ namespace GameUtilities.Framework.Engine
         /// <param name="timeSinceLastFrame">How long its been since the last time Draw was called</param>
         public void Draw(double timeSinceLastFrame)
         {
-            mLogger.Debug(string.Format("Draw called, timeSinceLastFrame={0}", timeSinceLastFrame));
-
             try
             {
                 mWorld.Draw(timeSinceLastFrame);
@@ -95,6 +91,7 @@ namespace GameUtilities.Framework.Engine
             //TODO: Shut down any Services
 
             mLogger.Info("Engine Shutdown Complete");
+            mLogger.Terminate();
         }
     }
 }

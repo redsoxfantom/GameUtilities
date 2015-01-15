@@ -217,6 +217,12 @@ namespace GameUtilities.Framework.Utilities.Loggers
         protected virtual void Print(LoggerLevel level, string msg, ConsoleColor fore, ConsoleColor back)
         { }
 
+        /// <summary>
+        /// Overriden by child classes
+        /// </summary>
+        public virtual void Terminate()
+        { }
+
         #endregion methods
     }
 }

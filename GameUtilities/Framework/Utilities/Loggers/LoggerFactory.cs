@@ -28,7 +28,7 @@ namespace GameUtilities.Framework.Utilities.Loggers
         public static ILogger CreateLogger(string Name)
         {
 #if DEBUG
-            return new ConsoleLogger(Name,mLoggerLevel);
+            return new FileConsoleLogger(Name,mLoggerLevel);
 #else
             return new NullLogger(Name,mLoggerLevel);
 #endif
