@@ -160,6 +160,7 @@ namespace GameUtilities.Entities
                 component.Terminate();
             }
             Logger.Info(string.Format("Entity {0} done termination", mName));
+            Logger.Terminate();
         }
 
         /// <summary>

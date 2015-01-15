@@ -156,6 +156,7 @@ namespace GameUtilities.Worlds
                 entity.Terminate();
             }
             mLogger.Info(string.Format("World {0} finished termination",mData.Name));
+            mLogger.Terminate();
         }
         #endregion IWorld Methods
 

@@ -50,7 +50,8 @@ namespace GameUtilities.Framework.Utilities.Loggers
             base.Print(level, msg, fore, back);
             if(logLevelIsEnabled(level))
             {
-                writer.WriteAsync(msg);
+                string finalMsg = string.Format("{0}-{1}-{2}", Enum.GetName(typeof(LoggerLevel), level), LoggerName, msg);
+                writer.WriteLine(finalMsg);
             }
         }
 
@@ -59,6 +60,7 @@ namespace GameUtilities.Framework.Utilities.Loggers
         /// </summary>
         public override void Terminate()
         {
+            writer.Flush();
             writer.Close();
         }
     }
