@@ -6,7 +6,7 @@ namespace GameUtilities.Services
     /// <summary>
     /// Base interface for a Service
     /// </summary>
-    public interface IService : IUpdatable
+    public interface IService : IUpdatable, ITerminatable
     {
         /// <summary>
         /// Initialize the Service

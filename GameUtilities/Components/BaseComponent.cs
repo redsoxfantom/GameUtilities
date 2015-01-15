@@ -74,6 +74,7 @@ namespace GameUtilities.Components
         public virtual void Terminate()
         {
             mLogger.Info(string.Format("Component {0} terminating", mName));
+            mLogger.Terminate();
         }
 
         /// <summary>

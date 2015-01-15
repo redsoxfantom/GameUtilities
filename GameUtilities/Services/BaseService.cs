@@ -50,5 +50,13 @@ namespace GameUtilities.Services
         {
             //Overriden by child classes
         }
+
+        /// <summary>
+        /// Terminate the Service
+        /// </summary>
+        public virtual void Terminate()
+        {
+            mLogger.Terminate();
+        }
     }
 }
