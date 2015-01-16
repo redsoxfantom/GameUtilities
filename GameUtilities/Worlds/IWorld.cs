@@ -3,13 +3,14 @@ using GameUtilities.Framework.Utilities.Loggers;
 using GameUtilities.Framework.Utilities.ExecutableContext;
 using GameUtilities.Framework;
 using GameUtilities.Worlds.DataContracts;
+using GameUtilities.Framework.Utilities.Message;
 
 namespace GameUtilities.Worlds
 {
     /// <summary>
     /// An interface to the game World (a container for entities)
     /// </summary>
-    public interface IWorld : IUpdatable, IDrawable, ITerminatable
+    public interface IWorld : IUpdatable, IDrawable, ITerminatable, IMessageDestination
     {
         /// <summary>
         /// Get an entity given its unique ID (The entities name)

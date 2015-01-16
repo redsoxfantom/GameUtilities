@@ -103,7 +103,7 @@ namespace GameUtilities.Worlds
                     mLogger.Error(string.Format("Failed to create entity '{0}'", entityData.Name), e);
                 }
             }
-
+            mContext.MessageRouter.RegisterTopic(mData.Name, this);
             mLogger.Info(string.Format("Done initializing world '{0}'", mData.Name));
         }
 
@@ -158,6 +158,17 @@ namespace GameUtilities.Worlds
             mLogger.Info(string.Format("World {0} finished termination",mData.Name));
             mLogger.Terminate();
         }
+
+        /// <summary>
+        /// Handle messages to the world
+        /// </summary>
+        /// <param name="message">The message</param>
+        /// <param name="returnValue">The return value</param>
+        /// <returns>whether or not the call succeded</returns>
+        public virtual bool HandleMessage(Framework.Utilities.Message.IMessage message, ref object returnValue)
+        {
+            return false;
+        }
         #endregion IWorld Methods
 
         #region Methods
@@ -181,5 +192,6 @@ namespace GameUtilities.Worlds
             EntityList.Remove(entity);
         }
         #endregion Methods
+
     }
 }
