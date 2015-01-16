@@ -139,7 +139,7 @@ namespace GameUtilities.Components
             }
 
             viewPerspectiveMatrix = generateMatrix(Pos, Up, Target, cameraType, zNear, zFar, cameraWidth, cameraHeight,cameraAspect,cameraFOV);
-            isDirty = false;
+            isDirty = true;
         }
 
         /// <summary>
@@ -150,6 +150,7 @@ namespace GameUtilities.Components
         {
             if(isDirty)
             {
+                mLogger.Debug("Camera Component Updated");
                 viewPerspectiveMatrix = generateMatrix(Pos, Up, Target, cameraType, zNear, zFar, cameraWidth, cameraHeight, cameraAspect, cameraFOV);
                 isDirty = false;
                 CameraMatrixMessage msg = new CameraMatrixMessage();

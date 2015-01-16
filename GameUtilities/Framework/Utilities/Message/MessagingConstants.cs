@@ -8,6 +8,6 @@
         /// <summary>
         /// Topic to subscribe to for receiving camera matrix updates
         /// </summary>
-        public static string CAMERA_MATRIX_TOPIC = "PerspectiveViewMatrix";
+        public static string CAMERA_MATRIX_TOPIC = "PerspectiveViewMatrixUpdate";
     }
 }

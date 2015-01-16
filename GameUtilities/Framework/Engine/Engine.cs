@@ -53,6 +53,8 @@ namespace GameUtilities.Framework.Engine
         /// <param name="timeSinceLastFrame">How long its been since the last time Update was called</param>
         public void Update(double timeSinceLastFrame)
         {
+            mContext.MessageRouter.Update();
+
             try
             {
                 mWorld.Update(timeSinceLastFrame);
