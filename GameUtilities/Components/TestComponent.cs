@@ -30,6 +30,8 @@ namespace GameUtilities.Components
             Pos.X = double.Parse(data[BaseConstants.POS_X]);
             Pos.Y = double.Parse(data[BaseConstants.POS_Y]);
             Pos.Z = double.Parse(data[BaseConstants.POS_Z]);
+
+            mContext.MessageRouter.RegisterTopic(MessagingConstants.CAMERA_MATRIX_TOPIC, this);
         }
 
         /// <summary>
@@ -48,6 +50,15 @@ namespace GameUtilities.Components
         public override void Draw(double timeSinceLastFrame)
         {
             base.Draw(timeSinceLastFrame);
+        }
+
+        /// <summary>
+        /// Terminate the TestComponent
+        /// </summary>
+        public override void Terminate()
+        {
+            mContext.MessageRouter.DeregisterTopic(MessagingConstants.CAMERA_MATRIX_TOPIC, this);
+            base.Terminate();
         }
     }
 }
