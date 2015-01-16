@@ -56,7 +56,7 @@ namespace GameUtilitiesRunner
                 {
                     engine.Init(mPathToConfig, mWorld);
                     game.VSync = VSyncMode.On;
-                    GL.ClearColor(Color.Black);
+                    GL.ClearColor(Color.Red);
                 };
 
                 game.Resize += (sender, e) =>
