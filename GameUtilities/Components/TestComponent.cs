@@ -4,6 +4,7 @@ using GameUtilities.Components.Constants;
 using OpenTK;
 using System.Collections.Generic;
 using GameUtilities.Framework.Utilities.Message;
+using System;
 
 namespace GameUtilities.Components
 {
@@ -16,6 +17,11 @@ namespace GameUtilities.Components
         /// The test component's position
         /// </summary>
         private Vector3d Pos;
+
+        /// <summary>
+        /// The mvpMatrix to use when drawing this component
+        /// </summary>
+        private Matrix4d mvpMatrix;
 
         /// <summary>
         /// Initialize the component
@@ -40,7 +46,15 @@ namespace GameUtilities.Components
         /// <param name="timeSinceLastFrame">How long since the last frame</param>
         protected override void Update(double timeSinceLastFrame, Dictionary<string,List<IMessage>> messages)
         {
+            object ret = new object();
 
+            foreach(string topic in messages.Keys)
+            {
+                foreach(IMessage message in messages[topic])
+                {
+                    HandleMessage(message, ref ret);
+                }
+            }
         }
 
         /// <summary>
@@ -49,7 +63,7 @@ namespace GameUtilities.Components
         /// <param name="timeSinceLastFrame">How long since the last frame</param>
         public override void Draw(double timeSinceLastFrame)
         {
-            base.Draw(timeSinceLastFrame);
+
         }
 
         /// <summary>
@@ -59,6 +73,26 @@ namespace GameUtilities.Components
         {
             mContext.MessageRouter.DeregisterTopic(MessagingConstants.CAMERA_MATRIX_TOPIC, this);
             base.Terminate();
+        }
+
+        /// <summary>
+        /// Handle messages for the 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="returnValue"></param>
+        /// <returns></returns>
+        public override bool HandleMessage(IMessage message, ref object returnValue)
+        {
+            Type messageType = message.GetType();
+            //Got a CameraMatrixMessage, update the local mvpMatrix
+            if(messageType == typeof(CameraMatrixMessage))
+            {
+                Matrix4d vpMatrix = (Matrix4d)message.GetData();
+                mvpMatrix = Matrix4d.CreateTranslation(Pos) * vpMatrix;
+                return true;
+            }
+
+            return false;
         }
     }
 }
