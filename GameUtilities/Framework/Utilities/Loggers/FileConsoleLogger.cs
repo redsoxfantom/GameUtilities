@@ -25,7 +25,7 @@ namespace GameUtilities.Framework.Utilities.Loggers
         public FileConsoleLogger(string Name, LoggerLevel level) : base(Name,level)
         {
             Directory.CreateDirectory(".\\Logs");
-            writer = new StreamWriter(string.Format(".\\Logs\\{0}.txt",Name));
+            writer = new StreamWriter(string.Format(".\\Logs\\{0}.txt",Name),true);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace GameUtilities.Framework.Utilities.Loggers
         public FileConsoleLogger(string Name) : base(Name)
         {
             Directory.CreateDirectory(".\\Logs");
-            writer = new StreamWriter(string.Format(".\\Logs\\{0}.txt", Name));
+            writer = new StreamWriter(string.Format(".\\Logs\\{0}.txt", Name),true);
         }
 
         /// <summary>

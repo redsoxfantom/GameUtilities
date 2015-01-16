@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using GameUtilities.Services;
 using GameUtilities.Framework.Utilities.ExecutableContext;
+using GameUtilities.Framework.Utilities.Loggers;
 
 namespace GameUtilitiesUnitTests.Services
 {
@@ -20,6 +21,7 @@ namespace GameUtilitiesUnitTests.Services
         {
             BaseService target = new BaseService();
             PrivateObject obj = new PrivateObject(target);
+            obj.SetFieldOrProperty("mLogger", new Mock<ILogger>().Object);
 
             string expectedName = "BaseService";
             string actualName = (string)obj.GetFieldOrProperty("mName");
@@ -35,6 +37,7 @@ namespace GameUtilitiesUnitTests.Services
         {
             BaseService target = new BaseService();
             PrivateObject obj = new PrivateObject(target);
+            obj.SetFieldOrProperty("mLogger", new Mock<ILogger>().Object);
             Mock<IExecutableContext> contextMock = new Mock<IExecutableContext>();
 
             target.Init(contextMock.Object);
