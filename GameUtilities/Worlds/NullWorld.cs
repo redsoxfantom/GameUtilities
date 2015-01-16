@@ -62,5 +62,16 @@ namespace GameUtilities.Worlds
         {
             //Do nothing
         }
+
+        /// <summary>
+        /// Update the world
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="returnValue"></param>
+        /// <returns>false</returns>
+        public bool HandleMessage(Framework.Utilities.Message.IMessage message, ref object returnValue)
+        {
+            return false;
+        }
     }
 }

@@ -4,6 +4,7 @@ using OpenTK;
 using GameUtilities.Components.Constants.Camera;
 using System;
 using GameUtilities.Framework.Utilities.Message;
+using System.Collections.Generic;
 
 namespace GameUtilities.Components
 {
@@ -145,10 +146,8 @@ namespace GameUtilities.Components
         /// Moves the Camera if necessary
         /// </summary>
         /// <param name="timeSinceLastFrame">How long it's been since the last frame</param>
-        public override void Update(double timeSinceLastFrame)
+        protected override void Update(double timeSinceLastFrame, Dictionary<string,List<IMessage>> messages)
         {
-            base.Update(timeSinceLastFrame);
-
             if(isDirty)
             {
                 viewPerspectiveMatrix = generateMatrix(Pos, Up, Target, cameraType, zNear, zFar, cameraWidth, cameraHeight, cameraAspect, cameraFOV);

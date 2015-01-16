@@ -2,6 +2,8 @@
 using GameUtilities.Framework.Utilities.ExecutableContext;
 using GameUtilities.Components.Constants;
 using OpenTK;
+using System.Collections.Generic;
+using GameUtilities.Framework.Utilities.Message;
 
 namespace GameUtilities.Components
 {
@@ -34,9 +36,9 @@ namespace GameUtilities.Components
         /// Update the component
         /// </summary>
         /// <param name="timeSinceLastFrame">How long since the last frame</param>
-        public override void Update(double timeSinceLastFrame)
+        protected override void Update(double timeSinceLastFrame, Dictionary<string,List<IMessage>> messages)
         {
-            base.Update(timeSinceLastFrame);
+
         }
 
         /// <summary>

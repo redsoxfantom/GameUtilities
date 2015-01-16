@@ -4,13 +4,14 @@ using GameUtilities.Framework.Utilities.Loggers;
 using GameUtilities.Framework.DataContracts;
 using System;
 using GameUtilities.Framework.Utilities.Message;
+using System.Collections.Generic;
 
 namespace GameUtilities.Components
 {
     /// <summary>
     /// A base class all Components inherit from
     /// </summary>
-    public class BaseComponent:IComponent
+    public abstract class BaseComponent:IComponent
     {
         #region Fields
         /// <summary>
@@ -66,7 +67,18 @@ namespace GameUtilities.Components
         /// Called once a frame, updates the component's internal state
         /// </summary>
         /// <param name="timeSinceLastFrame">How long its been since the last frame</param>
-        public virtual void Update(double timeSinceLastFrame) { }
+        public void Update(double timeSinceLastFrame) 
+        {
+            Dictionary<string, List<IMessage>> messages = mContext.MessageRouter.GetMessages(this);
+            Update(timeSinceLastFrame, messages);
+        }
+
+        /// <summary>
+        /// Update with messages
+        /// </summary>
+        /// <param name="timeSinceLastFrame">How long since last frame</param>
+        /// <param name="messages">Messages received</param>
+        protected abstract void Update(double timeSinceLastFrame, Dictionary<string,List<IMessage>> messages);
 
         /// <summary>
         /// Shut down the component
