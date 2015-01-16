@@ -152,11 +152,10 @@ namespace GameUtilities.Components
             {
                 viewPerspectiveMatrix = generateMatrix(Pos, Up, Target, cameraType, zNear, zFar, cameraWidth, cameraHeight, cameraAspect, cameraFOV);
                 isDirty = false;
+                CameraMatrixMessage msg = new CameraMatrixMessage();
+                msg.Init(viewPerspectiveMatrix);
+                mContext.MessageRouter.SendMessage(MessagingConstants.CAMERA_MATRIX_TOPIC, msg);
             }
-
-            CameraMatrixMessage msg = new CameraMatrixMessage();
-            msg.Init(viewPerspectiveMatrix);
-            mContext.MessageRouter.SendMessage(MessagingConstants.CAMERA_MATRIX_TOPIC, msg);
         }
 #endregion IComponentMethods
 

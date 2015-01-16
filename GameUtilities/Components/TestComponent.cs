@@ -32,6 +32,7 @@ namespace GameUtilities.Components
         {
             base.Init(Context, data);
             Pos = new Vector3d();
+            mvpMatrix = Matrix4d.Identity;
 
             Pos.X = double.Parse(data[BaseConstants.POS_X]);
             Pos.Y = double.Parse(data[BaseConstants.POS_Y]);
@@ -84,11 +85,13 @@ namespace GameUtilities.Components
         public override bool HandleMessage(IMessage message, ref object returnValue)
         {
             Type messageType = message.GetType();
+
             //Got a CameraMatrixMessage, update the local mvpMatrix
             if(messageType == typeof(CameraMatrixMessage))
             {
                 Matrix4d vpMatrix = (Matrix4d)message.GetData();
                 mvpMatrix = Matrix4d.CreateTranslation(Pos) * vpMatrix;
+                mLogger.Debug("TestComponent got updated camera message");
                 return true;
             }
 
