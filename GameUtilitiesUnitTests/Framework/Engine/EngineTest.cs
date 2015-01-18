@@ -3,6 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using GameUtilities.Framework.Engine;
 using GameUtilities.Worlds;
+using GameUtilities.Framework.Utilities.Message.MessageDispatch;
+using GameUtilities.Framework.Utilities.ExecutableContext;
 
 namespace GameUtilitiesUnitTests.Framework
 {
@@ -34,7 +36,9 @@ namespace GameUtilitiesUnitTests.Framework
             Engine target = new Engine();
             PrivateObject obj = new PrivateObject(target);
             Mock<IWorld> worldMock = new Mock<IWorld>();
+            IExecutableContext mContext = new BaseExecutableContext("TEST");
             obj.SetFieldOrProperty("mWorld", worldMock.Object);
+            obj.SetFieldOrProperty("mContext", mContext);
 
             target.Update(12345);
             worldMock.Verify(f => f.Update(12345), Times.Once());

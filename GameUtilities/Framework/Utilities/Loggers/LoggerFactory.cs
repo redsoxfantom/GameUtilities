@@ -1,4 +1,5 @@
 ﻿
+using System;
 namespace GameUtilities.Framework.Utilities.Loggers
 {
     /// <summary>
@@ -11,6 +12,8 @@ namespace GameUtilities.Framework.Utilities.Loggers
         /// </summary>
         private static LoggerLevel mLoggerLevel = LoggerLevel.INFO;
 
+        private static Type mLoggerType = typeof(NullLogger);
+
         /// <summary>
         /// Set the logging level of any loggers created from this factory
         /// </summary>
@@ -21,17 +24,23 @@ namespace GameUtilities.Framework.Utilities.Loggers
         }
 
         /// <summary>
+        /// Set the type of logger this Factory will create
+        /// </summary>
+        /// <param name="loggerType"></param>
+        public static void SetLoggerType(Type loggerType)
+        {
+            mLoggerType = loggerType;
+        }
+
+        /// <summary>
         /// Creates an ILogger object
         /// </summary>
         /// <param name="Name">the name the logger should have</param>
         /// <returns>an ILogger</returns>
         public static ILogger CreateLogger(string Name)
         {
-#if DEBUG
-            return new ConsoleLogger(Name,mLoggerLevel);
-#else
-            return new NullLogger(Name,mLoggerLevel);
-#endif
+            object[] array = new object[] { Name, mLoggerLevel };
+            return (ILogger)Activator.CreateInstance(mLoggerType, array);
         }
     }
 }

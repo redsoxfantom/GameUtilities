@@ -19,21 +19,11 @@ namespace GameUtilitiesUnitTests.Framework.Loggers
         [TestMethod]
         public void CreateLoggerTest()
         {
-            bool debugEnabled = false;
-#if DEBUG
-            debugEnabled = true;
-#endif
-            ILogger obj = LoggerFactory.CreateLogger("TEST");
+            LoggerFactory.SetLoggerType(typeof(ConsoleLogger));
 
-            if(debugEnabled)
-            {
-                Assert.IsInstanceOfType(obj, typeof(ConsoleLogger));
-            }
-            else
-            {
-                Assert.IsInstanceOfType(obj, typeof(NullLogger));
-            }
-            
+            ILogger logger = LoggerFactory.CreateLogger("TEST");
+
+            Assert.IsTrue(logger.GetType() == typeof(ConsoleLogger));
         }
     }
 }
