@@ -30,6 +30,11 @@ namespace GameUtilitiesRunner
         private string mPathToConfig;
 
         /// <summary>
+        /// The type of logger to instantiate
+        /// </summary>
+        private static string mType = "GameUtilities.Framework.Utilities.Loggers.FileConsoleLogger,GameLogger";
+
+        /// <summary>
         /// The Constructor
         /// </summary>
         /// <param name="loggingLevel">Logging level of the Engine</param>
@@ -47,6 +52,7 @@ namespace GameUtilitiesRunner
         /// </summary>
         public void Run()
         {
+            LoggerFactory.SetLoggerType(Type.GetType(mType));
             LoggerFactory.SetLoggingLevel(mLoggerLevel);
             IEngine engine = new Engine();
 
