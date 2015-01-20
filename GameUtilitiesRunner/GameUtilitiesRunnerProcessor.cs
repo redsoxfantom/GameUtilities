@@ -32,7 +32,7 @@ namespace GameUtilitiesRunner
         /// <summary>
         /// The type of logger to instantiate
         /// </summary>
-        private static string mType = "GameUtilities.Framework.Utilities.Loggers.FileConsoleLogger,GameLogger";
+        private static string mType = "GameUtilities.Framework.Utilities.Loggers.FileConsoleLogger,GameUtilities";
 
         /// <summary>
         /// The Constructor
