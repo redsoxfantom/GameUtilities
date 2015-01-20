@@ -5,6 +5,7 @@ using GameUtilities.Entities;
 using GameUtilities.Entities.DataContracts;
 using GameUtilities.Worlds.DataContracts;
 using System;
+using GameUtilities.Framework.Utilities.Message;
 
 namespace GameUtilities.Worlds
 {
@@ -165,7 +166,7 @@ namespace GameUtilities.Worlds
         /// <param name="message">The message</param>
         /// <param name="returnValue">The return value</param>
         /// <returns>whether or not the call succeded</returns>
-        public virtual bool HandleMessage(Framework.Utilities.Message.IMessage message, ref object returnValue)
+        public virtual bool HandleMessage(String Topic, IMessage message, ref object returnValue)
         {
             return false;
         }

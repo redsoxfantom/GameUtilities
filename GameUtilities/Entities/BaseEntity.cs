@@ -169,7 +169,7 @@ namespace GameUtilities.Entities
         /// <param name="message">The message</param>
         /// <param name="returnValue">the return value</param>
         /// <returns>Always returns false, should be overriden</returns>
-        public virtual bool HandleMessage(IMessage message, ref object returnValue)
+        public virtual bool HandleMessage(String Topic, IMessage message, ref object returnValue)
         {
             return false;
         }

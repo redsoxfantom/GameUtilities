@@ -53,7 +53,7 @@ namespace GameUtilities.Components
             {
                 foreach(IMessage message in messages[topic])
                 {
-                    HandleMessage(message, ref ret);
+                    HandleMessage(topic, message, ref ret);
                 }
             }
         }
@@ -82,7 +82,7 @@ namespace GameUtilities.Components
         /// <param name="message"></param>
         /// <param name="returnValue"></param>
         /// <returns></returns>
-        public override bool HandleMessage(IMessage message, ref object returnValue)
+        public override bool HandleMessage(String Topic, IMessage message, ref object returnValue)
         {
             Type messageType = message.GetType();
 

@@ -163,7 +163,7 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
                 TopicConsumerDictionary[Topic].Remove(dest);
                 TopicConsumerDictionary[Topic].Add(dest);
 
-                return dest.HandleMessage(message, ref ReturnValue);
+                return dest.HandleMessage(Topic, message, ref ReturnValue);
             }
             else
             {

@@ -1,6 +1,8 @@
 ﻿using GameUtilities.Entities;
 using GameUtilities.Worlds.DataContracts;
 using GameUtilities.Framework.Utilities.ExecutableContext;
+using GameUtilities.Framework.Utilities.Message;
+using System;
 
 namespace GameUtilities.Worlds
 {
@@ -69,7 +71,7 @@ namespace GameUtilities.Worlds
         /// <param name="message"></param>
         /// <param name="returnValue"></param>
         /// <returns>false</returns>
-        public bool HandleMessage(Framework.Utilities.Message.IMessage message, ref object returnValue)
+        public bool HandleMessage(String Topic, IMessage message, ref object returnValue)
         {
             return false;
         }

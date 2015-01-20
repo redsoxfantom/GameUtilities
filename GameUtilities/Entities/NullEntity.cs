@@ -1,6 +1,8 @@
 ﻿using GameUtilities.Framework.Utilities.Loggers;
 using GameUtilities.Entities.DataContracts;
 using GameUtilities.Framework.Utilities.ExecutableContext;
+using GameUtilities.Framework.Utilities.Message;
+using System;
 
 namespace GameUtilities.Entities
 {
@@ -75,10 +77,11 @@ namespace GameUtilities.Entities
         /// <summary>
         /// Handle the message
         /// </summary>
+        /// <param name="Topic"></param>
         /// <param name="message"></param>
         /// <param name="returnValue"></param>
         /// <returns></returns>
-        public bool HandleMessage(Framework.Utilities.Message.IMessage message, ref object returnValue)
+        public bool HandleMessage(String Topic, IMessage message, ref object returnValue)
         {
             return false;
         }
