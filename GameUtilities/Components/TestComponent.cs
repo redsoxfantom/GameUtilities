@@ -5,6 +5,8 @@ using OpenTK;
 using System.Collections.Generic;
 using GameUtilities.Framework.Utilities.Message;
 using System;
+using System.Drawing;
+using OpenTK.Graphics.OpenGL;
 
 namespace GameUtilities.Components
 {
@@ -22,6 +24,11 @@ namespace GameUtilities.Components
         /// The mvpMatrix to use when drawing this component
         /// </summary>
         private Matrix4d mvpMatrix;
+
+        /// <summary>
+        /// Determines what color to paint the background
+        /// </summary>
+        private int mSwitch = 0;
 
         /// <summary>
         /// Initialize the component
@@ -47,6 +54,7 @@ namespace GameUtilities.Components
         /// <param name="timeSinceLastFrame">How long since the last frame</param>
         protected override void Update(double timeSinceLastFrame, Dictionary<string,List<IMessage>> messages)
         {
+            mSwitch++;
             object ret = new object();
 
             foreach(string topic in messages.Keys)

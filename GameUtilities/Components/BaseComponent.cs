@@ -127,6 +127,5 @@ namespace GameUtilities.Components
         }
 
         #endregion IComponent Methods
-
     }
 }

@@ -73,15 +73,15 @@
         </a:Entry>
         <a:Entry>
           <a:Key>CamType</a:Key>
-          <a:Value>PERSPECTIVE</a:Value>
+          <a:Value>ORTHOGRAPHIC</a:Value>
         </a:Entry>
         <a:Entry>
-          <a:Key>CamFOV</a:Key>
-          <a:Value>1.0</a:Value>
+          <a:Key>CamWidth</a:Key>
+          <a:Value>500.0</a:Value>
         </a:Entry>
         <a:Entry>
-          <a:Key>CamAspect</a:Key>
-          <a:Value>1.0</a:Value>
+          <a:Key>CamHeight</a:Key>
+          <a:Value>500.0</a:Value>
         </a:Entry>
       </DataSet>
     </Entity>

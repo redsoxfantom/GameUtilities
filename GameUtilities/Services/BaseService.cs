@@ -1,12 +1,14 @@
 ﻿using GameUtilities.Framework.Utilities.ExecutableContext;
 using GameUtilities.Framework.Utilities.Loggers;
+using GameUtilities.Framework.Utilities.Message;
+using System.Collections.Generic;
 
 namespace GameUtilities.Services
 {
     /// <summary>
     /// Base class for all Services
     /// </summary>
-    public class BaseService : IService
+    public abstract class BaseService : IService
     {
         /// <summary>
         /// The service's Logger
@@ -46,10 +48,18 @@ namespace GameUtilities.Services
         /// Called once a frame
         /// </summary>
         /// <param name="timeSinceLastFrame">How long it's been since the last frame</param>
-        public virtual void Update(double timeSinceLastFrame)
+        public void Update(double timeSinceLastFrame)
         {
-            //Overriden by child classes
+            Dictionary<string, List<IMessage>> messages = mContext.MessageRouter.GetMessages(this);
+            Update(timeSinceLastFrame, messages);
         }
+
+        /// <summary>
+        /// Overriden by child classes
+        /// </summary>
+        /// <param name="timeSinceLastFrame"></param>
+        /// <param name="messages"></param>
+        public abstract void Update(double timeSinceLastFrame, Dictionary<string, List<IMessage>> messages);
 
         /// <summary>
         /// Terminate the Service
@@ -57,6 +67,18 @@ namespace GameUtilities.Services
         public virtual void Terminate()
         {
             mLogger.Terminate();
+        }
+
+        /// <summary>
+        /// Handle the message
+        /// </summary>
+        /// <param name="Topic"></param>
+        /// <param name="message"></param>
+        /// <param name="returnValue"></param>
+        /// <returns></returns>
+        public bool HandleMessage(string Topic, IMessage message, ref object returnValue)
+        {
+            return false;
         }
     }
 }
