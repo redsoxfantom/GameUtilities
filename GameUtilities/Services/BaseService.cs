@@ -76,7 +76,7 @@ namespace GameUtilities.Services
         /// <param name="message"></param>
         /// <param name="returnValue"></param>
         /// <returns></returns>
-        public bool HandleMessage(string Topic, IMessage message, ref object returnValue)
+        public virtual bool HandleMessage(string Topic, IMessage message, ref object returnValue)
         {
             return false;
         }
