@@ -101,21 +101,21 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
             Dictionary<IMessageDestination, List<string>> ConsumerTopicDictionary = (Dictionary<IMessageDestination, List<string>>)obj.GetFieldOrProperty("ConsumerTopicDictionary");
             Dictionary<string, List<IMessageDestination>> TopicConsumerDictionary = (Dictionary<string, List<IMessageDestination>>)obj.GetFieldOrProperty("TopicConsumerDictionary");
             Mock<IMessageDestination> destMock1 = new Mock<IMessageDestination>();
-            destMock1.Setup(f => f.HandleMessage(msgMock.Object, ref ret)).Returns(true);
+            destMock1.Setup(f => f.HandleMessage("TEST1",msgMock.Object, ref ret)).Returns(true);
             Mock<IMessageDestination> destMock3 = new Mock<IMessageDestination>();
-            destMock3.Setup(f => f.HandleMessage(msgMock.Object, ref ret)).Returns(false);
+            destMock3.Setup(f => f.HandleMessage("TEST1", msgMock.Object, ref ret)).Returns(false);
             target.RegisterTopic("TEST1", destMock1.Object);
             target.RegisterTopic("TEST1", destMock3.Object);
 
             bool actual = target.SendMessageImmediate("TEST1", msgMock.Object, ref ret);
             Assert.IsTrue(actual);
-            destMock1.Verify(f => f.HandleMessage(msgMock.Object, ref ret),Times.Once());
+            destMock1.Verify(f => f.HandleMessage("TEST1", msgMock.Object, ref ret), Times.Once());
             actual = target.SendMessageImmediate("TEST1", msgMock.Object, ref ret);
             Assert.IsFalse(actual);
-            destMock3.Verify(f => f.HandleMessage(msgMock.Object, ref ret), Times.Once());
+            destMock3.Verify(f => f.HandleMessage("TEST1", msgMock.Object, ref ret), Times.Once());
             actual = target.SendMessageImmediate("TEST1", msgMock.Object, ref ret);
             Assert.IsTrue(actual);
-            destMock1.Verify(f => f.HandleMessage(msgMock.Object, ref ret), Times.Exactly(2));
+            destMock1.Verify(f => f.HandleMessage("TEST1", msgMock.Object, ref ret), Times.Exactly(2));
         }
 
         /// <summary>
