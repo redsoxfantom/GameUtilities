@@ -1,5 +1,7 @@
-﻿using GameUtilities.Framework.Utilities.Message;
+﻿using GameUtilities.Framework.Utilities.ExecutableContext;
+using GameUtilities.Framework.Utilities.Message;
 using System.Collections.Generic;
+
 namespace GameUtilities.Services
 {
     /// <summary>
@@ -8,13 +10,23 @@ namespace GameUtilities.Services
     public class ShaderService : BaseService
     {
         /// <summary>
+        /// Initialize the Service. Register for all needed Topics
+        /// </summary>
+        /// <param name="context">the services executable context</param>
+        public override void Init(IExecutableContext context)
+        {
+            base.Init(context);
+            mContext.MessageRouter.RegisterTopic(MessagingConstants.SHADER_SERVICE_TOPIC, this);
+        }
+
+        /// <summary>
         /// Update the Shader Service
         /// </summary>
         /// <param name="timeSinceLastFrame">Time since last frame</param>
         /// <param name="messages">Dictionary of messages</param>
         public override void Update(double timeSinceLastFrame, Dictionary<string, List<IMessage>> messages)
         {
-            throw new System.NotImplementedException();
+
         }
 
         /// <summary>
@@ -26,7 +38,7 @@ namespace GameUtilities.Services
         /// <returns>Whether or not the call succeded</returns>
         public override bool HandleMessage(string Topic, IMessage message, ref object returnValue)
         {
-            return false;
+            return base.HandleMessage(Topic, message, ref returnValue);
         }
     }
 }

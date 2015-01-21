@@ -13,17 +13,17 @@ namespace GameUtilities.Services
         /// <summary>
         /// The service's Logger
         /// </summary>
-        private ILogger mLogger;
+        protected ILogger mLogger;
 
         /// <summary>
         /// The service's Executable Context
         /// </summary>
-        private IExecutableContext mContext;
+        protected IExecutableContext mContext;
 
         /// <summary>
         /// The Service's Name
         /// </summary>
-        private string mName;
+        protected string mName;
 
         /// <summary>
         /// The constructor
