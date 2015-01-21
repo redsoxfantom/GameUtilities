@@ -26,7 +26,15 @@ namespace GameUtilities.Services
         /// <param name="messages">Dictionary of messages</param>
         public override void Update(double timeSinceLastFrame, Dictionary<string, List<IMessage>> messages)
         {
+            object retObj = new object();
 
+            foreach(string Topic in messages.Keys)
+            {
+                foreach(IMessage message in messages[Topic])
+                {
+                    HandleMessage(Topic, message, ref retObj);
+                }
+            }
         }
 
         /// <summary>
