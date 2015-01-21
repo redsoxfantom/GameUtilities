@@ -96,5 +96,31 @@ namespace GameUtilitiesUnitTests.Services
 
             Assert.AreEqual(expected, actual);
         }
+
+        /// <summary>
+        /// Test the FindShader method with no Init call
+        /// </summary>
+        [TestMethod]
+        public void FindShaderWithNoInit()
+        {
+            string expected = "\\Shaders\\TEST";
+            string actual =target.FindShader("TEST");
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        /// Test the FindShader method with an Init call
+        /// </summary>
+        [TestMethod]
+        public void FindShaderWithInit()
+        {
+            target.Init(path);
+
+            string expected = path + "\\Shaders\\TEST";
+            string actual = target.FindShader("TEST");
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
