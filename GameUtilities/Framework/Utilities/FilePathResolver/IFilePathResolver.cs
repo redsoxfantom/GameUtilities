@@ -30,5 +30,12 @@ namespace GameUtilities.Framework.Utilities.FilePathResolver
         /// <param name="entityTypeName">The name of the entity type to find</param>
         /// <returns>A string with the complete path to the entity type file</returns>
         string FindEntityType(string entityTypeName);
+
+        /// <summary>
+        /// Find the name of a Shader file in Config
+        /// </summary>
+        /// <param name="shaderName">The name of the Shader to find</param>
+        /// <returns>The fully qualified path</returns>
+        string FindShader(string shaderName);
     }
 }

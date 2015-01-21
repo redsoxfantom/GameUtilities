@@ -49,6 +49,16 @@
         {
             return mRootDirectory + "\\EntityTypes\\" + entityTypeName + ".xml";
         }
+
+        /// <summary>
+        /// Find the name of a Shader file in Config
+        /// </summary>
+        /// <param name="shaderName">The name of the Shader to find</param>
+        /// <returns>The fully qualified path</returns>
+        public string FindShader(string shaderName)
+        {
+            return mRootDirectory + "\\Shaders\\" + shaderName;
+        }
         #endregion IFilePathResolverService Methods
     }
 }
