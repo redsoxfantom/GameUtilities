@@ -1,5 +1,6 @@
 ﻿using GameUtilities.Framework.Utilities.ExecutableContext;
 using GameUtilities.Framework.Utilities.Message;
+using System;
 using System.Collections.Generic;
 
 namespace GameUtilities.Services
@@ -46,6 +47,13 @@ namespace GameUtilities.Services
         /// <returns>Whether or not the call succeded</returns>
         public override bool HandleMessage(string Topic, IMessage message, ref object returnValue)
         {
+            Type messageType = message.GetType();
+            
+            if(messageType == typeof(CreateShaderMessage))
+            {
+                return true;
+            }
+
             return base.HandleMessage(Topic, message, ref returnValue);
         }
     }
