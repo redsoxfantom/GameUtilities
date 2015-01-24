@@ -3,6 +3,7 @@ using GameUtilities.Framework.Utilities.Message;
 using OpenTK.Graphics.OpenGL4;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace GameUtilities.Services
 {
@@ -49,6 +50,7 @@ namespace GameUtilities.Services
         public override bool HandleMessage(string Topic, IMessage message, ref object returnValue)
         {
             Type messageType = message.GetType();
+            mLogger.Debug(string.Format("ShaderService got message of type {0}", messageType));
 
             if(messageType == typeof(LoadShaderProgramMessage))
             {
@@ -70,6 +72,8 @@ namespace GameUtilities.Services
                     }
                 }
 
+                mLogger.Debug(string.Format("Successfully created shader {0}", ShaderProgramId));
+                returnValue = ShaderProgramId;
                 return true;
             }
 
@@ -84,7 +88,21 @@ namespace GameUtilities.Services
         /// <param name="shaderProgram">the shader program to add this shader too</param>
         private void LoadShaderFile(String filename, ShaderType type, int shaderProgram)
         {
+            int address = GL.CreateShader(type);
+            int result = 0;
+            using(StreamReader reader = new StreamReader(filename))
+            {
+                GL.ShaderSource(address, reader.ReadToEnd());
+            }
+            GL.CompileShader(address);
+            GL.AttachShader(shaderProgram, address);
 
+            GL.GetShader(address,ShaderParameter.CompileStatus,out result);
+            if(result == 0)
+            {
+                mLogger.Error(string.Format("Failed to create shader!\nShader: {0}, Error: {1}",filename,GL.GetShaderInfoLog(address)));
+                throw new Exception("Shader Error");
+            }
         }
     }
 }
