@@ -1,5 +1,6 @@
 ﻿using GameUtilities.Framework.Utilities.ExecutableContext;
 using GameUtilities.Framework.Utilities.Message;
+using OpenTK.Graphics.OpenGL4;
 using System;
 using System.Collections.Generic;
 
@@ -48,18 +49,42 @@ namespace GameUtilities.Services
         public override bool HandleMessage(string Topic, IMessage message, ref object returnValue)
         {
             Type messageType = message.GetType();
-            
-            if(messageType == typeof(CreateShaderProgramMessage))
-            {
-                return true;
-            }
 
             if(messageType == typeof(LoadShaderProgramMessage))
             {
+                int ShaderProgramId = GL.CreateProgram();
+
+                Dictionary<ShaderType, string> shaderFileDictionary = (Dictionary<ShaderType, string>)message.GetData();
+                foreach(ShaderType type in shaderFileDictionary.Keys)
+                {
+                    string file = mContext.ConfigManager.FindShader(shaderFileDictionary[type]);
+                    try
+                    {
+                        LoadShaderFile(file, type, ShaderProgramId);
+                    }
+                    catch(Exception e)
+                    {
+                        GL.DeleteProgram(ShaderProgramId);
+                        mLogger.Error(string.Format("Failed to create requested shader {0}:{1}",type,file), e);
+                        return false;
+                    }
+                }
+
                 return true;
             }
 
             return base.HandleMessage(Topic, message, ref returnValue);
+        }
+
+        /// <summary>
+        /// Load a shader from the file and add it to the program
+        /// </summary>
+        /// <param name="filename">The name of the file to add</param>
+        /// <param name="type">the type of shader to create</param>
+        /// <param name="shaderProgram">the shader program to add this shader too</param>
+        private void LoadShaderFile(String filename, ShaderType type, int shaderProgram)
+        {
+
         }
     }
 }

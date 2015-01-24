@@ -13,11 +13,6 @@ namespace GameUtilities.Framework.Utilities.Message
     public class LoadShaderMessage : BaseMessage {}
 
     /// <summary>
-    /// Message to signal the ShaderService to create a Shader program from a Dictionary of supplied programs
-    /// </summary>
-    public class CreateShaderProgramMessage : BaseMessage {}
-
-    /// <summary>
     /// Message to signal the ShaderService to load a shader from a file
     /// </summary>
     public class LoadShaderProgramMessage : BaseMessage { }
