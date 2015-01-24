@@ -49,7 +49,12 @@ namespace GameUtilities.Services
         {
             Type messageType = message.GetType();
             
-            if(messageType == typeof(CreateShaderMessage))
+            if(messageType == typeof(CreateShaderProgramMessage))
+            {
+                return true;
+            }
+
+            if(messageType == typeof(LoadShaderProgramMessage))
             {
                 return true;
             }
