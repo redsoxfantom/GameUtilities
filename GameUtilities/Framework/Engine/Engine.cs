@@ -3,6 +3,8 @@ using GameUtilities.Worlds.DataContracts;
 using GameUtilities.Worlds;
 using GameUtilities.Framework.Utilities.Loggers;
 using System;
+using System.Collections.Generic;
+using GameUtilities.Services;
 
 namespace GameUtilities.Framework.Engine
 {
@@ -24,11 +26,17 @@ namespace GameUtilities.Framework.Engine
         private ILogger mLogger;
 
         /// <summary>
+        /// List of all the services in use by the Engine
+        /// </summary>
+        private List<IService> mServicesList;
+
+        /// <summary>
         /// The Constructor
         /// </summary>
         public Engine()
         {
             mLogger = LoggerFactory.CreateLogger("ENGINE");
+            mServicesList = new List<IService>();
         }
 
         /// <summary>
@@ -41,7 +49,10 @@ namespace GameUtilities.Framework.Engine
             mLogger.Info(string.Format("Initializing engine with world: {0} and config path: {1}",world,PathToConfig));
             mContext = new BaseExecutableContext(PathToConfig);
 
-            //TODO: initialize services here
+            foreach(IService service in mServicesList)
+            {
+                service.Init(mContext);
+            }
 
             mWorld = WorldFactory.CreateWorld(world, mContext);
             mLogger.Info("Done initializing Engine");
@@ -64,7 +75,10 @@ namespace GameUtilities.Framework.Engine
                 mLogger.Warn("Error updating world", e);
             }
 
-            //TODO: Update Services here
+            foreach(IService service in mServicesList)
+            {
+                service.Update(timeSinceLastFrame);
+            }
         }
 
         /// <summary>
@@ -90,8 +104,11 @@ namespace GameUtilities.Framework.Engine
         {
             mLogger.Info("Beginning Engine Shutdown...");
             mWorld.Terminate();
-            //TODO: Shut down any Services
             mContext.MessageRouter.Terminate();
+            foreach(IService service in mServicesList)
+            {
+                service.Terminate();
+            }
 
             mLogger.Info("Engine Shutdown Complete");
             mLogger.Terminate();
