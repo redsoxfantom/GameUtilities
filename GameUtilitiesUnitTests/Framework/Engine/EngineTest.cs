@@ -63,5 +63,24 @@ namespace GameUtilitiesUnitTests.Framework
             target.Draw(12345);
             worldMock.Verify(f => f.Draw(12345), Times.Once());
         }
+
+        /// <summary>
+        /// Test the terminate method
+        /// </summary>
+        [TestMethod]
+        public void EngineTerminateTest()
+        {
+            Engine target = new Engine();
+            PrivateObject obj = new PrivateObject(target);
+            Mock<IWorld> worldMock = new Mock<IWorld>();
+            Mock<IExecutableContext> mockContext = new Mock<IExecutableContext>();
+            mockContext.Setup(f => f.MessageRouter).Returns(new Mock<IMessageRouter>().Object);
+            obj.SetFieldOrProperty("mWorld", worldMock.Object);
+            obj.SetFieldOrProperty("mContext", mockContext.Object);
+
+            target.Terminate();
+
+            worldMock.Verify(f => f.Terminate(), Times.Once());
+        }
     }
 }
