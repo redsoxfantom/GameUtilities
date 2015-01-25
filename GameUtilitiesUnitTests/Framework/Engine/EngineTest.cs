@@ -5,6 +5,7 @@ using GameUtilities.Framework.Engine;
 using GameUtilities.Worlds;
 using GameUtilities.Framework.Utilities.Message.MessageDispatch;
 using GameUtilities.Framework.Utilities.ExecutableContext;
+using GameUtilitiesUnitTests.UnitTestUtilities;
 
 namespace GameUtilitiesUnitTests.Framework
 {
@@ -18,13 +19,16 @@ namespace GameUtilitiesUnitTests.Framework
         /// Test the Init method
         /// </summary>
         [TestMethod]
-        [ExpectedException(typeof(System.IO.DirectoryNotFoundException))]
         public void EngineInitTest()
         {
             Engine target = new Engine();
             PrivateObject obj = new PrivateObject(target);
+            LoggerUtility logger = new LoggerUtility("logger");
+            obj.SetFieldOrProperty("mLogger", logger);
 
             target.Init("Test", "Test");
+
+            Assert.IsTrue(logger.WarnMessages.Count == 1);
         }
 
         /// <summary>
