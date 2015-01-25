@@ -155,6 +155,7 @@ namespace GameUtilities.Worlds
             foreach(IEntity entity in EntityList)
             {
                 entity.Terminate();
+                RemoveEntity(entity);
             }
             mLogger.Info(string.Format("World {0} finished termination",mData.Name));
             mLogger.Terminate();

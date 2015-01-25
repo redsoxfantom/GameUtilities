@@ -5,6 +5,10 @@ using GameUtilities.Entities;
 using GameUtilities.Worlds.DataContracts;
 using Moq;
 using System.Collections.Generic;
+using GameUtilities.Entities.DataContracts;
+using GameUtilitiesUnitTests.UnitTestUtilities;
+using GameUtilities.Framework.Utilities.ExecutableContext;
+using GameUtilities.Framework.Utilities.Message.MessageDispatch;
 
 namespace GameUtilitiesUnitTests.Worlds
 {
@@ -19,6 +23,7 @@ namespace GameUtilitiesUnitTests.Worlds
         Mock<IEntity> entityMock;
         Dictionary<string,IEntity> dict;
         List<IEntity> list;
+        LoggerUtility logger;
 
         /// <summary>
         /// Initializes needed objects before each test
@@ -26,8 +31,12 @@ namespace GameUtilitiesUnitTests.Worlds
         [TestInitialize]
         public void TestIntializer()
         {
-            target = new BaseWorld(new WorldData("TEST","TEST"));
+            List<EntityData> entities = new List<EntityData>();
+            entities.Add(new EntityData("Entity1", "GameUtilities.Entities.BaseEntity,GameUtilities"));
+            WorldData data = new WorldData("TEST","TEST",entities);
+            target = new BaseWorld(data);
             obj = new PrivateObject(target);
+            logger = new LoggerUtility("logger");
             
             entityMock = new Mock<IEntity>();
             entityMock.Setup<string>(f => f.Name).Returns("TEST");
@@ -39,6 +48,7 @@ namespace GameUtilitiesUnitTests.Worlds
 
             obj.SetFieldOrProperty("EntityIdDictionary", dict);
             obj.SetFieldOrProperty("EntityList", list);
+            obj.SetFieldOrProperty("mLogger", logger);
         }
 
         /// <summary>
@@ -55,12 +65,19 @@ namespace GameUtilitiesUnitTests.Worlds
         /// Test of the GetEntity method
         /// </summary>
         [TestMethod]
-        public void GetEntityTest()
+        public void GetEntitySuccessTest()
         {
             IEntity actual = target.GetEntity("TEST");
             Assert.AreEqual(entityMock.Object, actual);
+        }
 
-            actual = target.GetEntity("FAILURE");
+        /// <summary>
+        /// Test of the GetEntity method
+        /// </summary>
+        [TestMethod]
+        public void GetEntityFailureTest()
+        {
+            IEntity actual = target.GetEntity("FAILURE");
             Assert.IsNull(actual);
         }
 
@@ -88,9 +105,16 @@ namespace GameUtilitiesUnitTests.Worlds
         /// Test the Init method
         /// </summary>
         [TestMethod]
-        public void WorldInitTest()
+        public void WorldInitSuccessTest()
         {
-            //TODO: fill in this test when Init is complete
+            Mock<IExecutableContext> contextMock = new Mock<IExecutableContext>();
+            Mock<IMessageRouter> routerMock = new Mock<IMessageRouter>();
+            contextMock.Setup(f => f.MessageRouter).Returns(routerMock.Object);
+
+            target.Init(contextMock.Object);
+
+            routerMock.Verify(f => f.RegisterTopic("TEST", target));
+            Assert.IsTrue(logger.ErrorMessages.Count == 0);
         }
     }
 }
