@@ -51,10 +51,24 @@ namespace GameUtilities.Framework.Engine
 
             foreach(IService service in mServicesList)
             {
-                service.Init(mContext);
+                try
+                {
+                    service.Init(mContext);
+                }
+                catch(Exception e)
+                {
+                    mLogger.Warn("Error initializing Service", e);
+                }
             }
 
-            mWorld = WorldFactory.CreateWorld(world, mContext);
+            try
+            {
+                mWorld = WorldFactory.CreateWorld(world, mContext);
+            }
+            catch(Exception e)
+            {
+                mLogger.Warn("Error initializing world", e);
+            }
             mLogger.Info("Done initializing Engine");
         }
 
@@ -66,6 +80,18 @@ namespace GameUtilities.Framework.Engine
         {
             mContext.MessageRouter.Update();
 
+            foreach (IService service in mServicesList)
+            {
+                try
+                {
+                    service.Update(timeSinceLastFrame);
+                }
+                catch(Exception e)
+                {
+                    mLogger.Warn("Error updating service", e);
+                }
+            }
+
             try
             {
                 mWorld.Update(timeSinceLastFrame);
@@ -73,11 +99,6 @@ namespace GameUtilities.Framework.Engine
             catch(Exception e)
             {
                 mLogger.Warn("Error updating world", e);
-            }
-
-            foreach(IService service in mServicesList)
-            {
-                service.Update(timeSinceLastFrame);
             }
         }
 
