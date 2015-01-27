@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EntityType>
+  <Name>Entity1Type</Name>
+  <Components xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+    <a:string>GameUtilities.Components.TestComponent,GameUtilities</a:string>
+  </Components>
+</EntityType>
