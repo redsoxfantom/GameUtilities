@@ -6,6 +6,10 @@ using Moq;
 using GameUtilities.Entities;
 using GameUtilities.Entities.DataContracts;
 using GameUtilities.Components;
+using GameUtilities.Framework.Utilities.FilePathResolver;
+using GameUtilities.Framework.Utilities.Message.MessageDispatch;
+using GameUtilities.Framework.Utilities.ExecutableContext;
+using GameUtilitiesUnitTests.UnitTestUtilities;
 
 namespace GameUtilitiesUnitTests.Entities
 {
@@ -26,7 +30,7 @@ namespace GameUtilitiesUnitTests.Entities
         [TestInitialize]
         public void Initializer()
         {
-            target = new BaseEntity(new EntityData("TEST","ASSEMBLY"));
+            target = new BaseEntity(new EntityData("TestEntityType","ASSEMBLY"));
             po = new PrivateObject(target);
             componentMock = new Mock<IComponent>();
             list = new List<IComponent>();
@@ -41,18 +45,35 @@ namespace GameUtilitiesUnitTests.Entities
         public void BaseEntityConstructorTest()
         {
             String mName = (String)po.GetFieldOrProperty("mName");
-            mName = mName.Substring(0, 5);
+            mName = mName.Substring(0, 4);
 
-            Assert.AreEqual("TEST.", mName);
+            Assert.AreEqual("Test", mName);
         }
 
         /// <summary>
         /// Test the init method
         /// </summary>
         [TestMethod]
-        public void InitTest()
+        public void BaseEntityInitTest()
         {
-            //TODO: fill this in when Init is finalized
+            target = new BaseEntity(new EntityData("TestEntityType", "ASSEMBLY"));
+            po = new PrivateObject(target);
+            ConfigManager config = new ConfigManager();
+            config.Init(".\\Config");
+            LoggerUtility logger = new LoggerUtility("entity");
+            Mock<IMessageRouter> mockRouter = new Mock<IMessageRouter>();
+            Mock<IExecutableContext> mockContext = new Mock<IExecutableContext>();
+            Mock<IEntity> entityMock = new Mock<IEntity>();
+            mockContext.Setup(f => f.MessageRouter).Returns(mockRouter.Object);
+            mockContext.Setup(f => f.ConfigManager).Returns(config);
+            mockContext.Setup(f => f.Entity).Returns(entityMock.Object);
+            po.SetFieldOrProperty("Logger", logger);
+
+            target.Init(mockContext.Object);
+
+            List<IComponent> componentList = (List<IComponent>)po.GetFieldOrProperty("mComponents");
+            Assert.IsTrue(componentList.Count == 1);
+            Assert.IsTrue(logger.ErrorMessages.Count == 0);
         }
 
         /// <summary>
