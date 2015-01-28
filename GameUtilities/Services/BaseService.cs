@@ -78,6 +78,8 @@ namespace GameUtilities.Services
         /// <returns></returns>
         public virtual bool HandleMessage(string Topic, IMessage message, ref object returnValue)
         {
+            //The only time this should be handled is if we got an unrecognized message, log it
+            mLogger.Warn(string.Format("{0} got unrecognized message! MessageType: {1}", this.GetType(), message.GetType()));
             return false;
         }
     }
