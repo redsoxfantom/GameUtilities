@@ -110,7 +110,7 @@ namespace GameUtilities.Services
             if(result == 0)
             {
                 mLogger.Error(string.Format("Failed to create shader!\nShader: {0}, Error: {1}",filename,GL.GetShaderInfoLog(address)));
-                throw new Exception("Shader Error");
+                throw new Exception(string.Format("Failed to create shader!\nShader: {0}, Error: {1}", filename, GL.GetShaderInfoLog(address)));
             }
         }
     }
