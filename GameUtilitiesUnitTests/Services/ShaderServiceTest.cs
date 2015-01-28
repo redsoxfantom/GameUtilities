@@ -6,6 +6,10 @@ using GameUtilities.Framework.Utilities.ExecutableContext;
 using GameUtilities.Framework.Utilities.Message.MessageDispatch;
 using GameUtilities.Framework.Utilities.Message;
 using GameUtilitiesUnitTests.UnitTestUtilities;
+using System.Collections.Generic;
+using OpenTK.Graphics.OpenGL4;
+using GameUtilities.Framework.Utilities.FilePathResolver;
+using OpenTK;
 
 namespace GameUtilitiesUnitTests.Services
 {
@@ -68,6 +72,39 @@ namespace GameUtilitiesUnitTests.Services
             bool expected = false;
             Assert.AreEqual(expected, actual);
             Assert.IsTrue(logger.WarnMessages.Count == 1);
+        }
+
+        /// <summary>
+        /// Test for the shaderservice when asked to create a shader program from one shader file that exists
+        /// </summary>
+        [TestMethod]
+        public void ShaderServiceHandleOneShaderSuccessfulRequest()
+        {
+            using (var game = new GameWindow())
+            {
+                ShaderService target = new ShaderService();
+                PrivateObject obj = new PrivateObject(target);
+                LoggerUtility logger = new LoggerUtility("Logger");
+                obj.SetFieldOrProperty("mLogger", logger);
+                LoadShaderProgramMessage msg = new LoadShaderProgramMessage();
+                ConfigManager config = new ConfigManager();
+                object retObj = new object();
+                Dictionary<ShaderType, string> msgData = new Dictionary<ShaderType, string>();
+                msgData.Add(ShaderType.FragmentShader, "test_fragment_shader.frag");
+                Mock<IExecutableContext> execContextMock = new Mock<IExecutableContext>();
+                Mock<IMessageRouter> msgRouterMock = new Mock<IMessageRouter>();
+                execContextMock.Setup(f => f.MessageRouter).Returns(msgRouterMock.Object);
+                execContextMock.Setup(f => f.ConfigManager).Returns(config);
+                config.Init(".\\Config\\");
+                msg.Init(msgData);
+                target.Init(execContextMock.Object);
+
+                bool actual = target.HandleMessage(MessagingConstants.SHADER_SERVICE_TOPIC, msg, ref retObj);
+
+                int shaderProgramId = (int)retObj;
+                Assert.IsTrue(shaderProgramId != 0);
+                Assert.IsTrue(actual);
+            }
         }
     }
 }

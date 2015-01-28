@@ -109,8 +109,9 @@ namespace GameUtilities.Services
             GL.GetShader(address,ShaderParameter.CompileStatus,out result);
             if(result == 0)
             {
-                mLogger.Error(string.Format("Failed to create shader!\nShader: {0}, Error: {1}",filename,GL.GetShaderInfoLog(address)));
-                throw new Exception(string.Format("Failed to create shader!\nShader: {0}, Error: {1}", filename, GL.GetShaderInfoLog(address)));
+                String status = GL.GetShaderInfoLog(address);
+                mLogger.Error(string.Format("Failed to create shader!\nShader: {0}, Error: {1}",filename,status));
+                throw new Exception(string.Format("Failed to create shader!\nShader: {0}, Error: {1}", filename, status));
             }
         }
     }
