@@ -64,6 +64,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Framework\FilePathResolver\FilePathResolverServiceTest.cs" />
     <Compile Include="Framework\MessageRouter\MessageRouterTest.cs" />
+    <Compile Include="Services\ShaderServiceTest.cs" />
     <Compile Include="UnitTestUtilities\LoggerUtility.cs" />
     <Compile Include="UnitTestUtilities\TestComponentUtility.cs" />
     <Compile Include="Worlds\BaseWorldTest.cs" />
@@ -77,9 +78,7 @@
       <Name>GameUtilities</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Config\EntityTypes\CameraEntityType.xml" />
     <Content Include="Config\EntityTypes\TestEntityType.xml" />
