@@ -70,6 +70,9 @@
     <Compile Include="Worlds\BaseWorldTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Config\Shaders\test_bad_shader.vert" />
+    <None Include="Config\Shaders\test_fragment_shader.frag" />
+    <None Include="Config\Shaders\test_vertex_shader.vert" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

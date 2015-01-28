@@ -1,0 +1,1 @@
+﻿This is an intentionally corrupted vertex shader file meant to be used by the ShaderServiceTest
