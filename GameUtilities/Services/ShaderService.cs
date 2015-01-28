@@ -85,6 +85,15 @@ namespace GameUtilities.Services
         }
 
         /// <summary>
+        /// Terminate the shaderservice
+        /// </summary>
+        public override void Terminate()
+        {
+            mContext.MessageRouter.DeregisterTopic(MessagingConstants.SHADER_SERVICE_TOPIC, this);
+            base.Terminate();
+        }
+
+        /// <summary>
         /// Load a shader from the file and add it to the program
         /// </summary>
         /// <param name="filename">The name of the file to add</param>
