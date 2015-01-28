@@ -5,6 +5,7 @@ using GameUtilities.Services;
 using GameUtilities.Framework.Utilities.ExecutableContext;
 using GameUtilities.Framework.Utilities.Message.MessageDispatch;
 using GameUtilities.Framework.Utilities.Message;
+using GameUtilitiesUnitTests.UnitTestUtilities;
 
 namespace GameUtilitiesUnitTests.Services
 {
@@ -47,6 +48,26 @@ namespace GameUtilitiesUnitTests.Services
             target.Terminate();
 
             msgRouterMock.Verify(f => f.DeregisterTopic(MessagingConstants.SHADER_SERVICE_TOPIC, target));
+        }
+
+        /// <summary>
+        /// Test the Shaderservice message handler when given an unrecognized message
+        /// </summary>
+        [TestMethod]
+        public void ShaderServiceHandleUnrecognizedMessage()
+        {
+            ShaderService target = new ShaderService();
+            PrivateObject obj = new PrivateObject(target);
+            LoggerUtility logger = new LoggerUtility("Logger");
+            obj.SetFieldOrProperty("mLogger", logger);
+            Mock<IMessage> mockMessage = new Mock<IMessage>();
+            object test = new object();
+
+            bool actual = target.HandleMessage("TEST", mockMessage.Object, ref test);
+
+            bool expected = false;
+            Assert.AreEqual(expected, actual);
+            Assert.IsTrue(logger.WarnMessages.Count == 1);
         }
     }
 }
