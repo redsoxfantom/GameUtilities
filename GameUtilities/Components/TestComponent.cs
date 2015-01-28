@@ -11,7 +11,8 @@ using OpenTK.Graphics.OpenGL;
 namespace GameUtilities.Components
 {
     /// <summary>
-    /// Simple component for testing purposes
+    /// Simple component for testing purposes.
+    /// Draws a Triangle in the middle of the viewing screen
     /// </summary>
     public class TestComponent : BaseComponent
     {
@@ -72,7 +73,22 @@ namespace GameUtilities.Components
         /// <param name="timeSinceLastFrame">How long since the last frame</param>
         public override void Draw(double timeSinceLastFrame)
         {
+            GL.PushMatrix();
 
+            GL.MatrixMode(MatrixMode.Projection);
+            GL.LoadIdentity();
+            GL.Ortho(-10, 10, -10, 10, 0.001, 100.0);
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
+
+            GL.Begin(PrimitiveType.Triangles);
+            GL.Color3(1, 1, 1);
+            GL.Vertex3(-5.0, -5.0, -5.0);
+            GL.Vertex3(0.0, 5.0, -5.0);
+            GL.Vertex3(5.0, -5.0, -5.0);
+            GL.End();
+
+            GL.PopMatrix();
         }
 
         /// <summary>
