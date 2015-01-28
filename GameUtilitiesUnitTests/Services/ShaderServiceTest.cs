@@ -106,5 +106,39 @@ namespace GameUtilitiesUnitTests.Services
                 Assert.IsTrue(actual);
             }
         }
+
+        /// <summary>
+        /// Test for the shaderservice when asked to create a shader program from two shader files that exists
+        /// </summary>
+        [TestMethod]
+        public void ShaderServiceHandleMultipleShadersSuccessfulRequest()
+        {
+            using (var game = new GameWindow())
+            {
+                ShaderService target = new ShaderService();
+                PrivateObject obj = new PrivateObject(target);
+                LoggerUtility logger = new LoggerUtility("Logger");
+                obj.SetFieldOrProperty("mLogger", logger);
+                LoadShaderProgramMessage msg = new LoadShaderProgramMessage();
+                ConfigManager config = new ConfigManager();
+                object retObj = new object();
+                Dictionary<ShaderType, string> msgData = new Dictionary<ShaderType, string>();
+                msgData.Add(ShaderType.FragmentShader, "test_fragment_shader.frag");
+                msgData.Add(ShaderType.VertexShader, "test_vertex_shader.vert");
+                Mock<IExecutableContext> execContextMock = new Mock<IExecutableContext>();
+                Mock<IMessageRouter> msgRouterMock = new Mock<IMessageRouter>();
+                execContextMock.Setup(f => f.MessageRouter).Returns(msgRouterMock.Object);
+                execContextMock.Setup(f => f.ConfigManager).Returns(config);
+                config.Init(".\\Config\\");
+                msg.Init(msgData);
+                target.Init(execContextMock.Object);
+
+                bool actual = target.HandleMessage(MessagingConstants.SHADER_SERVICE_TOPIC, msg, ref retObj);
+
+                int shaderProgramId = (int)retObj;
+                Assert.IsTrue(shaderProgramId != 0);
+                Assert.IsTrue(actual);
+            }
+        }
     }
 }
