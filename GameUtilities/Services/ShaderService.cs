@@ -76,6 +76,10 @@ namespace GameUtilities.Services
                 returnValue = ShaderProgramId;
                 return true;
             }
+            else
+            {
+                mLogger.Warn(string.Format("ShaderService got unrecognized message! MessageType: {0}", messageType));
+            }
 
             return base.HandleMessage(Topic, message, ref returnValue);
         }
