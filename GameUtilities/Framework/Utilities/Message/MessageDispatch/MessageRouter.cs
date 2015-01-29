@@ -120,11 +120,19 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
             if(ConsumerTopicDictionary.ContainsKey(consumer))
             {
                 ConsumerTopicDictionary[consumer].Remove(Topic);
+                if(ConsumerTopicDictionary[consumer].Count == 0) // There are no more topics for this consumer
+                {
+                    ConsumerTopicDictionary.Remove(consumer);
+                }
             }
 
             if(TopicConsumerDictionary.ContainsKey(Topic))
             {
                 TopicConsumerDictionary[Topic].Remove(consumer);
+                if(TopicConsumerDictionary[Topic].Count == 0) // There are no more consumers for this topic
+                {
+                    TopicConsumerDictionary.Remove(Topic);
+                }
             }
         }
 
@@ -185,6 +193,22 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         /// </summary>
         public void Terminate()
         {
+            if(TopicConsumerDictionary.Keys.Count != 0)
+            {
+                mLogger.Warn("Message Router terminating with registered consumers/producers! Registered topics/consumers:");
+                foreach(string key in TopicConsumerDictionary.Keys)
+                {
+                    List<IMessageDestination> consumers = TopicConsumerDictionary[key];
+                    mLogger.Warn(string.Format("\tTOPIC: {0}",key));
+                    foreach(IMessageDestination dest in consumers)
+                    {
+                        mLogger.Warn(string.Format("\t\tCONSUMER: {0}", dest.GetType()));
+                    }
+                }
+            }
+            TopicConsumerDictionary = new Dictionary<string, List<IMessageDestination>>();
+            ConsumerTopicDictionary = new Dictionary<IMessageDestination, List<string>>();
+
             mLogger.Terminate();
         }
     }
