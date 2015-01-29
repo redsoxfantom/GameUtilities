@@ -6,6 +6,8 @@ using GameUtilities.Worlds;
 using GameUtilities.Framework.Utilities.Message.MessageDispatch;
 using GameUtilities.Framework.Utilities.ExecutableContext;
 using GameUtilitiesUnitTests.UnitTestUtilities;
+using GameUtilities.Services;
+using System.Collections.Generic;
 
 namespace GameUtilitiesUnitTests.Framework
 {
@@ -77,6 +79,7 @@ namespace GameUtilitiesUnitTests.Framework
             mockContext.Setup(f => f.MessageRouter).Returns(new Mock<IMessageRouter>().Object);
             obj.SetFieldOrProperty("mWorld", worldMock.Object);
             obj.SetFieldOrProperty("mContext", mockContext.Object);
+            obj.SetFieldOrProperty("mServicesList", new List<IService>());
 
             target.Terminate();
 
