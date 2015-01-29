@@ -105,6 +105,8 @@ namespace GameUtilities.Worlds
                 }
             }
             mContext.MessageRouter.RegisterTopic(mData.Name, this);
+            mContext.MessageRouter.RegisterTopic(MessagingConstants.ACTIVE_WORLD, this);
+
             mLogger.Info(string.Format("Done initializing world '{0}'", mData.Name));
         }
 
@@ -156,6 +158,8 @@ namespace GameUtilities.Worlds
             {
                 entity.Terminate();
             }
+            mContext.MessageRouter.DeregisterTopic(mData.Name, this);
+            mContext.MessageRouter.DeregisterTopic(MessagingConstants.ACTIVE_WORLD, this);
             mLogger.Info(string.Format("World {0} finished termination",mData.Name));
             mLogger.Terminate();
         }
