@@ -89,6 +89,31 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
             Assert.IsTrue(topic2List.Contains(destMock2.Object));
         }
 
+
+        /// <summary>
+        /// Test of the DeregisterTopic method when there are no more consumers
+        /// </summary>
+        [TestMethod]
+        public void DeregisterTopicLastConsumerTest()
+        {
+            MessageRouter target = new MessageRouter();
+            PrivateObject obj = new PrivateObject(target);
+            Dictionary<IMessageDestination, List<string>> ConsumerTopicDictionary = (Dictionary<IMessageDestination, List<string>>)obj.GetFieldOrProperty("ConsumerTopicDictionary");
+            Dictionary<string, List<IMessageDestination>> TopicConsumerDictionary = (Dictionary<string, List<IMessageDestination>>)obj.GetFieldOrProperty("TopicConsumerDictionary");
+            Mock<IMessageDestination> destMock1 = new Mock<IMessageDestination>();
+            Mock<IMessageDestination> destMock2 = new Mock<IMessageDestination>();
+            Mock<IMessageDestination> destMock3 = new Mock<IMessageDestination>();
+            target.RegisterTopic("TEST1", destMock1.Object);
+            target.RegisterTopic("TEST3", destMock1.Object);
+            target.RegisterTopic("TEST2", destMock2.Object);
+            target.RegisterTopic("TEST1", destMock3.Object);
+
+            target.DeregisterTopic("TEST2", destMock2.Object);
+
+            Assert.IsFalse(ConsumerTopicDictionary.ContainsKey(destMock2.Object));
+            Assert.IsFalse(TopicConsumerDictionary.ContainsKey("TEST2"));
+        }
+
         /// <summary>
         /// Test the SendMessageImmediate test
         /// </summary>
