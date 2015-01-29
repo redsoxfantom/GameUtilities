@@ -67,6 +67,7 @@ namespace GameUtilities.Services
                     catch(Exception e)
                     {
                         GL.DeleteProgram(ShaderProgramId);
+                        returnValue = 0;
                         mLogger.Error(string.Format("Failed to create requested shader {0}:{1}",type,file), e);
                         return false;
                     }
