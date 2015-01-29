@@ -37,6 +37,9 @@ namespace GameUtilities.Framework.Engine
         {
             mLogger = LoggerFactory.CreateLogger("ENGINE");
             mServicesList = new List<IService>();
+
+            ShaderService shaderService = new ShaderService();
+            mServicesList.Add(shaderService);
         }
 
         /// <summary>
@@ -125,12 +128,12 @@ namespace GameUtilities.Framework.Engine
         {
             mLogger.Info("Beginning Engine Shutdown...");
             mWorld.Terminate();
-            mContext.MessageRouter.Terminate();
             foreach(IService service in mServicesList)
             {
                 service.Terminate();
             }
 
+            mContext.MessageRouter.Terminate();
             mLogger.Info("Engine Shutdown Complete");
             mLogger.Terminate();
         }
