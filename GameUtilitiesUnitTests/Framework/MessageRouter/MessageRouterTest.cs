@@ -4,6 +4,7 @@ using Moq;
 using GameUtilities.Framework.Utilities.Message.MessageDispatch;
 using GameUtilities.Framework.Utilities.Message;
 using System.Collections.Generic;
+using GameUtilitiesUnitTests.UnitTestUtilities;
 
 namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
 {
@@ -217,6 +218,25 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
             Assert.IsTrue(actual.Contains(msgMock.Object));
             Assert.IsTrue(actual.Contains(msgMock2.Object));
             Assert.IsTrue(mNextFrameMessages.Count == 0);
+        }
+
+        /// <summary>
+        /// Test message router termination when there are no consumers still registered
+        /// </summary>
+        [TestMethod]
+        public void MessageRouterTerminateWithNoConsumers()
+        {
+            MessageRouter target = new MessageRouter();
+            PrivateObject obj = new PrivateObject(target);
+            LoggerUtility logger = new LoggerUtility("test");
+            Mock<IMessageDestination> destMock = new Mock<IMessageDestination>();
+            obj.SetFieldOrProperty("mLogger", logger);
+
+            target.RegisterTopic("TESTTOPIC", destMock.Object);
+            target.DeregisterTopic("TESTTOPIC", destMock.Object);
+            target.Terminate();
+
+            Assert.IsTrue(logger.WarnMessages.Count == 0);
         }
     }
 }
