@@ -263,5 +263,23 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
 
             Assert.IsTrue(logger.WarnMessages.Count == 0);
         }
+
+        /// <summary>
+        /// Test message router termination when there are consumers still registered
+        /// </summary>
+        [TestMethod]
+        public void MessageRouterTerminateWithConsumers()
+        {
+            MessageRouter target = new MessageRouter();
+            PrivateObject obj = new PrivateObject(target);
+            LoggerUtility logger = new LoggerUtility("test");
+            Mock<IMessageDestination> destMock = new Mock<IMessageDestination>();
+            obj.SetFieldOrProperty("mLogger", logger);
+
+            target.RegisterTopic("TESTTOPIC", destMock.Object);
+            target.Terminate();
+
+            Assert.IsTrue(logger.WarnMessages.Count > 0);
+        }
     }
 }
