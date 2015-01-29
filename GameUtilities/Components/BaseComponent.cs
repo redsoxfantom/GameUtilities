@@ -86,6 +86,8 @@ namespace GameUtilities.Components
         public virtual void Terminate()
         {
             mLogger.Info(string.Format("Component {0} terminating", mName));
+            mContext.MessageRouter.DeregisterTopic(mName, this);
+            mLogger.Info(string.Format("Component {0} finished terminating", mName));
             mLogger.Terminate();
         }
 

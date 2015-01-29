@@ -159,6 +159,7 @@ namespace GameUtilities.Entities
             {
                 component.Terminate();
             }
+            mContext.MessageRouter.DeregisterTopic(mName, this);
             Logger.Info(string.Format("Entity {0} done termination", mName));
             Logger.Terminate();
         }
