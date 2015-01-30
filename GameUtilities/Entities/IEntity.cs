@@ -13,11 +13,6 @@ namespace GameUtilities.Entities
     public interface IEntity : IDrawable, IUpdatable, ITerminatable, IMessageDestination
     {
         /// <summary>
-        /// The Entities' logger
-        /// </summary>
-        ILogger Logger { get; }
-
-        /// <summary>
         /// The entities' unique name
         /// </summary>
         string Name { get; }

@@ -14,7 +14,7 @@ namespace GameUtilities.Entities
         /// <summary>
         /// The null entities' logger
         /// </summary>
-        public ILogger Logger 
+        public ILogger mLogger 
         {
             get { return new NullLogger("NULL"); }
         }

@@ -38,7 +38,7 @@ namespace GameUtilities.Entities
         /// <summary>
         /// The Entities' logger
         /// </summary>
-        public virtual ILogger Logger {get; private set;}
+        private ILogger mLogger;
 
         /// <summary>
         /// The entites' name
@@ -69,9 +69,9 @@ namespace GameUtilities.Entities
                 mName = data.Name;
             }
             mName += string.Format(".{0}", Guid.NewGuid());
-            Logger = LoggerFactory.CreateLogger(mName);
+            mLogger = LoggerFactory.CreateLogger(mName);
 
-            Logger.Info(string.Format("Created Entity '{0}'", mName));
+            mLogger.Info(string.Format("Created Entity '{0}'", mName));
         }
         #endregion Contructors
 
@@ -82,7 +82,7 @@ namespace GameUtilities.Entities
         /// <param name="Context">The executable context of the entity</param>
         public virtual void Init(IExecutableContext Context)
         {
-            Logger.Info(string.Format("Initializing Entity '{0}'",mName));
+            mLogger.Info(string.Format("Initializing Entity '{0}'",mName));
             mContext = Context;
             mContext.Entity = this;
 
@@ -94,7 +94,7 @@ namespace GameUtilities.Entities
             {
                 try
                 {
-                    Logger.Info(string.Format("Creating component '{0}' for entity '{1}'",entry,mName));
+                    mLogger.Info(string.Format("Creating component '{0}' for entity '{1}'",entry,mName));
                     Type componentType = Type.GetType(entry);
                     Object[] objArray = {};
                     IComponent component = (IComponent)Activator.CreateInstance(componentType, objArray);
@@ -103,12 +103,12 @@ namespace GameUtilities.Entities
                 }
                 catch (Exception e)
                 {
-                    Logger.Error(string.Format("Failed to create component '{0}' for entity '{1}", entry, mName),e);
+                    mLogger.Error(string.Format("Failed to create component '{0}' for entity '{1}", entry, mName),e);
                 }
             }
             mContext.MessageRouter.RegisterTopic(mName, this);
 
-            Logger.Info(string.Format("Finished Initializing Entity '{0}'", mName));
+            mLogger.Info(string.Format("Finished Initializing Entity '{0}'", mName));
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace GameUtilities.Entities
                 }
                 catch(Exception e)
                 {
-                    Logger.Warn(string.Format("Entity {0} error updating component {1}",mName,component.Name), e);
+                    mLogger.Warn(string.Format("Entity {0} error updating component {1}",mName,component.Name), e);
                 }
             }
         }
@@ -144,7 +144,7 @@ namespace GameUtilities.Entities
                 }
                 catch(Exception e)
                 {
-                    Logger.Warn(string.Format("Entity {0} error drawing component {1}", mName, component.Name), e);
+                    mLogger.Warn(string.Format("Entity {0} error drawing component {1}", mName, component.Name), e);
                 }
             }
         }
@@ -154,14 +154,14 @@ namespace GameUtilities.Entities
         /// </summary>
         public virtual void Terminate()
         {
-            Logger.Info(string.Format("Entity {0} starting termination...", mName));
+            mLogger.Info(string.Format("Entity {0} starting termination...", mName));
             foreach(IComponent component in mComponents)
             {
                 component.Terminate();
             }
             mContext.MessageRouter.DeregisterTopic(mName, this);
-            Logger.Info(string.Format("Entity {0} done termination", mName));
-            Logger.Terminate();
+            mLogger.Info(string.Format("Entity {0} done termination", mName));
+            mLogger.Terminate();
         }
 
         /// <summary>
