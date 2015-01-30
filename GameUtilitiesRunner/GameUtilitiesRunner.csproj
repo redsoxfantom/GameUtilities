@@ -65,6 +65,9 @@
     <Content Include="Config\EntityTypes\TestEntityType.xml" />
     <Content Include="Config\Worlds\World1.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Config\Shaders\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>XCOPY "$(ProjectDir)\Config" "$(TargetDir)\Config\" /s /i /y</PostBuildEvent>
