@@ -40,6 +40,9 @@ namespace GameUtilities.Framework.Utilities.ExecutableContext
             ConfigManager.Init(PathToConfig);
 
             MessageRouter = new MessageRouter();
+
+            World = new NullWorld(null);
+            Entity = new NullEntity(null);
         }
     }
 }
