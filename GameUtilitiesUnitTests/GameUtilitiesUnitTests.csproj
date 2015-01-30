@@ -70,9 +70,9 @@
     <Compile Include="Worlds\BaseWorldTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Config\Shaders\test_bad_shader.vert" />
-    <None Include="Config\Shaders\test_fragment_shader.frag" />
-    <None Include="Config\Shaders\test_vertex_shader.vert" />
+    <None Include="UnitTestUtilities\TestConfig\Shaders\test_bad_shader.vert" />
+    <None Include="UnitTestUtilities\TestConfig\Shaders\test_fragment_shader.frag" />
+    <None Include="UnitTestUtilities\TestConfig\Shaders\test_vertex_shader.vert" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -83,9 +83,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Config\EntityTypes\CameraEntityType.xml" />
-    <Content Include="Config\EntityTypes\TestEntityType.xml" />
-    <Content Include="Config\Worlds\World1.xml" />
+    <Content Include="UnitTestUtilities\TestConfig\EntityTypes\CameraEntityType.xml" />
+    <Content Include="UnitTestUtilities\TestConfig\EntityTypes\TestEntityType.xml" />
+    <Content Include="UnitTestUtilities\TestConfig\Worlds\World1.xml" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
@@ -108,7 +108,7 @@
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>XCOPY "$(ProjectDir)\Config" "$(TargetDir)\Config\" /s /i /y</PostBuildEvent>
+    <PostBuildEvent>XCOPY "$(ProjectDir)\UnitTestUtilities\TestConfig" "$(TargetDir)\Config\" /s /i /y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
