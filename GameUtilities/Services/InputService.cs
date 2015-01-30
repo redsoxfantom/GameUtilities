@@ -1,4 +1,5 @@
 ﻿using GameUtilities.Framework.Utilities.ExecutableContext;
+using GameUtilities.Framework.Utilities.Message;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace GameUtilities.Services
         /// </summary>
         /// <param name="timeSinceLastFrame"></param>
         /// <param name="messages"></param>
-        public override void Update(double timeSinceLastFrame, Dictionary<string, List<Framework.Utilities.Message.IMessage>> messages)
+        public override void Update(double timeSinceLastFrame, Dictionary<string, List<IMessage>> messages)
         {
             throw new NotImplementedException();
         }
