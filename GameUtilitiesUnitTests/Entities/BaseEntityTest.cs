@@ -67,7 +67,7 @@ namespace GameUtilitiesUnitTests.Entities
             mockContext.Setup(f => f.MessageRouter).Returns(mockRouter.Object);
             mockContext.Setup(f => f.ConfigManager).Returns(config);
             mockContext.Setup(f => f.Entity).Returns(entityMock.Object);
-            po.SetFieldOrProperty("Logger", logger);
+            po.SetFieldOrProperty("mLogger", logger);
 
             target.Init(mockContext.Object);
 
