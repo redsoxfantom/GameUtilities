@@ -40,6 +40,8 @@ namespace GameUtilities.Framework.Engine
 
             ShaderService shaderService = new ShaderService();
             mServicesList.Add(shaderService);
+            InputService inputService = new InputService();
+            mServicesList.Add(inputService);
         }
 
         /// <summary>
