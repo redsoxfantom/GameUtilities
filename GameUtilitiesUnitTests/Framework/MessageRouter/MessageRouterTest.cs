@@ -147,6 +147,7 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         /// <summary>
         /// Test for the send message method
         /// </summary>
+        [TestMethod]
         public void SendMessageTest()
         {
             MessageRouter target = new MessageRouter();
