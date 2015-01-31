@@ -63,6 +63,7 @@
   <ItemGroup>
     <Content Include="Config\EntityTypes\CameraEntityType.xml" />
     <Content Include="Config\EntityTypes\TestEntityType.xml" />
+    <Content Include="Config\ServicesList.xml" />
     <Content Include="Config\Worlds\World1.xml" />
   </ItemGroup>
   <ItemGroup>
