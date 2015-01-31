@@ -10,7 +10,7 @@ namespace GameUtilities.Framework.Utilities.Loggers
     /// <summary>
     /// Logger that writes to the Console and a File (stored in ./Logs/{Logger Name}
     /// </summary>
-    class FileConsoleLogger : ConsoleLogger
+    class FileConsoleLogger : ConsoleLogger,IDisposable
     {
         /// <summary>
         /// The writer
@@ -59,6 +59,14 @@ namespace GameUtilities.Framework.Utilities.Loggers
         /// Close the Streamwriter
         /// </summary>
         public override void Terminate()
+        {
+            Dispose();
+        }
+
+        /// <summary>
+        /// Dispose of all streams
+        /// </summary>
+        public void Dispose()
         {
             writer.Flush();
             writer.Close();

@@ -24,7 +24,6 @@ namespace GameUtilities.Framework.DataContracts
 
             // Deserialize the data and read it from the instance.
             obj = (T)ser.ReadObject(reader);
-            fs.Close();
             reader.Close();
             return obj;
         }
@@ -44,7 +43,6 @@ namespace GameUtilities.Framework.DataContracts
             //Serialize the data to a file
             ser.WriteObject(writer, obj);
             writer.Close();
-            fs.Close();
         }
     }
 }
