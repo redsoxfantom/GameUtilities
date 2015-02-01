@@ -68,6 +68,7 @@
     <Compile Include="UnitTestUtilities\LoggerUtility.cs" />
     <Compile Include="UnitTestUtilities\TestComponentUtility.cs" />
     <Compile Include="Worlds\BaseWorldTest.cs" />
+    <Compile Include="Worlds\WorldFactoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="UnitTestUtilities\TestConfig\Shaders\test_bad_shader.vert" />
