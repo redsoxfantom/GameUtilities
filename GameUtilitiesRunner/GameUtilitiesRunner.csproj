@@ -61,23 +61,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\EntityTypes\CameraEntityType.xml" />
-    <Content Include="Config\EntityTypes\TestEntityType.xml" />
-    <Content Include="Config\ServicesList.xml" />
-    <Content Include="Config\Worlds\World1.xml" />
+    <OutputFiles Include="Config\**\*.*" />
+    <OutputFiles Include="Config\*.*" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Config\Shaders\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
+  <!--<PropertyGroup>
     <PostBuildEvent>XCOPY "$(ProjectDir)\Config" "$(TargetDir)\Config\" /s /i /y</PostBuildEvent>
-  </PropertyGroup>
+  </PropertyGroup>-->
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
+       Other similar extension points exist, see Microsoft.Common.targets.-->
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
+    <Copy SourceFiles="@(OutputFiles)" DestinationFolder="$(TargetDir)\Config\%(RecursiveDir)"/>
   </Target>
-  -->
 </Project>
