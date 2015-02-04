@@ -71,9 +71,6 @@
     <Compile Include="Worlds\WorldFactoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="UnitTestUtilities\TestConfig\Shaders\test_bad_shader.vert" />
-    <None Include="UnitTestUtilities\TestConfig\Shaders\test_fragment_shader.frag" />
-    <None Include="UnitTestUtilities\TestConfig\Shaders\test_vertex_shader.vert" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -84,9 +81,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="UnitTestUtilities\TestConfig\EntityTypes\CameraEntityType.xml" />
-    <Content Include="UnitTestUtilities\TestConfig\EntityTypes\TestEntityType.xml" />
-    <Content Include="UnitTestUtilities\TestConfig\Worlds\World1.xml" />
+    <OutputFiles Include="UnitTestUtilities\TestConfig\**\*.*" />
+    <OutputFiles Include="UnitTestUtilities\TestConfig\*.*" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
@@ -108,14 +104,14 @@
   </Choose>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
+  <!--<PropertyGroup>
     <PostBuildEvent>XCOPY "$(ProjectDir)\UnitTestUtilities\TestConfig" "$(TargetDir)\TestConfig\" /s /i /y</PostBuildEvent>
-  </PropertyGroup>
+  </PropertyGroup>-->
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
+       Other similar extension points exist, see Microsoft.Common.targets.-->
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
+    <Copy SourceFiles="@(OutputFiles)" DestinationFolder="$(TargetDir)\TestConfig\%(RecursiveDir)"/>
   </Target>
-  -->
 </Project>
