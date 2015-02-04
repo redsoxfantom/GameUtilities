@@ -59,7 +59,7 @@ namespace GameUtilitiesUnitTests.Entities
             target = new BaseEntity(new EntityData("TestEntityType", "ASSEMBLY"));
             po = new PrivateObject(target);
             ConfigManager config = new ConfigManager();
-            config.Init(".\\Config");
+            config.Init(".\\TestConfig");
             LoggerUtility logger = new LoggerUtility("entity");
             Mock<IMessageRouter> mockRouter = new Mock<IMessageRouter>();
             Mock<IExecutableContext> mockContext = new Mock<IExecutableContext>();

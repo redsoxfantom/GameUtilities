@@ -118,7 +118,7 @@ namespace GameUtilitiesUnitTests.Worlds
             Mock<IExecutableContext> contextMock = new Mock<IExecutableContext>();
             Mock<IMessageRouter> routerMock = new Mock<IMessageRouter>();
             ConfigManager config = new ConfigManager();
-            config.Init(".\\Config\\");
+            config.Init(".\\TestConfig\\");
             contextMock.Setup(f => f.MessageRouter).Returns(routerMock.Object);
             contextMock.Setup(f => f.ConfigManager).Returns(config);
 

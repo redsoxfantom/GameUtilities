@@ -95,7 +95,7 @@ namespace GameUtilitiesUnitTests.Services
                 Mock<IMessageRouter> msgRouterMock = new Mock<IMessageRouter>();
                 execContextMock.Setup(f => f.MessageRouter).Returns(msgRouterMock.Object);
                 execContextMock.Setup(f => f.ConfigManager).Returns(config);
-                config.Init(".\\Config\\");
+                config.Init(".\\TestConfig\\");
                 msg.Init(msgData);
                 target.Init(execContextMock.Object);
 
@@ -129,7 +129,7 @@ namespace GameUtilitiesUnitTests.Services
                 Mock<IMessageRouter> msgRouterMock = new Mock<IMessageRouter>();
                 execContextMock.Setup(f => f.MessageRouter).Returns(msgRouterMock.Object);
                 execContextMock.Setup(f => f.ConfigManager).Returns(config);
-                config.Init(".\\Config\\");
+                config.Init(".\\TestConfig\\");
                 msg.Init(msgData);
                 target.Init(execContextMock.Object);
 
@@ -162,7 +162,7 @@ namespace GameUtilitiesUnitTests.Services
                 Mock<IMessageRouter> msgRouterMock = new Mock<IMessageRouter>();
                 execContextMock.Setup(f => f.MessageRouter).Returns(msgRouterMock.Object);
                 execContextMock.Setup(f => f.ConfigManager).Returns(config);
-                config.Init(".\\Config\\");
+                config.Init(".\\TestConfig\\");
                 msg.Init(msgData);
                 target.Init(execContextMock.Object);
 
