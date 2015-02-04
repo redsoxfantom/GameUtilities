@@ -10,4 +10,4 @@ Eventually, Services will be added as well. Services encapsulate core functions 
 
 TODO:  
 * Add a service that handles input from a keyboard and mouse  
-* Long term: Add ability to define simple 2D GUI overlays for buttons, HUD, etc.
+* Long term: Add ability to define simple 2D GUI overlays for buttons, HUD, etc.  
