@@ -9,6 +9,8 @@ using OpenTK;
 using System.Collections.Generic;
 using GameUtilities.Framework.Utilities.Message.MessageDispatch;
 using GameUtilities.Framework.Utilities.Message;
+using GameUtilitiesUnitTests.UnitTestUtilities;
+using GameUtilities.Framework.Utilities.Loggers;
 
 namespace GameUtilitiesUnitTests.Components
 {
@@ -229,6 +231,28 @@ namespace GameUtilitiesUnitTests.Components
 
             Assert.IsFalse((bool)obj.GetFieldOrProperty("isDirty"));
             routerMock.Verify(f => f.SendMessage(MessagingConstants.CAMERA_MATRIX_TOPIC, It.IsAny<IMessage>()), Times.Once());
+        }
+
+        /// <summary>
+        /// Test for the Terminate method on the Camera Component
+        /// </summary>
+        [TestMethod]
+        public void CameraComponentTerminateTest()
+        {
+            CameraComponent target = new CameraComponent();
+            PrivateObject obj = new PrivateObject(target);
+            Mock<ILogger> loggerMock = new Mock<ILogger>();
+            Mock<IExecutableContext> execContextMock = new Mock<IExecutableContext>();
+            Mock<IMessageRouter> msgRouterMock = new Mock<IMessageRouter>();
+            execContextMock.Setup(f => f.MessageRouter).Returns(msgRouterMock.Object);
+            obj.SetFieldOrProperty("mLogger", loggerMock.Object);
+            obj.SetFieldOrProperty("mContext", execContextMock.Object);
+            obj.SetFieldOrProperty("mName", "TESTNAME");
+
+            target.Terminate();
+
+            loggerMock.Verify(f => f.Terminate(), Times.Once());
+            msgRouterMock.Verify(f => f.DeregisterTopic("TESTNAME", target), Times.Once());
         }
     }
 }
