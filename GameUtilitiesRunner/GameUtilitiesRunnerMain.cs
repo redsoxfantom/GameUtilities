@@ -21,7 +21,7 @@ namespace GameUtilitiesRunner
         /// <summary>
         /// Logging level to initialize
         /// </summary>
-        private static LoggerLevel mLoggingLevel = LoggerLevel.INFO;
+        private static LoggerLevel mLoggingL evel = LoggerLevel.INFO;
 
         /// <summary>
         /// The error string to display when on an error
