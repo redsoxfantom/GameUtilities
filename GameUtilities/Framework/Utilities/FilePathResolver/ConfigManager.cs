@@ -59,6 +59,15 @@
         {
             return mRootDirectory + "\\Shaders\\" + shaderName;
         }
+
+        /// <summary>
+        /// Gets the location of the ServicesList.xml
+        /// </summary>
+        /// <returns>The full path to the Service List</returns>
+        public string FindServiceList()
+        {
+            return mRootDirectory + "\\ServicesList.xml";
+        }
         #endregion IFilePathResolverService Methods
     }
 }

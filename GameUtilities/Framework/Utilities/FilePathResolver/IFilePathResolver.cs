@@ -37,5 +37,11 @@ namespace GameUtilities.Framework.Utilities.FilePathResolver
         /// <param name="shaderName">The name of the Shader to find</param>
         /// <returns>The fully qualified path</returns>
         string FindShader(string shaderName);
+
+        /// <summary>
+        /// Gets the location of the ServicesList.xml
+        /// </summary>
+        /// <returns>The full path to the Service List</returns>
+        string FindServiceList();
     }
 }

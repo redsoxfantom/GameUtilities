@@ -61,11 +61,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <OutputFiles Include="Config\**\*.*" />
-    <OutputFiles Include="Config\*.*" />
+    <OutputFiles Include="Config\EntityTypes\CameraEntityType.xml" />
+    <OutputFiles Include="Config\EntityTypes\TestEntityType.xml" />
+    <OutputFiles Include="Config\Worlds\World1.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Config\Shaders\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\ServicesList.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!--<PropertyGroup>
@@ -76,6 +80,6 @@
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
-    <Copy SourceFiles="@(OutputFiles)" DestinationFolder="$(TargetDir)\Config\%(RecursiveDir)"/>
+    <Copy SourceFiles="@(OutputFiles)" DestinationFolder="$(TargetDir)\Config\%(RecursiveDir)" />
   </Target>
 </Project>
