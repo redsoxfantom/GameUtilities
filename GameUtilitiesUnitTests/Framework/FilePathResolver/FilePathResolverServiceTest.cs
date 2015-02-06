@@ -122,5 +122,31 @@ namespace GameUtilitiesUnitTests.Services
 
             Assert.AreEqual(expected, actual);
         }
+
+        /// <summary>
+        /// Test the FindServiceList method with no Init call
+        /// </summary>
+        [TestMethod]
+        public void FindServiceListWithNoInit()
+        {
+            string expected = "\\ServicesList.xml";
+            string actual = target.FindServiceList();
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        /// Test the FindServiceList method with an Init call
+        /// </summary>
+        [TestMethod]
+        public void FindServiceListWithInit()
+        {
+            target.Init(path);
+
+            string expected = path + "\\ServicesList.xml";
+            string actual = target.FindServiceList();
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
