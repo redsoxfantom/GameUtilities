@@ -81,8 +81,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <OutputFiles Include="UnitTestUtilities\TestConfig\**\*.*" />
     <OutputFiles Include="UnitTestUtilities\TestConfig\*.*" />
+    <OutputFiles Include="UnitTestUtilities\TestConfig\**\*.*" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
@@ -112,6 +112,6 @@
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
-    <Copy SourceFiles="@(OutputFiles)" DestinationFolder="$(TargetDir)\TestConfig\%(RecursiveDir)"/>
+    <Copy SourceFiles="@(OutputFiles)" DestinationFolder="$(TargetDir)\TestConfig\%(RecursiveDir)" />
   </Target>
 </Project>

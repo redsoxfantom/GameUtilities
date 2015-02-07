@@ -5,6 +5,8 @@ using GameUtilities.Framework.Utilities.Loggers;
 using System;
 using System.Collections.Generic;
 using GameUtilities.Services;
+using GameUtilities.Services.DataContracts;
+using GameUtilities.Framework.DataContracts;
 
 namespace GameUtilities.Framework.Engine
 {
@@ -37,11 +39,6 @@ namespace GameUtilities.Framework.Engine
         {
             mLogger = LoggerFactory.CreateLogger("ENGINE");
             mServicesList = new List<IService>();
-
-            ShaderService shaderService = new ShaderService();
-            mServicesList.Add(shaderService);
-            InputService inputService = new InputService();
-            mServicesList.Add(inputService);
         }
 
         /// <summary>
@@ -53,6 +50,27 @@ namespace GameUtilities.Framework.Engine
         {
             mLogger.Info(string.Format("Initializing engine with world: {0} and config path: {1}",world,PathToConfig));
             mContext = new BaseExecutableContext(PathToConfig);
+
+            string pathToServiceListFile = mContext.ConfigManager.FindServiceList();
+            ServiceDataContract serviceAssemblies = DataContractFactory.DeserializeObject<ServiceDataContract>(pathToServiceListFile);
+            foreach(string assembly in serviceAssemblies)
+            {
+                try
+                {
+                    Type assemblyType = Type.GetType(assembly);
+                    if(assembly == null)
+                    {
+                        throw new Exception(string.Format("Service assembly {0} not found!", assembly));
+                    }
+                    IService service = (IService)Activator.CreateInstance(Type.GetType(assembly));
+                    mServicesList.Add(service);
+                }
+                catch(Exception e)
+                {
+                    mLogger.Warn("Error instantiating Service", e);
+                }
+            }
+            
 
             foreach(IService service in mServicesList)
             {
