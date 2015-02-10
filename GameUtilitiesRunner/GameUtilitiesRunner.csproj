@@ -60,11 +60,6 @@
       <Name>GameUtilities</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <OutputFiles Include="Config\EntityTypes\CameraEntityType.xml" />
-    <OutputFiles Include="Config\EntityTypes\TestEntityType.xml" />
-    <OutputFiles Include="Config\Worlds\World1.xml" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!--<PropertyGroup>
     <PostBuildEvent>XCOPY "$(ProjectDir)\Config" "$(TargetDir)\Config\" /s /i /y</PostBuildEvent>
