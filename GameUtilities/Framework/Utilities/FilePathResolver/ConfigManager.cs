@@ -61,12 +61,12 @@
         }
 
         /// <summary>
-        /// Gets the location of the ServicesList.xml
+        /// Gets the location of the engine config file
         /// </summary>
-        /// <returns>The full path to the Service List</returns>
-        public string FindServiceList()
+        /// <returns>The full path to the engine config</returns>
+        public string FindEngineConfig()
         {
-            return mRootDirectory + "\\ServicesList.xml";
+            return mRootDirectory + "\\EngineConfig.xml";
         }
         #endregion IFilePathResolverService Methods
     }

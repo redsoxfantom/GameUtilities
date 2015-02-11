@@ -39,9 +39,9 @@ namespace GameUtilities.Framework.Utilities.FilePathResolver
         string FindShader(string shaderName);
 
         /// <summary>
-        /// Gets the location of the ServicesList.xml
+        /// Gets the location of the engine config file
         /// </summary>
-        /// <returns>The full path to the Service List</returns>
-        string FindServiceList();
+        /// <returns>The full path to the engine config</returns>
+        string FindEngineConfig();
     }
 }
