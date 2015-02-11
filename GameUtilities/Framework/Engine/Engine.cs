@@ -54,7 +54,7 @@ namespace GameUtilities.Framework.Engine
 
             string pathToServiceListFile = mContext.ConfigManager.FindEngineConfig();
             EngineConfigDataContract engineConfig = DataContractFactory.DeserializeObject<EngineConfigDataContract>(pathToServiceListFile);
-            foreach(string assembly in engineConfig.Services)
+            foreach(string assembly in engineConfig.ServicesList)
             {
                 try
                 {

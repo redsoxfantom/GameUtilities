@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Components\CameraComponentTest.cs" />
     <Compile Include="Entities\BaseEntityTest.cs" />
+    <Compile Include="Framework\Engine\ConfigFileManager.cs" />
     <Compile Include="Framework\Loggers\BaseLoggerTest.cs" />
     <Compile Include="Framework\Loggers\LoggerFactoryTest.cs" />
     <Compile Include="Framework\Engine\EngineTest.cs" />

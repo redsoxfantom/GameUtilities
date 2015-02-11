@@ -28,7 +28,7 @@ namespace GameUtilitiesUnitTests.Framework
             LoggerUtility logger = new LoggerUtility("logger");
             obj.SetFieldOrProperty("mLogger", logger);
 
-            target.Init("Test", "Test");
+            target.Init(".\\TestConfig\\", "Test");
 
             Assert.IsTrue(logger.WarnMessages.Count == 1);
         }

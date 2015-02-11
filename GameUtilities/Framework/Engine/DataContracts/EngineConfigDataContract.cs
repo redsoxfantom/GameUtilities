@@ -13,7 +13,7 @@ namespace GameUtilities.Framework.Engine.DataContracts
         /// The list of Services that this Engine supports
         /// </summary>
         [DataMember(IsRequired=true,Order=0)]
-        public ServiceDataContract Services { get; private set;}
+        public ServiceDataContract ServicesList { get; private set; }
 
         /// <summary>
         /// The constructor
@@ -21,7 +21,7 @@ namespace GameUtilities.Framework.Engine.DataContracts
         /// <param name="mServices">A list of services that this engine supports</param>
         public EngineConfigDataContract(ServiceDataContract mServices)
         {
-            Services = mServices;
+            ServicesList = mServices;
         }
     }
 }
