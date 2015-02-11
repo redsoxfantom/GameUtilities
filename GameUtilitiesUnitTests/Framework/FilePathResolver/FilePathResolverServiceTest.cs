@@ -130,7 +130,7 @@ namespace GameUtilitiesUnitTests.Services
         public void FindServiceListWithNoInit()
         {
             string expected = "\\EngineConfig.xml";
-            string actual = target.FindEngineConfig()
+            string actual = target.FindEngineConfig();
 
             Assert.AreEqual(expected, actual);
         }

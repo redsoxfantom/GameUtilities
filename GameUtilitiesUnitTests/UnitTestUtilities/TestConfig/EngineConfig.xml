@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<EngineConfig>
+  <ServicesList xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <string>GameUtilities.Services.ShaderService,GameUtilities</string>
+    <string>GameUtilities.Services.InputService,GameUtilities</string>
+  </ServicesList>
+</EngineConfig>
