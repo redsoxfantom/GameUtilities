@@ -129,8 +129,8 @@ namespace GameUtilitiesUnitTests.Services
         [TestMethod]
         public void FindServiceListWithNoInit()
         {
-            string expected = "\\ServicesList.xml";
-            string actual = target.FindServiceList();
+            string expected = "\\EngineConfig.xml";
+            string actual = target.FindEngineConfig()
 
             Assert.AreEqual(expected, actual);
         }
@@ -143,8 +143,8 @@ namespace GameUtilitiesUnitTests.Services
         {
             target.Init(path);
 
-            string expected = path + "\\ServicesList.xml";
-            string actual = target.FindServiceList();
+            string expected = path + "\\EngineConfig.xml";
+            string actual = target.FindEngineConfig();
 
             Assert.AreEqual(expected, actual);
         }

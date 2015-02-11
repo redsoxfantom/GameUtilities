@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using GameUtilities.Services;
 using GameUtilities.Services.DataContracts;
 using GameUtilities.Framework.DataContracts;
+using GameUtilities.Framework.Engine.DataContracts;
 
 namespace GameUtilities.Framework.Engine
 {
@@ -51,9 +52,9 @@ namespace GameUtilities.Framework.Engine
             mLogger.Info(string.Format("Initializing engine with world: {0} and config path: {1}",world,PathToConfig));
             mContext = new BaseExecutableContext(PathToConfig);
 
-            string pathToServiceListFile = mContext.ConfigManager.FindServiceList();
-            ServiceDataContract serviceAssemblies = DataContractFactory.DeserializeObject<ServiceDataContract>(pathToServiceListFile);
-            foreach(string assembly in serviceAssemblies)
+            string pathToServiceListFile = mContext.ConfigManager.FindEngineConfig();
+            EngineConfigDataContract engineConfig = DataContractFactory.DeserializeObject<EngineConfigDataContract>(pathToServiceListFile);
+            foreach(string assembly in engineConfig.Services)
             {
                 try
                 {
