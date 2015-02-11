@@ -61,10 +61,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <OutputFiles Include=".\\Config\\EntityTypes\CameraEntityType.xml" />
-    <OutputFiles Include=".\\Config\\EntityTypes\TestEntityType.xml" />
-    <OutputFiles Include=".\\Config\\ServicesList.xml" />
-    <OutputFiles Include=".\\Config\\Worlds\World1.xml" />
+    <OutputFiles Include=".\\Config\\**\*.*" />
+    <OutputFiles Include=".\\Config\\*.*" />
     <OutputFiles Include=".\\Config\\**\\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

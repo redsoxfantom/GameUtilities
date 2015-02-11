@@ -81,13 +81,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <OutputFiles Include="UnitTestUtilities\\TestConfig\\EntityTypes\CameraEntityType.xml" />
-    <OutputFiles Include="UnitTestUtilities\\TestConfig\\EntityTypes\TestEntityType.xml" />
-    <OutputFiles Include="UnitTestUtilities\\TestConfig\\Shaders\test_bad_shader.vert" />
-    <OutputFiles Include="UnitTestUtilities\\TestConfig\\Shaders\test_fragment_shader.frag" />
-    <OutputFiles Include="UnitTestUtilities\\TestConfig\\Shaders\test_vertex_shader.vert" />
-    <OutputFiles Include="UnitTestUtilities\\TestConfig\\Worlds\World1.xml" />
-    <OutputFiles Include="UnitTestUtilities\\TestConfig\\*.*" />
+    <OutputFiles Include=".\\UnitTestUtilities\\TestConfig\\**\\" />
+    <OutputFiles Include=".\\UnitTestUtilities\\TestConfig\\**\\*.*" />
+    <OutputFiles Include=".\\UnitTestUtilities\\TestConfig\\*.*" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
