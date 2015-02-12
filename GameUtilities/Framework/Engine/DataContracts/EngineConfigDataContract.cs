@@ -16,6 +16,12 @@ namespace GameUtilities.Framework.Engine.DataContracts
         public List<string> ServicesList { get; private set; }
 
         /// <summary>
+        /// The Type of logger this Engine will use
+        /// </summary>
+        [DataMember(Name="LoggerType",IsRequired=true,Order=1)]
+        public string LoggerType { get; private set; }
+
+        /// <summary>
         /// The constructor
         /// </summary>
         /// <param name="mServices">A list of services that this engine supports</param>
