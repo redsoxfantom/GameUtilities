@@ -83,6 +83,20 @@ namespace GameUtilitiesUnitTests.UnitTestUtilities
         }
 
         /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="Name">The name of the logger</param>
+        /// <param name="level">the logging level of the logger</param>
+        public LoggerUtility(string Name, LoggerLevel level) : base(Name,level)
+        {
+            mMessagesDictionary = new Dictionary<LoggerLevel, List<string>>();
+            foreach (Enum val in Enum.GetValues(typeof(LoggerLevel)))
+            {
+                mMessagesDictionary.Add((LoggerLevel)val, new List<string>());
+            }
+        }
+
+        /// <summary>
         /// Log the attempt to print, and take no action
         /// </summary>
         /// <param name="level">Logger level</param>
