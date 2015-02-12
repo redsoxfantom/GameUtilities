@@ -4,4 +4,5 @@
     <a:string>GameUtilities.Services.ShaderService,GameUtilities</a:string>
     <a:string>GameUtilities.Services.InputService,GameUtilities</a:string>
   </ServicesList>
+  <LoggerType>GameUtilities.Framework.Utilities.Loggers.FileConsoleLogger,GameUtilities</LoggerType>
 </EngineConfig>
