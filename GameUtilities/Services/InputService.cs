@@ -14,18 +14,12 @@ namespace GameUtilities.Services
     public class InputService : BaseService
     {
         /// <summary>
-        /// The executable context used by this service
-        /// </summary>
-        private IExecutableContext mContext;
-
-        /// <summary>
         /// Initialize the Service
         /// </summary>
         /// <param name="context">The executable context</param>
         public override void Init(IExecutableContext context)
         {
-            mContext = context;
-            mContext.MessageRouter.RegisterTopic(MessagingConstants.INPUT_SERVICE_TOPIC, this);
+            context.MessageRouter.RegisterTopic(MessagingConstants.INPUT_SERVICE_TOPIC, this);
             base.Init(context);
         }
 
@@ -39,6 +33,9 @@ namespace GameUtilities.Services
 
         }
 
+        /// <summary>
+        /// Terminate the InputService
+        /// </summary>
         public override void Terminate()
         {
             mContext.MessageRouter.DeregisterTopic(MessagingConstants.INPUT_SERVICE_TOPIC, this);
