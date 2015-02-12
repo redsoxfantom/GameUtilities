@@ -26,11 +26,10 @@ namespace GameUtilitiesUnitTests.Framework
         {
             Engine target = new Engine();
             PrivateObject obj = new PrivateObject(target);
-            LoggerUtility logger = new LoggerUtility("logger");
-            obj.SetFieldOrProperty("mLogger", logger);
 
             target.Init(".\\TestConfig\\", "Test");
 
+            LoggerUtility logger = (LoggerUtility)obj.GetFieldOrProperty("mLogger");
             Assert.IsTrue(logger.WarnMessages.Count == 1);
         }
 
