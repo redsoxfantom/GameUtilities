@@ -52,7 +52,12 @@ namespace GameUtilities.Framework.Engine
             EngineConfigDataContract engineConfig = DataContractFactory.DeserializeObject<EngineConfigDataContract>(pathToEngineConfigFile);
 
             //Initialize the Logger
-            LoggerFactory.SetLoggerType(Type.GetType(engineConfig.LoggerType));
+            Type loggerType = Type.GetType(engineConfig.LoggerType);
+            if(loggerType == null)
+            {
+                throw new NullReferenceException("loggerType");
+            }
+            LoggerFactory.SetLoggerType(loggerType);
             LoggerFactory.SetLoggingLevel(engineConfig.LogLevel);
             mLogger = LoggerFactory.CreateLogger("ENGINE");
             mLogger.Info(string.Format("Initializing engine with world: {0} and config path: {1}",world,PathToConfig));
