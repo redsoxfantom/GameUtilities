@@ -1,5 +1,4 @@
-﻿using GameUtilities.Services.DataContracts;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace GameUtilities.Framework.Engine.DataContracts

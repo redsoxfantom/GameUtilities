@@ -5,7 +5,6 @@ using GameUtilities.Framework.Utilities.Loggers;
 using System;
 using System.Collections.Generic;
 using GameUtilities.Services;
-using GameUtilities.Services.DataContracts;
 using GameUtilities.Framework.DataContracts;
 using GameUtilities.Framework.Engine.DataContracts;
 
