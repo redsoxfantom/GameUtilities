@@ -27,7 +27,7 @@ namespace GameUtilities.Framework.Engine.DataContracts
         /// The level of logging the Engine should report. If not defined, log everything (Loglevel = DEBUG)
         /// </summary>
         [DataMember(Name="LogLevel",IsRequired=false,Order=2)]
-        private string mLogLevel { get; private set; }
+        private string mLogLevel { get; set; }
 
         /// <summary>
         /// The Log level of the engine.
