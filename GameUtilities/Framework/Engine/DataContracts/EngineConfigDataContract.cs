@@ -1,4 +1,5 @@
 ﻿using GameUtilities.Services.DataContracts;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace GameUtilities.Framework.Engine.DataContracts
@@ -12,14 +13,14 @@ namespace GameUtilities.Framework.Engine.DataContracts
         /// <summary>
         /// The list of Services that this Engine supports
         /// </summary>
-        [DataMember(IsRequired=true,Order=0)]
-        public ServiceDataContract ServicesList { get; private set; }
+        [DataMember(Name="ServicesList", IsRequired=true,Order=0)]
+        public List<string> ServicesList { get; private set; }
 
         /// <summary>
         /// The constructor
         /// </summary>
         /// <param name="mServices">A list of services that this engine supports</param>
-        public EngineConfigDataContract(ServiceDataContract mServices)
+        public EngineConfigDataContract(List<string> mServices)
         {
             ServicesList = mServices;
         }

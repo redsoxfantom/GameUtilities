@@ -58,6 +58,7 @@ namespace GameUtilities.Framework.Engine
             {
                 try
                 {
+                    mLogger.Debug(string.Format("Attempting to create service {0}", assembly));
                     Type assemblyType = Type.GetType(assembly);
                     if(assembly == null)
                     {
@@ -65,10 +66,11 @@ namespace GameUtilities.Framework.Engine
                     }
                     IService service = (IService)Activator.CreateInstance(Type.GetType(assembly));
                     mServicesList.Add(service);
+                    mLogger.Debug(string.Format("Successfuly created service {0}", assembly));
                 }
                 catch(Exception e)
                 {
-                    mLogger.Warn("Error instantiating Service", e);
+                    mLogger.Warn("Error creating Service", e);
                 }
             }
             
@@ -77,7 +79,9 @@ namespace GameUtilities.Framework.Engine
             {
                 try
                 {
+                    mLogger.Debug(string.Format("Initializing service {0}",service.ToString()));
                     service.Init(mContext);
+                    mLogger.Debug(string.Format("Successfully initialized service {0}", service.ToString()));
                 }
                 catch(Exception e)
                 {
@@ -87,7 +91,9 @@ namespace GameUtilities.Framework.Engine
 
             try
             {
+                mLogger.Debug(string.Format("Attempting to create world {0}",world));
                 mWorld = WorldFactory.CreateWorld(world, mContext);
+                mLogger.Debug(string.Format("Successfully created world {0}", world));
             }
             catch(Exception e)
             {

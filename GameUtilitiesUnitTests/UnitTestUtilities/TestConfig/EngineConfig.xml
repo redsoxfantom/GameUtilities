@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<EngineConfig>
-  <ServicesList xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-    <string>GameUtilities.Services.ShaderService,GameUtilities</string>
-    <string>GameUtilities.Services.InputService,GameUtilities</string>
+<EngineConfig xmlns:i="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+  <ServicesList xmlns:a="http://www.w3.org/2001/XMLSchema-instance">
+    <a:string>GameUtilities.Services.ShaderService,GameUtilities</a:string>
+    <a:string>GameUtilities.Services.InputService,GameUtilities</a:string>
   </ServicesList>
 </EngineConfig>
