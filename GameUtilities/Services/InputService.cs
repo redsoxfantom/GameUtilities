@@ -30,7 +30,27 @@ namespace GameUtilities.Services
         /// <param name="messages"></param>
         public override void Update(double timeSinceLastFrame, Dictionary<string, List<IMessage>> messages)
         {
+            object retObj = new object();
 
+            foreach (string Topic in messages.Keys)
+            {
+                foreach (IMessage message in messages[Topic])
+                {
+                    HandleMessage(Topic, message, ref retObj);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Handle an individual message from the MessageRouter
+        /// </summary>
+        /// <param name="Topic">The topic this message was sent on</param>
+        /// <param name="message">The message object</param>
+        /// <param name="returnValue">An optional return value</param>
+        /// <returns>Whether or not the message was handled</returns>
+        public override bool HandleMessage(string Topic, IMessage message, ref object returnValue)
+        {
+            return base.HandleMessage(Topic, message, ref returnValue);
         }
 
         /// <summary>
