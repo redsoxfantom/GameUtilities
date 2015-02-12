@@ -37,7 +37,6 @@ namespace GameUtilities.Framework.Engine
         /// </summary>
         public Engine()
         {
-            mLogger = LoggerFactory.CreateLogger("ENGINE");
             mServicesList = new List<IService>();
         }
 
@@ -48,11 +47,15 @@ namespace GameUtilities.Framework.Engine
         /// <param name="world"></param>
         public void Init(string PathToConfig, string world)
         {
-            mLogger.Info(string.Format("Initializing engine with world: {0} and config path: {1}",world,PathToConfig));
             mContext = new BaseExecutableContext(PathToConfig);
+            string pathToEngineConfigFile = mContext.ConfigManager.FindEngineConfig();
+            EngineConfigDataContract engineConfig = DataContractFactory.DeserializeObject<EngineConfigDataContract>(pathToEngineConfigFile);
 
-            string pathToServiceListFile = mContext.ConfigManager.FindEngineConfig();
-            EngineConfigDataContract engineConfig = DataContractFactory.DeserializeObject<EngineConfigDataContract>(pathToServiceListFile);
+            //Initialize the Logger
+            LoggerFactory.SetLoggerType(Type.GetType(engineConfig.LoggerType));
+            mLogger = LoggerFactory.CreateLogger("ENGINE");
+            mLogger.Info(string.Format("Initializing engine with world: {0} and config path: {1}",world,PathToConfig));
+
             foreach(string assembly in engineConfig.ServicesList)
             {
                 try
