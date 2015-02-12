@@ -15,11 +15,6 @@ namespace GameUtilitiesRunner
     public class GameUtilitiesRunnerProcessor
     {
         /// <summary>
-        /// Logging level of the Engine
-        /// </summary>
-        private LoggerLevel mLoggerLevel;
-
-        /// <summary>
         /// Name of the World to initialize
         /// </summary>
         private string mWorld;
@@ -32,12 +27,10 @@ namespace GameUtilitiesRunner
         /// <summary>
         /// The Constructor
         /// </summary>
-        /// <param name="loggingLevel">Logging level of the Engine</param>
         /// <param name="world">Name of the World to load initially</param>
         /// <param name="PathToConfig">Path to the config directory</param>
-        public GameUtilitiesRunnerProcessor(LoggerLevel loggingLevel, string world, string PathToConfig)
+        public GameUtilitiesRunnerProcessor(string world, string PathToConfig)
         {
-            mLoggerLevel = loggingLevel;
             mWorld = world;
             mPathToConfig = PathToConfig;
         }
@@ -47,7 +40,6 @@ namespace GameUtilitiesRunner
         /// </summary>
         public void Run()
         {
-            LoggerFactory.SetLoggingLevel(mLoggerLevel);
             IEngine engine = new Engine();
 
             using (var game = new GameWindow())
