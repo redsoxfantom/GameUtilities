@@ -9,4 +9,5 @@
   
   <!--The Type of logger this Engine will use-->
   <LoggerType>GameUtilities.Framework.Utilities.Loggers.FileConsoleLogger,GameUtilities</LoggerType>
+  <LogLevel>DEBUG</LogLevel>
 </EngineConfig>

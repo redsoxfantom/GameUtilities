@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using GameUtilities.Framework.Utilities.Loggers;
+using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace GameUtilities.Framework.Engine.DataContracts
@@ -20,6 +22,39 @@ namespace GameUtilities.Framework.Engine.DataContracts
         /// </summary>
         [DataMember(Name="LoggerType",IsRequired=true,Order=1)]
         public string LoggerType { get; private set; }
+
+        /// <summary>
+        /// The level of logging the Engine should report. If not defined, log everything (Loglevel = DEBUG)
+        /// </summary>
+        [DataMember(Name="LogLevel",IsRequired=false,Order=2)]
+        private string mLogLevel { get; private set; }
+
+        /// <summary>
+        /// The Log level of the engine.
+        /// </summary>
+        public LoggerLevel LogLevel
+        {
+            get
+            {
+                if(mLogLevel == null)
+                {
+                    return LoggerLevel.DEBUG;
+                }
+                else
+                {
+                    try
+                    {
+                        return (LoggerLevel)Enum.Parse(typeof(LoggerLevel), mLogLevel);
+                    }
+                    catch(Exception)
+                    {
+                        Console.WriteLine(string.Format("***\nWARNING! FAILED TO PARSE LOGGER LEVEL FROM CONFIG (VALUE WAS {0})! DEFAULTING TO \"DEBUG\"\n***",mLogLevel));
+                        return LoggerLevel.DEBUG;
+                    }
+                }
+            }
+        }
+
 
         /// <summary>
         /// The constructor
