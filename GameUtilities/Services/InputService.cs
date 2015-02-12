@@ -29,7 +29,7 @@ namespace GameUtilities.Services
         /// <param name="messages"></param>
         public override void Update(double timeSinceLastFrame, Dictionary<string, List<IMessage>> messages)
         {
-            throw new NotImplementedException();
+
         }
     }
 }
