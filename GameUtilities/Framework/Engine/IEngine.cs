@@ -12,7 +12,7 @@ namespace GameUtilities.Framework.Engine
         /// Initialize the Engine. Creates the World and all the Services
         /// </summary>
         /// <param name="path">Path to the Config directory</param>
-        /// <param name="world"></param>
+        /// <param name="world">The world to initialize. Comes from command arguments</param>
         void Init(string path, string world);
     }
 }
