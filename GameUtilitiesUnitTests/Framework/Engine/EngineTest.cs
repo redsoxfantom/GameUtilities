@@ -8,6 +8,7 @@ using GameUtilities.Framework.Utilities.ExecutableContext;
 using GameUtilitiesUnitTests.UnitTestUtilities;
 using GameUtilities.Services;
 using System.Collections.Generic;
+using GameUtilities.Framework.Utilities.Loggers;
 
 namespace GameUtilitiesUnitTests.Framework
 {
@@ -80,6 +81,7 @@ namespace GameUtilitiesUnitTests.Framework
             obj.SetFieldOrProperty("mWorld", worldMock.Object);
             obj.SetFieldOrProperty("mContext", mockContext.Object);
             obj.SetFieldOrProperty("mServicesList", new List<IService>());
+            obj.SetFieldOrProperty("mLogger", new Mock<ILogger>().Object);
 
             target.Terminate();
 
