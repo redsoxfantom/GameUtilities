@@ -40,7 +40,6 @@ namespace GameUtilities.Services
         {
             KeyboardState keyboard = Keyboard.GetState();
             
-
             object retObj = new object();
 
             foreach (string Topic in messages.Keys)
@@ -72,6 +71,23 @@ namespace GameUtilities.Services
             KeyTopicDictionary.Clear();
 
             base.Terminate();
+        }
+
+        /// <summary>
+        /// Handles all Keypresses by publishing the keys that are down to their topic
+        /// </summary>
+        /// <param name="keyboardState">The current state of the keyboard</param>
+        private void HandleKeypresses(KeyboardState keyboardState)
+        {
+            //Loop through each Key in the dictionary
+            foreach(Key key in KeyTopicDictionary.Keys)
+            {
+                //If that key was "down" (pressed)
+                if(keyboardState[key])
+                {
+                    //Send the message here
+                }
+            }
         }
     }
 }
