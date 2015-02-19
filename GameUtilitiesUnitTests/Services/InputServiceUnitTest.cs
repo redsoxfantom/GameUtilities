@@ -5,6 +5,9 @@ using GameUtilitiesUnitTests.UnitTestUtilities;
 using GameUtilities.Framework.Utilities.Message.MessageDispatch;
 using Moq;
 using GameUtilities.Framework.Utilities.ExecutableContext;
+using System.Collections.Generic;
+using OpenTK.Input;
+using GameUtilities.Framework.Utilities.Message;
 
 namespace GameUtilitiesUnitTests.Services
 {
@@ -53,6 +56,37 @@ namespace GameUtilitiesUnitTests.Services
             execContextMock.Setup(f => f.MessageRouter).Returns(msgRouterMock.Object);
             po.SetFieldOrProperty("mLogger", logger);
             target.Init(execContextMock.Object);
+        }
+
+        /// <summary>
+        /// Test the InputService when no topic is defined for a keypress
+        /// </summary>
+        [TestMethod]
+        public void TestKeypressNoTopicDefined()
+        {
+            Dictionary<Key, string> KeyTopicDictionary = new Dictionary<Key, string>();
+            po.SetFieldOrProperty("KeyTopicDictionary", KeyTopicDictionary);
+            TestKeyBoardState state = new TestKeyBoardState();
+
+            po.Invoke("HandleKeypresses", new object[] { state });
+
+            msgRouterMock.Verify(f => f.SendMessage(It.IsAny<string>(), It.IsAny<IMessage>()), Times.Never());
+        }
+
+        /// <summary>
+        /// Test the InputService when a topic is defined for a keypress
+        /// </summary>
+        [TestMethod]
+        public void TestKeypressWithTopicDefined()
+        {
+            Dictionary<Key, string> KeyTopicDictionary = new Dictionary<Key, string>();
+            KeyTopicDictionary.Add(Key.A, "A_PRESSED");
+            po.SetFieldOrProperty("KeyTopicDictionary", KeyTopicDictionary);
+            TestKeyBoardState state = new TestKeyBoardState();
+
+            po.Invoke("HandleKeypresses", new object[] { state });
+
+            msgRouterMock.Verify(f => f.SendMessage("A_PRESSED", It.IsAny<KeypressMessage>()), Times.Never());
         }
     }
 }
