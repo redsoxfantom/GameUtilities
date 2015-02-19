@@ -39,6 +39,7 @@ namespace GameUtilities.Services
         public override void Update(double timeSinceLastFrame, Dictionary<string, List<IMessage>> messages)
         {
             KeyboardState keyboard = Keyboard.GetState();
+            HandleKeypresses(keyboard);
             
             object retObj = new object();
 
