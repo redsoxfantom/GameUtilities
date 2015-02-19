@@ -1,4 +1,5 @@
 ﻿using GameUtilities.Framework.Utilities.ExecutableContext;
+using GameUtilities.Framework.Utilities.InputHandlers;
 using GameUtilities.Framework.Utilities.Message;
 using OpenTK.Input;
 using System;
@@ -21,13 +22,19 @@ namespace GameUtilities.Services
         private Dictionary<Key, string> KeyTopicDictionary;
 
         /// <summary>
+        /// Reference to helper class that reads in input;
+        /// </summary>
+        private IInputHandler handler;
+
+        /// <summary>
         /// Initialize the Service
         /// </summary>
         /// <param name="context">The executable context</param>
         public override void Init(IExecutableContext context)
         {
             KeyTopicDictionary = new Dictionary<Key, string>();
-
+            handler = new InputHandler();
+            
             base.Init(context);
         }
 
@@ -38,8 +45,7 @@ namespace GameUtilities.Services
         /// <param name="messages"></param>
         public override void Update(double timeSinceLastFrame, Dictionary<string, List<IMessage>> messages)
         {
-            KeyboardState keyboard = Keyboard.GetState();
-            HandleKeypresses(keyboard);
+            HandleInput();
             
             object retObj = new object();
 
@@ -78,13 +84,15 @@ namespace GameUtilities.Services
         /// Handles all Keypresses by publishing the keys that are down to their topic
         /// </summary>
         /// <param name="keyboardState">The current state of the keyboard</param>
-        private void HandleKeypresses(KeyboardState keyboardState)
+        private void HandleInput()
         {
+            handler.GetInputs();
+
             //Loop through each Key in the dictionary
             foreach(Key key in KeyTopicDictionary.Keys)
             {
                 //If that key was "down" (pressed)
-                if(keyboardState[key])
+                if(handler.isKeyDown(key))
                 {
                     mLogger.Debug(string.Format("Key {0} was pressed, sending message to {1}", key.ToString(), KeyTopicDictionary[key]));
                     KeypressMessage msg = new KeypressMessage();
