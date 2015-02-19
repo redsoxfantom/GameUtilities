@@ -15,11 +15,19 @@ namespace GameUtilities.Services
     public class InputService : BaseService
     {
         /// <summary>
+        /// A dictionary mapping Keypresses to Topics that the Input service should publish
+        /// the keypress message to
+        /// </summary>
+        private Dictionary<Key, string> KeyTopicDictionary;
+
+        /// <summary>
         /// Initialize the Service
         /// </summary>
         /// <param name="context">The executable context</param>
         public override void Init(IExecutableContext context)
         {
+            KeyTopicDictionary = new Dictionary<Key, string>();
+
             base.Init(context);
         }
 
@@ -61,9 +69,9 @@ namespace GameUtilities.Services
         /// </summary>
         public override void Terminate()
         {
+            KeyTopicDictionary.Clear();
+
             base.Terminate();
         }
-
-
     }
 }
