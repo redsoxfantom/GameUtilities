@@ -2,6 +2,11 @@
 
 namespace GameUtilities.Framework.Utilities.InputHandlers
 {
+    /// <summary>
+    /// Interface for checking user inputs
+    /// Provides functions for reading in from all connected input devices
+    /// and checking if particular keys are pressed
+    /// </summary>
     public interface IInputHandler
     {
         /// <summary>
