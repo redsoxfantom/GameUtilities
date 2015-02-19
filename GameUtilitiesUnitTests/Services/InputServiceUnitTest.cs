@@ -62,7 +62,6 @@ namespace GameUtilitiesUnitTests.Services
             handlerMock = new Mock<IInputHandler>();
             execContextMock.Setup(f => f.MessageRouter).Returns(msgRouterMock.Object);
             po.SetFieldOrProperty("mLogger", logger);
-            po.SetFieldOrProperty("handler", handlerMock.Object);
             target.Init(execContextMock.Object);
         }
 
@@ -74,6 +73,7 @@ namespace GameUtilitiesUnitTests.Services
         {
             Dictionary<Key, string> KeyTopicDictionary = new Dictionary<Key, string>();
             po.SetFieldOrProperty("KeyTopicDictionary", KeyTopicDictionary);
+            po.SetFieldOrProperty("handler", handlerMock.Object);
             handlerMock.Setup(f => f.isKeyDown(Key.A)).Returns(true);
 
             target.Update(0, new Dictionary<string, List<IMessage>>());
@@ -90,6 +90,7 @@ namespace GameUtilitiesUnitTests.Services
             Dictionary<Key, string> KeyTopicDictionary = new Dictionary<Key, string>();
             KeyTopicDictionary.Add(Key.A, "A_PRESSED");
             po.SetFieldOrProperty("KeyTopicDictionary", KeyTopicDictionary);
+            po.SetFieldOrProperty("handler", handlerMock.Object);
             handlerMock.Setup(f => f.isKeyDown(Key.A)).Returns(true);
 
             target.Update(0, new Dictionary<string, List<IMessage>>());
