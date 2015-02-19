@@ -69,7 +69,6 @@
     <Compile Include="Services\InputServiceUnitTest.cs" />
     <Compile Include="UnitTestUtilities\LoggerUtility.cs" />
     <Compile Include="UnitTestUtilities\TestComponentUtility.cs" />
-    <Compile Include="UnitTestUtilities\TestKeyBoardState.cs" />
     <Compile Include="Worlds\BaseWorldTest.cs" />
     <Compile Include="Worlds\WorldFactoryTest.cs" />
   </ItemGroup>
