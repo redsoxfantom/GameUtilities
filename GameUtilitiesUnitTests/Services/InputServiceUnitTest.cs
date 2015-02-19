@@ -66,9 +66,6 @@ namespace GameUtilitiesUnitTests.Services
         {
             Dictionary<Key, string> KeyTopicDictionary = new Dictionary<Key, string>();
             po.SetFieldOrProperty("KeyTopicDictionary", KeyTopicDictionary);
-            TestKeyBoardState state = new TestKeyBoardState();
-
-            po.Invoke("HandleKeypresses", new object[] { state });
 
             msgRouterMock.Verify(f => f.SendMessage(It.IsAny<string>(), It.IsAny<IMessage>()), Times.Never());
         }
@@ -82,11 +79,8 @@ namespace GameUtilitiesUnitTests.Services
             Dictionary<Key, string> KeyTopicDictionary = new Dictionary<Key, string>();
             KeyTopicDictionary.Add(Key.A, "A_PRESSED");
             po.SetFieldOrProperty("KeyTopicDictionary", KeyTopicDictionary);
-            TestKeyBoardState state = new TestKeyBoardState();
 
-            po.Invoke("HandleKeypresses", new object[] { state });
-
-            msgRouterMock.Verify(f => f.SendMessage("A_PRESSED", It.IsAny<KeypressMessage>()), Times.Never());
+            msgRouterMock.Verify(f => f.SendMessage("A_PRESSED", It.IsAny<KeypressMessage>()), Times.Once());
         }
     }
 }
