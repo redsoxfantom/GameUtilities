@@ -1,5 +1,6 @@
 ﻿using GameUtilities.Framework.Utilities.ExecutableContext;
 using GameUtilities.Framework.Utilities.Message;
+using OpenTK.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,6 @@ namespace GameUtilities.Services
         /// <param name="context">The executable context</param>
         public override void Init(IExecutableContext context)
         {
-            context.MessageRouter.RegisterTopic(MessagingConstants.INPUT_SERVICE_TOPIC, this);
             base.Init(context);
         }
 
@@ -30,6 +30,9 @@ namespace GameUtilities.Services
         /// <param name="messages"></param>
         public override void Update(double timeSinceLastFrame, Dictionary<string, List<IMessage>> messages)
         {
+            KeyboardState keyboard = Keyboard.GetState();
+            
+
             object retObj = new object();
 
             foreach (string Topic in messages.Keys)
@@ -58,8 +61,9 @@ namespace GameUtilities.Services
         /// </summary>
         public override void Terminate()
         {
-            mContext.MessageRouter.DeregisterTopic(MessagingConstants.INPUT_SERVICE_TOPIC, this);
             base.Terminate();
         }
+
+
     }
 }
