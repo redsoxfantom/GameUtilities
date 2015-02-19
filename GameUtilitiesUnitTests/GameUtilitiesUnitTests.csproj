@@ -66,6 +66,7 @@
     <Compile Include="Framework\FilePathResolver\FilePathResolverServiceTest.cs" />
     <Compile Include="Framework\MessageRouter\MessageRouterTest.cs" />
     <Compile Include="Services\ShaderServiceTest.cs" />
+    <Compile Include="Services\InputServiceUnitTest.cs" />
     <Compile Include="UnitTestUtilities\LoggerUtility.cs" />
     <Compile Include="UnitTestUtilities\TestComponentUtility.cs" />
     <Compile Include="Worlds\BaseWorldTest.cs" />

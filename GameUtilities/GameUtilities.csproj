@@ -63,6 +63,8 @@
     <Compile Include="Framework\Engine\DataContracts\EngineConfigDataContract.cs" />
     <Compile Include="Framework\Engine\Engine.cs" />
     <Compile Include="Framework\Engine\IEngine.cs" />
+    <Compile Include="Framework\Utilities\InputHandlers\IInputHandler.cs" />
+    <Compile Include="Framework\Utilities\InputHandlers\InputHandler.cs" />
     <Compile Include="Framework\Utilities\Loggers\FileConsoleLogger.cs" />
     <Compile Include="Framework\Utilities\Message\MessageTypes.cs" />
     <Compile Include="Framework\Utilities\Message\IMessageDestination.cs" />
