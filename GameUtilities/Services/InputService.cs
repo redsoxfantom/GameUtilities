@@ -85,7 +85,9 @@ namespace GameUtilities.Services
                 //If that key was "down" (pressed)
                 if(keyboardState[key])
                 {
-                    //Send the message here
+                    mLogger.Debug(string.Format("Key {0} was pressed, sending message to {1}", key.ToString(), KeyTopicDictionary[key]));
+                    KeypressMessage msg = new KeypressMessage();
+                    mContext.MessageRouter.SendMessage(KeyTopicDictionary[key], msg);
                 }
             }
         }
