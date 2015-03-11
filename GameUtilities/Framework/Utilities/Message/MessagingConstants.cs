@@ -20,11 +20,5 @@
         /// The world object should register for this upon initialization
         /// </summary>
         public static string ACTIVE_WORLD = "ActiveWorld";
-
-        /// <summary>
-        /// Topic the Engine sends button presses to.
-        /// Handled by the InputService
-        /// </summary>
-        public static string INPUT_SERVICE_TOPIC = "InputService";
     }
 }

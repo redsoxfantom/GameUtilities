@@ -1,5 +1,7 @@
 ﻿using GameUtilities.Framework.Utilities.ExecutableContext;
+using GameUtilities.Framework.Utilities.InputHandlers;
 using GameUtilities.Framework.Utilities.Message;
+using OpenTK.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +16,25 @@ namespace GameUtilities.Services
     public class InputService : BaseService
     {
         /// <summary>
+        /// A dictionary mapping Keypresses to Topics that the Input service should publish
+        /// the keypress message to
+        /// </summary>
+        private Dictionary<Key, string> KeyTopicDictionary;
+
+        /// <summary>
+        /// Reference to helper class that reads in input;
+        /// </summary>
+        private IInputHandler handler;
+
+        /// <summary>
         /// Initialize the Service
         /// </summary>
         /// <param name="context">The executable context</param>
         public override void Init(IExecutableContext context)
         {
-            context.MessageRouter.RegisterTopic(MessagingConstants.INPUT_SERVICE_TOPIC, this);
+            KeyTopicDictionary = new Dictionary<Key, string>();
+            handler = new InputHandler();
+            
             base.Init(context);
         }
 
@@ -30,6 +45,8 @@ namespace GameUtilities.Services
         /// <param name="messages"></param>
         public override void Update(double timeSinceLastFrame, Dictionary<string, List<IMessage>> messages)
         {
+            HandleInput();
+            
             object retObj = new object();
 
             foreach (string Topic in messages.Keys)
@@ -58,8 +75,30 @@ namespace GameUtilities.Services
         /// </summary>
         public override void Terminate()
         {
-            mContext.MessageRouter.DeregisterTopic(MessagingConstants.INPUT_SERVICE_TOPIC, this);
+            KeyTopicDictionary.Clear();
+
             base.Terminate();
+        }
+
+        /// <summary>
+        /// Handles all Keypresses by publishing the keys that are down to their topic
+        /// </summary>
+        /// <param name="keyboardState">The current state of the keyboard</param>
+        private void HandleInput()
+        {
+            handler.GetInputs();
+
+            //Loop through each Key in the dictionary
+            foreach(Key key in KeyTopicDictionary.Keys)
+            {
+                //If that key was "down" (pressed)
+                if(handler.isKeyDown(key))
+                {
+                    mLogger.Debug(string.Format("Key {0} was pressed, sending message to {1}", key.ToString(), KeyTopicDictionary[key]));
+                    KeypressMessage msg = new KeypressMessage();
+                    mContext.MessageRouter.SendMessage(KeyTopicDictionary[key], msg);
+                }
+            }
         }
     }
 }
