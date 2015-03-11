@@ -1,4 +1,4 @@
-[![Build Status](http://ec2-52-0-23-21.compute-1.amazonaws.com:8080/buildStatus/icon?job=GameUtilities)](http://ec2-52-0-23-21.compute-1.amazonaws.com:8080/job/GameUtilities/)
+[![Build Status](http://ec2-54-152-205-200.compute-1.amazonaws.com:8080/buildStatus/icon?job=GameUtilities&build=10)](http://ec2-54-152-205-200.compute-1.amazonaws.com:8080/job/GameUtilities/10/)
 
 GameUtilities
 ====
