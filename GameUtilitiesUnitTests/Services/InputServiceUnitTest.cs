@@ -52,7 +52,7 @@ namespace GameUtilitiesUnitTests.Services
         /// Handles first time setup of the test
         /// </summary>
         [TestInitialize]
-        public void Initializze()
+        public void Initialize()
         {
             target = new InputService();
             po = new PrivateObject(target);
