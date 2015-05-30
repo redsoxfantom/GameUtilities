@@ -76,7 +76,7 @@ namespace GameUtilities.Framework.Utilities.Loggers
                 if (logLevelIsEnabled(level))
                 {
                     SetConsoleColor(fore, back);
-                    string finalMsg = string.Format("{0}-{1}-{2}", Enum.GetName(typeof(LoggerLevel), level), LoggerName, msg);
+                    string finalMsg = string.Format(" {0}-{1}-{2}", Enum.GetName(typeof(LoggerLevel), level), LoggerName, msg);
                     Console.WriteLine(finalMsg);
                     ConsoleReset();
                 }

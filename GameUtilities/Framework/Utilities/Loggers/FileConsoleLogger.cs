@@ -50,7 +50,7 @@ namespace GameUtilities.Framework.Utilities.Loggers
             base.Print(level, msg, fore, back);
             if(logLevelIsEnabled(level))
             {
-                string finalMsg = string.Format("{0}-{1}-{2}", Enum.GetName(typeof(LoggerLevel), level), LoggerName, msg);
+                string finalMsg = string.Format(" {0}-{1}-{2}", Enum.GetName(typeof(LoggerLevel), level), LoggerName, msg);
                 writer.WriteLine(finalMsg);
             }
         }
