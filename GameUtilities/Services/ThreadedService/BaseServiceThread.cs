@@ -56,7 +56,7 @@ namespace GameUtilities.Services.ThreadedService
         public virtual void Init(IExecutableContext context)
         {
             mContext = context;
-            LoggerFactory.CreateLogger(this.GetType().Name);
+            mLogger = LoggerFactory.CreateLogger(this.GetType().Name);
         }
 
         /// <summary>

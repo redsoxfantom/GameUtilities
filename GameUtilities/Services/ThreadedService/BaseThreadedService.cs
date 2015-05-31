@@ -17,7 +17,7 @@ namespace GameUtilities.Services.ThreadedService
         /// <summary>
         /// Worker thread for this class
         /// </summary>
-        protected BaseServiceThread mThread;
+        protected override BaseServiceThread mThread;
 
         /// <summary>
         /// Constructor
@@ -27,6 +27,10 @@ namespace GameUtilities.Services.ThreadedService
             mThread = new BaseServiceThread();
         }
 
+        /// <summary>
+        /// Initialize the service
+        /// </summary>
+        /// <param name="context">The executable context of the service</param>
         public override void Init(IExecutableContext context)
         {
             base.Init(context);
