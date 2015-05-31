@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace GameUtilities.Services.ThreadedService
@@ -19,9 +20,9 @@ namespace GameUtilities.Services.ThreadedService
         private object lockObject;
 
         /// <summary>
-        /// Boolean used to determine if the thread should run
+        /// Used to stop the task
         /// </summary>
-        private bool isRunning;
+        private CancellationTokenSource mCancelTokenSource;
 
         /// <summary>
         /// The executable context of the thread
@@ -34,22 +35,68 @@ namespace GameUtilities.Services.ThreadedService
         private ILogger mLogger;
 
         /// <summary>
+        /// Represents the asynchronous task
+        /// </summary>
+        private Task mWorker;
+
+        /// <summary>
         /// Constructor for the thread
         /// </summary>
         public BaseServiceThread()
         {
             lockObject = new object();
-            isRunning = false;
+            mCancelTokenSource = new CancellationTokenSource();
+            mWorker = new Task(new Action(ThreadFunction),mCancelTokenSource.Token);
         }
 
         /// <summary>
         /// Initialize the Thread
         /// </summary>
         /// <param name="context"></param>
-        public void Init(IExecutableContext context)
+        public virtual void Init(IExecutableContext context)
         {
             mContext = context;
             LoggerFactory.CreateLogger(this.GetType().Name);
+        }
+
+        /// <summary>
+        /// The method this service thread will execute.
+        /// </summary>
+        protected virtual void ThreadFunction()
+        {
+            //Overriden by child class
+        }
+
+        /// <summary>
+        /// Starts up the thread. Does nothing if the thread is already running
+        /// </summary>
+        public void StartThread()
+        {
+            if(mWorker.Status != TaskStatus.Running)
+            {
+                mLogger.Debug(string.Format("Worker thread status is {0}, so starting",mWorker.Status));
+                mWorker.Start();
+            }
+            else
+            {
+                mLogger.Warn("Attempted to start a worker thread that was already running!");
+            }
+        }
+
+        /// <summary>
+        /// Stops the running thread
+        /// </summary>
+        public void StopThread()
+        {
+            try
+            {
+                mLogger.Info("Attempting to cancel thread");
+                mCancelTokenSource.Cancel();
+            }
+            catch(Exception e)
+            {
+                mLogger.Error("Error cancelling thread", e);
+            }
         }
     }
 }

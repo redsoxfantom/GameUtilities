@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GameUtilities.Services;
 using GameUtilities.Framework.Utilities.Message;
+using GameUtilities.Framework.Utilities.ExecutableContext;
 
 namespace GameUtilities.Services.ThreadedService
 {
@@ -24,6 +25,11 @@ namespace GameUtilities.Services.ThreadedService
         public BaseThreadedService()
         {
             mThread = new BaseServiceThread();
+        }
+
+        public override void Init(IExecutableContext context)
+        {
+            base.Init(context);
         }
 
         /// <summary>
