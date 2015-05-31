@@ -14,6 +14,19 @@ namespace GameUtilities.Services.ThreadedService
     public class BaseThreadedService : BaseService
     {
         /// <summary>
+        /// Worker thread for this class
+        /// </summary>
+        protected BaseServiceThread mThread;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public BaseThreadedService()
+        {
+            mThread = new BaseServiceThread();
+        }
+
+        /// <summary>
         /// Handle messages sent since last frame
         /// </summary>
         /// <param name="timeSinceLastFrame">How much time has elapsed since last frame</param>
