@@ -1,6 +1,7 @@
 ﻿using GameUtilities.Framework.Utilities.Loggers;
 using GameUtilities.Framework.Utilities.Message;
 using GameUtilities.Services;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 
 namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
@@ -20,34 +21,34 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         /// <summary>
         /// Dictionary linking Consumers to their Topics
         /// </summary>
-        private Dictionary<IMessageDestination, List<string>> ConsumerTopicDictionary;
+        private ConcurrentDictionary<IMessageDestination, List<string>> ConsumerTopicDictionary;
 
         /// <summary>
         /// Dictionary linking Topics to all consumers subscribed for them
         /// </summary>
-        private Dictionary<string, List<IMessageDestination>> TopicConsumerDictionary;
+        private ConcurrentDictionary<string, List<IMessageDestination>> TopicConsumerDictionary;
 
         /// <summary>
         /// Messages that will be returned this frame
         /// Any messages retrieved from GetMessages come from this Dictionary
         /// </summary>
-        private Dictionary<string, List<IMessage>> mCurrentFrameMessages;
+        private ConcurrentDictionary<string, List<IMessage>> mCurrentFrameMessages;
 
         /// <summary>
         /// Messages that are being stored for the next frame
         /// Any messages passed through SendMessage are stored here
         /// </summary>
-        private Dictionary<string, List<IMessage>> mNextFrameMessages;
+        private ConcurrentDictionary<string, List<IMessage>> mNextFrameMessages;
 
         /// <summary>
         /// The constructor
         /// </summary>
         public MessageRouter()
         {
-            ConsumerTopicDictionary = new Dictionary<IMessageDestination, List<string>>();
-            TopicConsumerDictionary = new Dictionary<string, List<IMessageDestination>>();
-            mCurrentFrameMessages = new Dictionary<string, List<IMessage>>();
-            mNextFrameMessages = new Dictionary<string, List<IMessage>>();
+            ConsumerTopicDictionary = new ConcurrentDictionary<IMessageDestination, List<string>>();
+            TopicConsumerDictionary = new ConcurrentDictionary<string, List<IMessageDestination>>();
+            mCurrentFrameMessages = new ConcurrentDictionary<string, List<IMessage>>();
+            mNextFrameMessages = new ConcurrentDictionary<string, List<IMessage>>();
             mLogger = LoggerFactory.CreateLogger("MessageRouter");
             mLogger.Info("Created Message Router");
         }
@@ -93,7 +94,7 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
             {
                 List<string> list = new List<string>();
                 list.Add(Topic);
-                ConsumerTopicDictionary.Add(consumer, list);
+                ConsumerTopicDictionary.TryAdd(consumer, list);
             }
 
             if(TopicConsumerDictionary.ContainsKey(Topic))
@@ -104,7 +105,7 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
             {
                 List<IMessageDestination> list = new List<IMessageDestination>();
                 list.Add(consumer);
-                TopicConsumerDictionary.Add(Topic, list);
+                TopicConsumerDictionary.TryAdd(Topic, list);
             }
         }
 
@@ -122,7 +123,8 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
                 ConsumerTopicDictionary[consumer].Remove(Topic);
                 if(ConsumerTopicDictionary[consumer].Count == 0) // There are no more topics for this consumer
                 {
-                    ConsumerTopicDictionary.Remove(consumer);
+                    List<string> outList = new List<string>();
+                    ConsumerTopicDictionary.TryRemove(consumer,out outList);
                 }
             }
 
@@ -131,7 +133,8 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
                 TopicConsumerDictionary[Topic].Remove(consumer);
                 if(TopicConsumerDictionary[Topic].Count == 0) // There are no more consumers for this topic
                 {
-                    TopicConsumerDictionary.Remove(Topic);
+                    List<IMessageDestination> outList = new List<IMessageDestination>();
+                    TopicConsumerDictionary.TryRemove(Topic, out outList);
                 }
             }
         }
@@ -151,7 +154,7 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
             {
                 List<IMessage> list = new List<IMessage>();
                 list.Add(message);
-                mNextFrameMessages.Add(Topic, list);
+                mNextFrameMessages.TryAdd(Topic, list);
             }
         }
 
@@ -185,7 +188,7 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         public void Update()
         {
             mCurrentFrameMessages = mNextFrameMessages;
-            mNextFrameMessages = new Dictionary<string, List<IMessage>>();
+            mNextFrameMessages = new ConcurrentDictionary<string, List<IMessage>>();
         }
 
         /// <summary>
@@ -206,8 +209,8 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
                     }
                 }
             }
-            TopicConsumerDictionary = new Dictionary<string, List<IMessageDestination>>();
-            ConsumerTopicDictionary = new Dictionary<IMessageDestination, List<string>>();
+            TopicConsumerDictionary = new ConcurrentDictionary<string, List<IMessageDestination>>();
+            ConsumerTopicDictionary = new ConcurrentDictionary<IMessageDestination, List<string>>();
 
             mLogger.Terminate();
         }

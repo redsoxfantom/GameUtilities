@@ -5,6 +5,7 @@ using GameUtilities.Framework.Utilities.Message.MessageDispatch;
 using GameUtilities.Framework.Utilities.Message;
 using System.Collections.Generic;
 using GameUtilitiesUnitTests.UnitTestUtilities;
+using System.Collections.Concurrent;
 
 namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
 {
@@ -22,8 +23,8 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         {
             MessageRouter target = new MessageRouter();
             PrivateObject obj = new PrivateObject(target);
-            Dictionary<IMessageDestination, List<string>> ConsumerTopicDictionary = (Dictionary<IMessageDestination, List<string>>)obj.GetFieldOrProperty("ConsumerTopicDictionary");
-            Dictionary<string, List<IMessageDestination>> TopicConsumerDictionary = (Dictionary<string, List<IMessageDestination>>)obj.GetFieldOrProperty("TopicConsumerDictionary");
+            ConcurrentDictionary<IMessageDestination, List<string>> ConsumerTopicDictionary = (ConcurrentDictionary<IMessageDestination, List<string>>)obj.GetFieldOrProperty("ConsumerTopicDictionary");
+            ConcurrentDictionary<string, List<IMessageDestination>> TopicConsumerDictionary = (ConcurrentDictionary<string, List<IMessageDestination>>)obj.GetFieldOrProperty("TopicConsumerDictionary");
             Mock<IMessageDestination> destMock1 = new Mock<IMessageDestination>();
             Mock<IMessageDestination> destMock2 = new Mock<IMessageDestination>();
             Mock<IMessageDestination> destMock3 = new Mock<IMessageDestination>();
@@ -63,8 +64,8 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         {
             MessageRouter target = new MessageRouter();
             PrivateObject obj = new PrivateObject(target);
-            Dictionary<IMessageDestination, List<string>> ConsumerTopicDictionary = (Dictionary<IMessageDestination, List<string>>)obj.GetFieldOrProperty("ConsumerTopicDictionary");
-            Dictionary<string, List<IMessageDestination>> TopicConsumerDictionary = (Dictionary<string, List<IMessageDestination>>)obj.GetFieldOrProperty("TopicConsumerDictionary");
+            ConcurrentDictionary<IMessageDestination, List<string>> ConsumerTopicDictionary = (ConcurrentDictionary<IMessageDestination, List<string>>)obj.GetFieldOrProperty("ConsumerTopicDictionary");
+            ConcurrentDictionary<string, List<IMessageDestination>> TopicConsumerDictionary = (ConcurrentDictionary<string, List<IMessageDestination>>)obj.GetFieldOrProperty("TopicConsumerDictionary");
             Mock<IMessageDestination> destMock1 = new Mock<IMessageDestination>();
             Mock<IMessageDestination> destMock2 = new Mock<IMessageDestination>();
             Mock<IMessageDestination> destMock3 = new Mock<IMessageDestination>();
@@ -98,8 +99,8 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
         {
             MessageRouter target = new MessageRouter();
             PrivateObject obj = new PrivateObject(target);
-            Dictionary<IMessageDestination, List<string>> ConsumerTopicDictionary = (Dictionary<IMessageDestination, List<string>>)obj.GetFieldOrProperty("ConsumerTopicDictionary");
-            Dictionary<string, List<IMessageDestination>> TopicConsumerDictionary = (Dictionary<string, List<IMessageDestination>>)obj.GetFieldOrProperty("TopicConsumerDictionary");
+            ConcurrentDictionary<IMessageDestination, List<string>> ConsumerTopicDictionary = (ConcurrentDictionary<IMessageDestination, List<string>>)obj.GetFieldOrProperty("ConsumerTopicDictionary");
+            ConcurrentDictionary<string, List<IMessageDestination>> TopicConsumerDictionary = (ConcurrentDictionary<string, List<IMessageDestination>>)obj.GetFieldOrProperty("TopicConsumerDictionary");
             Mock<IMessageDestination> destMock1 = new Mock<IMessageDestination>();
             Mock<IMessageDestination> destMock2 = new Mock<IMessageDestination>();
             Mock<IMessageDestination> destMock3 = new Mock<IMessageDestination>();
@@ -124,8 +125,8 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
             PrivateObject obj = new PrivateObject(target);
             object ret = new object();
             Mock<IMessage> msgMock = new Mock<IMessage>();
-            Dictionary<IMessageDestination, List<string>> ConsumerTopicDictionary = (Dictionary<IMessageDestination, List<string>>)obj.GetFieldOrProperty("ConsumerTopicDictionary");
-            Dictionary<string, List<IMessageDestination>> TopicConsumerDictionary = (Dictionary<string, List<IMessageDestination>>)obj.GetFieldOrProperty("TopicConsumerDictionary");
+            ConcurrentDictionary<IMessageDestination, List<string>> ConsumerTopicDictionary = (ConcurrentDictionary<IMessageDestination, List<string>>)obj.GetFieldOrProperty("ConsumerTopicDictionary");
+            ConcurrentDictionary<string, List<IMessageDestination>> TopicConsumerDictionary = (ConcurrentDictionary<string, List<IMessageDestination>>)obj.GetFieldOrProperty("TopicConsumerDictionary");
             Mock<IMessageDestination> destMock1 = new Mock<IMessageDestination>();
             destMock1.Setup(f => f.HandleMessage("TEST1",msgMock.Object, ref ret)).Returns(true);
             Mock<IMessageDestination> destMock3 = new Mock<IMessageDestination>();
@@ -155,7 +156,7 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
             Mock<IMessage> msgMock = new Mock<IMessage>();
             Mock<IMessage> msgMock2 = new Mock<IMessage>();
             Mock<IMessage> msgMock3 = new Mock<IMessage>();
-            Dictionary<string, List<IMessage>> mNextFrameMessages = (Dictionary<string, List<IMessage>>)obj.GetFieldOrProperty("mNextFrameMessages");
+            ConcurrentDictionary<string, List<IMessage>> mNextFrameMessages = (ConcurrentDictionary<string, List<IMessage>>)obj.GetFieldOrProperty("mNextFrameMessages");
 
             target.SendMessage("TEST1", msgMock.Object);
             target.SendMessage("TEST2", msgMock2.Object);
@@ -185,13 +186,13 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
             Mock<IMessage> msgMock3 = new Mock<IMessage>();
             Mock<IMessage> msgMock4 = new Mock<IMessage>();
             Mock<IMessageDestination> destMock = new Mock<IMessageDestination>();
-            Dictionary<string, List<IMessage>> mCurrentFrameMessages = (Dictionary<string, List<IMessage>>)obj.GetFieldOrProperty("mCurrentFrameMessages");
-            Dictionary<IMessageDestination, List<string>> ConsumerTopicDictionary = (Dictionary<IMessageDestination, List<string>>)obj.GetFieldOrProperty("ConsumerTopicDictionary");
+            ConcurrentDictionary<string, List<IMessage>> mCurrentFrameMessages = (ConcurrentDictionary<string, List<IMessage>>)obj.GetFieldOrProperty("mCurrentFrameMessages");
+            ConcurrentDictionary<IMessageDestination, List<string>> ConsumerTopicDictionary = (ConcurrentDictionary<IMessageDestination, List<string>>)obj.GetFieldOrProperty("ConsumerTopicDictionary");
             List<string> topics = new List<string>();
             topics.Add("TEST1");
             topics.Add("TEST3");
             topics.Add("TEST4");
-            ConsumerTopicDictionary.Add(destMock.Object, topics);
+            ConsumerTopicDictionary.TryAdd(destMock.Object, topics);
             List<IMessage> messages1 = new List<IMessage>();
             messages1.Add(msgMock.Object);
             messages1.Add(msgMock2.Object);
@@ -199,9 +200,9 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
             messages2.Add(msgMock3.Object);
             List<IMessage> messages3 = new List<IMessage>();
             messages3.Add(msgMock4.Object);
-            mCurrentFrameMessages.Add("TEST1", messages1);
-            mCurrentFrameMessages.Add("TEST2", messages2);
-            mCurrentFrameMessages.Add("TEST3", messages3);
+            mCurrentFrameMessages.TryAdd("TEST1", messages1);
+            mCurrentFrameMessages.TryAdd("TEST2", messages2);
+            mCurrentFrameMessages.TryAdd("TEST3", messages3);
 
             Dictionary<string,List<IMessage>> actual = target.GetMessages(destMock.Object);
 
@@ -227,16 +228,16 @@ namespace GameUtilities.Framework.Utilities.Message.MessageDispatch
             PrivateObject obj = new PrivateObject(target);
             Mock<IMessage> msgMock = new Mock<IMessage>();
             Mock<IMessage> msgMock2 = new Mock<IMessage>();
-            Dictionary<string, List<IMessage>> mNextFrameMessages = (Dictionary<string, List<IMessage>>)obj.GetFieldOrProperty("mNextFrameMessages");
+            ConcurrentDictionary<string, List<IMessage>> mNextFrameMessages = (ConcurrentDictionary<string, List<IMessage>>)obj.GetFieldOrProperty("mNextFrameMessages");
             List<IMessage> messages1 = new List<IMessage>();
             messages1.Add(msgMock.Object);
             messages1.Add(msgMock2.Object);
-            mNextFrameMessages.Add("TEST1", messages1);
+            mNextFrameMessages.TryAdd("TEST1", messages1);
 
             target.Update();
 
-            Dictionary<string, List<IMessage>> mCurrentFrameMessages = (Dictionary<string, List<IMessage>>)obj.GetFieldOrProperty("mCurrentFrameMessages");
-            mNextFrameMessages = (Dictionary<string, List<IMessage>>)obj.GetFieldOrProperty("mNextFrameMessages");
+            ConcurrentDictionary<string, List<IMessage>> mCurrentFrameMessages = (ConcurrentDictionary<string, List<IMessage>>)obj.GetFieldOrProperty("mCurrentFrameMessages");
+            mNextFrameMessages = (ConcurrentDictionary<string, List<IMessage>>)obj.GetFieldOrProperty("mNextFrameMessages");
 
             Assert.IsTrue(mCurrentFrameMessages.ContainsKey("TEST1"));
             List<IMessage> actual = mCurrentFrameMessages["TEST1"];
