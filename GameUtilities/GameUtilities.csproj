@@ -91,6 +91,7 @@
     <Compile Include="Framework\Utilities\Message\MessageDispatch\IMessageRouter.cs" />
     <Compile Include="Framework\Utilities\Message\MessageDispatch\MessageRouter.cs" />
     <Compile Include="Services\ShaderService.cs" />
+    <Compile Include="Services\ThreadedService\BaseServiceThread.cs" />
     <Compile Include="Services\ThreadedService\BaseThreadedService.cs" />
     <Compile Include="Worlds\IWorld.cs" />
     <Compile Include="Worlds\BaseWorld.cs" />

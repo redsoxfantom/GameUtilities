@@ -11,7 +11,7 @@ namespace GameUtilities.Services.ThreadedService
     /// <summary>
     /// Base class for Services that will spawn a thread to do work
     /// </summary>
-    public abstract class BaseThreadedService : BaseService
+    public class BaseThreadedService : BaseService
     {
         /// <summary>
         /// Handle messages sent since last frame
