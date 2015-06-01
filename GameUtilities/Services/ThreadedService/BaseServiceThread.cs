@@ -90,8 +90,15 @@ namespace GameUtilities.Services.ThreadedService
         {
             try
             {
-                mLogger.Info("Attempting to cancel thread");
-                mCancelTokenSource.Cancel();
+                if (mWorker.Status == TaskStatus.Running)
+                {
+                    mLogger.Info("Attempting to cancel thread");
+                    mCancelTokenSource.Cancel();
+                }
+                else
+                {
+                    mLogger.Info("Attempted to cancel a thread that was already done executing");
+                }
             }
             catch(Exception e)
             {
